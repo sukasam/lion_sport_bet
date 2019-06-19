@@ -13,19 +13,17 @@ $SiteURLLocal =  "http://" .$_SERVER["HTTP_HOST"]. dirname($_SERVER['PHP_SELF'])
 $RootSiteURLPath = str_replace('\\', '/', $SiteURLLocal); 
 define('SiteRootDir', $RootSiteURLPath); 
 
-
 // $db_conn = array(
 // 	'host' => 'localhost', 
-// 	'user' => 'root',
-// 	'pass' => '',
-// 	'database' => 'lionroyal_bet', 
+// 	'user' => 'id9537812_lion',
+// 	'pass' => 'HMu6tjvyhBVx',
+// 	'database' => 'id9537812_lion', 
 // ); 
 
-	
 $db_conn = array(
 	'host' => 'localhost', 
-	'user' => 'id9537812_lion',
-	'pass' => 'HMu6tjvyhBVx',
+	'user' => 'root',
+	'pass' => '',
 	'database' => 'id9537812_lion', 
 ); 
 
