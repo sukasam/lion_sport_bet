@@ -1,0 +1,1222 @@
+Event = NewAccount
+Player = test02
+Source = API
+Time = 2018-09-18 17:15:52
+
+Event = NewAccount
+Player = test03
+Source = API
+Time = 2018-09-18 17:43:48
+
+Event = Login
+Player = test03
+SessionID = 0000000B
+Time = 2018-09-18 17:54:26
+
+Event = Logout
+Player = test03
+Time = 2018-09-18 17:54:35
+
+Event = Login
+Player = test03
+SessionID = 0000000C
+Time = 2018-09-18 17:54:35
+
+Event = Logout
+Player = test03
+Time = 2018-09-18 17:54:46
+
+Event = Login
+Player = test03
+SessionID = 0000000D
+Time = 2018-09-18 17:54:46
+
+Event = Logout
+Player = test03
+Time = 2018-09-18 17:56:53
+
+Event = Login
+Player = test03
+SessionID = 0000000E
+Time = 2018-09-18 18:12:59
+
+Event = Logout
+Player = test03
+Time = 2018-09-18 18:15:53
+
+Event = Login
+Player = test01
+SessionID = 0000000F
+Time = 2018-09-18 19:15:09
+
+Event = Logout
+Player = test01
+Time = 2018-09-18 19:17:53
+
+Event = Login
+Player = test01
+SessionID = 00000010
+Time = 2018-09-19 10:52:26
+
+Event = Logout
+Player = test01
+Time = 2018-09-19 10:54:53
+
+Event = NewAccount
+Player = test04
+Source = API
+Time = 2018-09-19 19:18:26
+
+Event = Login
+Player = test01
+SessionID = 00000001
+Time = 2018-09-19 20:07:36
+
+Event = Logout
+Player = test01
+Time = 2018-09-19 20:10:12
+
+Event = NewAccount
+Player = test05
+Source = API
+Time = 2018-09-20 13:59:20
+
+Event = NewAccount
+Player = test02
+Source = API
+Time = 2018-09-20 14:01:49
+
+Event = Login
+Player = test01
+SessionID = 00000001
+Time = 2018-09-20 14:39:38
+
+Event = Logout
+Player = test01
+Time = 2018-09-20 14:42:09
+
+Event = Login
+Player = test01
+SessionID = 00000002
+Time = 2018-09-20 17:56:20
+
+Event = Logout
+Player = test01
+Time = 2018-09-20 17:57:27
+
+Event = Login
+Player = test01
+SessionID = 00000003
+Time = 2018-09-20 17:57:27
+
+Event = Logout
+Player = test01
+Time = 2018-09-20 17:59:16
+
+Event = Login
+Player = test01
+SessionID = 00000004
+Time = 2018-09-20 17:59:16
+
+Event = Logout
+Player = test01
+Time = 2018-09-20 18:38:10
+
+Event = Login
+Player = test01
+SessionID = 00000005
+Time = 2018-09-20 19:02:20
+
+Event = Logout
+Player = test01
+Time = 2018-09-20 19:22:09
+
+Event = Login
+Player = test01
+SessionID = 00000008
+Time = 2018-09-27 18:12:55
+
+Event = Logout
+Player = test01
+Time = 2018-09-27 18:21:56
+
+Event = NewAccount
+Player = roxy
+Source = API
+Time = 2018-10-06 02:58:48
+
+Event = Login
+Player = roxy
+SessionID = 00000009
+Time = 2018-10-06 03:00:07
+
+Event = Balance
+Player = roxy
+Change = 100000
+Balance = 100000
+Source = Remote
+Time = 2018-10-06 03:03:23
+
+Event = Logout
+Player = roxy
+Time = 2018-10-06 03:03:58
+
+Event = Login
+Player = roxy
+SessionID = 0000000A
+Time = 2018-10-06 03:03:58
+
+Event = Balance
+Player = roxy
+Change = -2000
+Balance = 98000
+Source = Ring Game #01
+Time = 2018-10-06 03:04:55
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = roxy
+Amount = 2000
+Time = 2018-10-06 03:04:55
+
+Event = NewAccount
+Player = aghpaapaa
+Source = API
+Time = 2018-10-06 03:07:12
+
+Event = Login
+Player = aghpaapaa
+SessionID = 0000000B
+Time = 2018-10-06 03:07:44
+
+Event = Balance
+Player = aghpaapaa
+Change = 100000
+Balance = 100000
+Source = Remote
+Time = 2018-10-06 03:08:25
+
+Event = Balance
+Player = aghpaapaa
+Change = -1200
+Balance = 98800
+Source = Ring Game #01
+Time = 2018-10-06 03:08:36
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = aghpaapaa
+Amount = 1200
+Time = 2018-10-06 03:08:36
+
+Event = RingGameStart
+Name = Ring Game #01
+Time = 2018-10-06 03:08:36
+
+Event = Hand
+Hand = 1-1
+Type = Ring
+Name = Ring Game #01
+Table = 1
+Time = 2018-10-06 03:09:40
+
+Event = Balance
+Player = roxy
+Change = 3200
+Balance = 101200
+Source = Ring Game #01
+Time = 2018-10-06 03:09:41
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = roxy
+Amount = 3200
+Net = 1200
+Expired = No
+Time = 2018-10-06 03:09:41
+
+Event = RingGameStop
+Name = Ring Game #01
+Time = 2018-10-06 03:09:42
+
+Event = Balance
+Player = aghpaapaa
+Change = 0
+Balance = 98800
+Source = Ring Game #01
+Time = 2018-10-06 03:09:43
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = aghpaapaa
+Amount = 0
+Net = -1200
+Expired = No
+Time = 2018-10-06 03:09:43
+
+Event = Balance
+Player = roxy
+Change = -400
+Balance = 100800
+Source = Ring Game #01
+Time = 2018-10-06 03:10:34
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = roxy
+Amount = 400
+Time = 2018-10-06 03:10:34
+
+Event = Balance
+Player = aghpaapaa
+Change = -1200
+Balance = 97600
+Source = Ring Game #01
+Time = 2018-10-06 03:10:52
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = aghpaapaa
+Amount = 1200
+Time = 2018-10-06 03:10:52
+
+Event = RingGameStart
+Name = Ring Game #01
+Time = 2018-10-06 03:10:52
+
+Event = Balance
+Player = roxy
+Change = 400
+Balance = 101200
+Source = Ring Game #01
+Time = 2018-10-06 03:13:26
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = roxy
+Amount = 400
+Net = 0
+Expired = No
+Time = 2018-10-06 03:13:26
+
+Event = Balance
+Player = aghpaapaa
+Change = 1200
+Balance = 98800
+Source = Ring Game #01
+Time = 2018-10-06 03:13:26
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = aghpaapaa
+Amount = 1200
+Net = 0
+Expired = No
+Time = 2018-10-06 03:13:26
+
+Event = RingGameStop
+Name = Ring Game #01
+Time = 2018-10-06 03:15:00
+
+Event = Balance
+Player = aghpaapaa
+Change = -400
+Balance = 98400
+Source = Ring Game #01
+Time = 2018-10-06 03:15:28
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = aghpaapaa
+Amount = 400
+Time = 2018-10-06 03:15:28
+
+Event = Balance
+Player = roxy
+Change = -2000
+Balance = 99200
+Source = Ring Game #01
+Time = 2018-10-06 03:15:34
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = roxy
+Amount = 2000
+Time = 2018-10-06 03:15:34
+
+Event = RingGameStart
+Name = Ring Game #01
+Time = 2018-10-06 03:15:34
+
+Event = Hand
+Hand = 3-1
+Type = Ring
+Name = Ring Game #01
+Table = 1
+Time = 2018-10-06 03:17:15
+
+Event = Hand
+Hand = 4-2
+Type = Ring
+Name = Ring Game #01
+Table = 1
+Time = 2018-10-06 03:20:45
+
+Event = RingGameStop
+Name = Ring Game #01
+Time = 2018-10-06 03:20:46
+
+Event = Balance
+Player = aghpaapaa
+Change = 340
+Balance = 98740
+Source = Ring Game #01
+Time = 2018-10-06 03:30:41
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = aghpaapaa
+Amount = 340
+Net = -60
+Expired = Yes
+Time = 2018-10-06 03:30:41
+
+Event = Logout
+Player = roxy
+Time = 2018-10-06 03:41:44
+
+Event = Balance
+Player = roxy
+Change = 2057
+Balance = 101257
+Source = Ring Game #01
+Time = 2018-10-06 03:41:44
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = roxy
+Amount = 2057
+Net = 57
+Expired = No
+Time = 2018-10-06 03:41:44
+
+Event = NewAccount
+Player = roxy2
+Source = API
+Time = 2018-10-06 03:41:47
+
+Event = Logout
+Player = aghpaapaa
+Time = 2018-10-06 07:20:44
+
+Event = Login
+Player = roxy
+SessionID = 0000000C
+Time = 2018-10-06 18:08:12
+
+Event = Logout
+Player = roxy
+Time = 2018-10-06 18:10:44
+
+Event = Login
+Player = roxy
+SessionID = 0000000D
+Time = 2018-10-06 18:51:09
+
+Event = Logout
+Player = roxy
+Time = 2018-10-06 20:26:44
+
+Event = Login
+Player = test01
+SessionID = 0000000E
+Time = 2018-10-08 09:42:38
+
+Event = Logout
+Player = test01
+Time = 2018-10-08 09:45:12
+
+Event = Login
+Player = test01
+SessionID = 0000000F
+Time = 2018-10-08 09:45:12
+
+Event = Logout
+Player = test01
+Time = 2018-10-08 09:48:12
+
+Event = Login
+Player = roxy
+SessionID = 00000010
+Time = 2018-10-11 18:07:22
+
+Event = Logout
+Player = roxy
+Time = 2018-10-11 19:01:25
+
+Event = Login
+Player = roxy
+SessionID = 00000011
+Time = 2018-10-11 19:01:25
+
+Event = Logout
+Player = roxy
+Time = 2018-10-11 19:04:21
+
+Event = NewAccount
+Player = adminT-T
+Source = Remote
+Time = 2018-10-17 05:57:19
+
+Event = Login
+Player = adminT-T
+SessionID = 00000012
+Time = 2018-10-17 05:58:21
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-17 05:58:36
+
+Event = Login
+Player = adminT-T
+SessionID = 00000013
+Time = 2018-10-17 05:58:43
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-17 05:58:55
+
+Event = Login
+Player = adminT-T
+SessionID = 00000014
+Time = 2018-10-17 05:58:55
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-17 06:01:31
+
+Event = Login
+Player = roxy
+SessionID = 00000015
+Time = 2018-10-17 12:00:11
+
+Event = Logout
+Player = roxy
+Time = 2018-10-17 12:00:14
+
+Event = Login
+Player = roxy
+SessionID = 00000016
+Time = 2018-10-17 12:08:02
+
+Event = Logout
+Player = roxy
+Time = 2018-10-17 12:26:31
+
+Event = NewAccount
+Player = test05
+Source = API
+Time = 2018-10-17 16:49:49
+
+Event = Login
+Player = test05
+SessionID = 00000017
+Time = 2018-10-17 16:56:36
+
+Event = Logout
+Player = test05
+Time = 2018-10-17 17:00:46
+
+Event = Login
+Player = test05
+SessionID = 00000018
+Time = 2018-10-17 17:00:46
+
+Event = Logout
+Player = test05
+Time = 2018-10-17 17:02:29
+
+Event = Login
+Player = test05
+SessionID = 00000019
+Time = 2018-10-17 17:02:29
+
+Event = Logout
+Player = test05
+Time = 2018-10-17 17:05:31
+
+Event = Login
+Player = adminT-T
+SessionID = 0000001A
+Time = 2018-10-17 17:07:44
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-17 17:10:31
+
+Event = Login
+Player = adminT-T
+SessionID = 0000001B
+Time = 2018-10-18 11:52:50
+
+Event = LobbyChat
+Player = adminT-T
+Title = 
+Chat = Hello
+Time = 2018-10-18 11:54:13
+
+Event = Balance
+Player = adminT-T
+Change = 1000
+Balance = 1000
+Source = API
+Time = 2018-10-18 16:14:29
+
+Event = Balance
+Player = adminT-T
+Change = 200
+Balance = 1200
+Source = API
+Time = 2018-10-18 16:20:59
+
+Event = Balance
+Player = adminT-T
+Change = -700
+Balance = 500
+Source = API
+Time = 2018-10-18 16:23:54
+
+Event = Balance
+Player = adminT-T
+Change = 200
+Balance = 700
+Source = API
+Time = 2018-10-18 16:38:32
+
+Event = Balance
+Player = adminT-T
+Change = -200
+Balance = 500
+Source = API
+Time = 2018-10-18 16:38:38
+
+Event = Balance
+Player = adminT-T
+Change = 200
+Balance = 700
+Source = API
+Time = 2018-10-18 16:38:49
+
+Event = Balance
+Player = adminT-T
+Change = -100
+Balance = 600
+Source = API
+Time = 2018-10-18 16:38:49
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-18 19:02:31
+
+Event = Login
+Player = adminT-T
+SessionID = 0000001C
+Time = 2018-10-19 09:33:10
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-19 18:03:36
+
+Event = Login
+Player = roxy
+SessionID = 0000001D
+Time = 2018-10-24 07:43:13
+
+Event = Logout
+Player = roxy
+Time = 2018-10-24 07:44:24
+
+Event = Login
+Player = roxy
+SessionID = 0000001E
+Time = 2018-10-24 07:44:24
+
+Event = Logout
+Player = roxy
+Time = 2018-10-24 07:56:41
+
+Event = Login
+Player = adminT-T
+SessionID = 0000001F
+Time = 2018-10-25 11:33:44
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:34:54
+
+Event = Login
+Player = adminT-T
+SessionID = 00000020
+Time = 2018-10-25 11:34:54
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:35:21
+
+Event = Login
+Player = adminT-T
+SessionID = 00000021
+Time = 2018-10-25 11:35:21
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:37:26
+
+Event = Login
+Player = adminT-T
+SessionID = 00000022
+Time = 2018-10-25 11:37:26
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:37:38
+
+Event = Login
+Player = adminT-T
+SessionID = 00000023
+Time = 2018-10-25 11:37:38
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:37:56
+
+Event = Login
+Player = adminT-T
+SessionID = 00000024
+Time = 2018-10-25 11:37:56
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:38:32
+
+Event = Login
+Player = adminT-T
+SessionID = 00000025
+Time = 2018-10-25 11:38:32
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:38:52
+
+Event = Login
+Player = adminT-T
+SessionID = 00000026
+Time = 2018-10-25 11:38:52
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:39:14
+
+Event = Login
+Player = adminT-T
+SessionID = 00000027
+Time = 2018-10-25 11:39:14
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:39:39
+
+Event = Login
+Player = adminT-T
+SessionID = 00000028
+Time = 2018-10-25 11:39:39
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:41:20
+
+Event = Login
+Player = adminT-T
+SessionID = 00000029
+Time = 2018-10-25 11:41:20
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:44:43
+
+Event = Login
+Player = adminT-T
+SessionID = 0000002A
+Time = 2018-10-25 11:44:43
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 11:45:45
+
+Event = Login
+Player = adminT-T
+SessionID = 0000002B
+Time = 2018-10-25 11:45:45
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 12:01:46
+
+Event = Login
+Player = roxy
+SessionID = 0000002C
+Time = 2018-10-25 12:22:13
+
+Event = Login
+Player = adminT-T
+SessionID = 0000002D
+Time = 2018-10-25 12:26:12
+
+Event = Logout
+Player = roxy
+Time = 2018-10-25 12:34:12
+
+Event = Login
+Player = roxy
+SessionID = 0000002E
+Time = 2018-10-25 12:34:12
+
+Event = Balance
+Player = roxy
+Change = -1200
+Balance = 100057
+Source = Ring Game #01
+Time = 2018-10-25 12:34:21
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = roxy
+Amount = 1200
+Time = 2018-10-25 12:34:21
+
+Event = Balance
+Player = adminT-T
+Change = -1200
+Balance = -600
+Source = Ring Game #01
+Time = 2018-10-25 12:34:35
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = adminT-T
+Amount = 1200
+Time = 2018-10-25 12:34:35
+
+Event = RingGameStart
+Name = Ring Game #01
+Time = 2018-10-25 12:34:35
+
+Event = Hand
+Hand = 5-1
+Type = Ring
+Name = Ring Game #01
+Table = 1
+Time = 2018-10-25 12:35:14
+
+Event = RingGameStop
+Name = Ring Game #01
+Time = 2018-10-25 12:35:15
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-25 12:44:46
+
+Event = Balance
+Player = adminT-T
+Change = 1190
+Balance = 590
+Source = Ring Game #01
+Time = 2018-10-25 12:44:46
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = adminT-T
+Amount = 1190
+Net = -10
+Expired = No
+Time = 2018-10-25 12:44:46
+
+Event = Balance
+Player = roxy
+Change = 1210
+Balance = 101267
+Source = Ring Game #01
+Time = 2018-10-25 12:46:37
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = roxy
+Amount = 1210
+Net = 10
+Expired = No
+Time = 2018-10-25 12:46:37
+
+Event = Logout
+Player = roxy
+Time = 2018-10-25 12:57:46
+
+Event = Login
+Player = roxy
+SessionID = 0000002F
+Time = 2018-10-25 21:07:23
+
+Event = Logout
+Player = roxy
+Time = 2018-10-25 21:10:51
+
+Event = Login
+Player = roxy
+SessionID = 00000030
+Time = 2018-10-25 21:10:51
+
+Event = Logout
+Player = roxy
+Time = 2018-10-25 21:13:47
+
+Event = Login
+Player = roxy
+SessionID = 00000031
+Time = 2018-10-25 21:14:08
+
+Event = Logout
+Player = roxy
+Time = 2018-10-25 21:43:20
+
+Event = Login
+Player = roxy
+SessionID = 00000032
+Time = 2018-10-25 21:43:20
+
+Event = Balance
+Player = roxy
+Change = 122
+Balance = 101389
+Source = API
+Time = 2018-10-25 21:44:53
+
+Event = Logout
+Player = roxy
+Time = 2018-10-25 21:51:46
+
+Event = Login
+Player = adminT-T
+SessionID = 00000033
+Time = 2018-10-26 16:55:12
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 16:59:46
+
+Event = Login
+Player = adminT-T
+SessionID = 00000034
+Time = 2018-10-26 16:59:48
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 16:59:52
+
+Event = Login
+Player = adminT-T
+SessionID = 00000035
+Time = 2018-10-26 16:59:52
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:00:32
+
+Event = Login
+Player = adminT-T
+SessionID = 00000036
+Time = 2018-10-26 17:00:32
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:04:11
+
+Event = Login
+Player = adminT-T
+SessionID = 00000037
+Time = 2018-10-26 17:04:11
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:04:30
+
+Event = Login
+Player = adminT-T
+SessionID = 00000038
+Time = 2018-10-26 17:04:30
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:23:16
+
+Event = Login
+Player = adminT-T
+SessionID = 00000039
+Time = 2018-10-26 17:23:16
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:25:12
+
+Event = Login
+Player = adminT-T
+SessionID = 0000003A
+Time = 2018-10-26 17:25:12
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:28:26
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:29:16
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:29:29
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:29:52
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:32:14
+
+Event = Login
+Player = adminT-T
+SessionID = 00000002
+Time = 2018-10-26 17:32:14
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:33:18
+
+Event = Login
+Player = adminT-T
+SessionID = 00000003
+Time = 2018-10-26 17:33:18
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:34:02
+
+Event = Login
+Player = adminT-T
+SessionID = 00000004
+Time = 2018-10-26 17:34:02
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:34:17
+
+Event = Login
+Player = adminT-T
+SessionID = 00000005
+Time = 2018-10-26 17:34:17
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:34:46
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:35:01
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:36:30
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:36:35
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:37:40
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:38:04
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:38:22
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:44:22
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:47:38
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:47:55
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:48:04
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:48:17
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:48:23
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:48:36
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:49:06
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:49:13
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:53:40
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:53:46
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:53:57
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:54:07
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:56:15
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 17:56:20
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 17:56:23
+
+Event = Login
+Player = adminT-T
+SessionID = 00000002
+Time = 2018-10-26 17:56:23
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 18:21:35
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 18:21:43
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 18:23:00
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 18:23:27
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 18:28:24
+
+Event = Login
+Player = adminT-T
+SessionID = 00000001
+Time = 2018-10-26 18:28:29
+
+Event = Balance
+Player = adminT-T
+Change = -1200
+Balance = -610
+Source = Ring Game #01
+Time = 2018-10-26 18:28:38
+
+Event = RingGameJoin
+Name = Ring Game #01
+Player = adminT-T
+Amount = 1200
+Time = 2018-10-26 18:28:38
+
+Event = Balance
+Player = adminT-T
+Change = 1200
+Balance = 590
+Source = Ring Game #01
+Time = 2018-10-26 18:29:10
+
+Event = RingGameLeave
+Name = Ring Game #01
+Player = adminT-T
+Amount = 1200
+Net = 0
+Expired = No
+Time = 2018-10-26 18:29:10
+
+Event = Balance
+Player = adminT-T
+Change = -1200
+Balance = -610
+Source = Ring Game #02
+Time = 2018-10-26 18:29:15
+
+Event = RingGameJoin
+Name = Ring Game #02
+Player = adminT-T
+Amount = 1200
+Time = 2018-10-26 18:29:15
+
+Event = Logout
+Player = adminT-T
+Time = 2018-10-26 18:37:26
+
+Event = Balance
+Player = adminT-T
+Change = 1200
+Balance = 590
+Source = Ring Game #02
+Time = 2018-10-26 18:37:26
+
+Event = RingGameLeave
+Name = Ring Game #02
+Player = adminT-T
+Amount = 1200
+Net = 0
+Expired = No
+Time = 2018-10-26 18:37:26
+
