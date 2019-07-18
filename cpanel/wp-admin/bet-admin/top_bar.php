@@ -7,7 +7,7 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
       </div>
       <!--logo start-->
-      <a href="index.php" class="logo"><b>Lion <span>Royal</span> Sports</b></a>
+      <a href="index.php" class="logo"><b>Lion <span>Royal</span> SPORTS</b></a>
       <!--logo end-->
       <div class="nav notify-row" id="top_menu" style="display:none;">
         <!--  notification start -->

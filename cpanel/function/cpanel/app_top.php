@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-    error_reporting(0);
     include_once("../../_inc/config.php"); 
     include_once("../../function/poker_api.php");
 

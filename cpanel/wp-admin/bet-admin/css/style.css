@@ -3456,3 +3456,15 @@ ul.chat-available-user li a:hover {
     background-color: #000000 !important;
     height: 60px !important;
 }
+
+.table-betlotorry{
+
+}
+
+.table-betlotorry tr th{
+    text-align: center;
+}
+
+.table-betlotorry tr td{
+    text-align: center;
+}

@@ -22,6 +22,7 @@
     
     $q  = $db->insert('iranian_milioner_history',$insert_arrays);
 
+    
     $configDT = $db->select("SELECT * FROM setting WHERE sid ='1' ORDER BY sid DESC");
     $RecBreakdraw = $db->select("SELECT * FROM iranian_milioner_play WHERE around = '".$_POST['dateC']."'");
 
@@ -44,7 +45,7 @@
         'history_id'=> $q, 
         'around'=> $db->CleanDBData($_POST['dateC']), 
         'matches'=> $listLabel[$i], 
-        'all_winners'=> $listWin[$i], 
+        'all_winners'=> (int)$listWin[$i], 
         'prize_per'=> $prizeVal[$i],
         'cash_prize'=> $sumPrizePer,
       );
@@ -59,7 +60,7 @@
       'history_id'=> $q, 
       'around'=> $db->CleanDBData($_POST['dateC']), 
       'matches'=> "Totals", 
-      'all_winners'=> $sumAllWin, 
+      'all_winners'=> (int)$sumAllWin, 
       'prize_per'=> "",
       'cash_prize'=> $sumTotalPrizePer,
     );
@@ -69,6 +70,8 @@
     header("Location:iranian_milioner_results.php");
 
   }
+
+  $RecData = $db->select("SELECT * FROM setting WHERE sid ='1' ORDER BY sid DESC");
 
 ?>
 <!DOCTYPE html>
@@ -80,7 +83,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -123,13 +126,18 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Date</label>
                   <div class="col-sm-10">
-                  <input class="form-control form-control-inline input-medium default-date-picker" name="dateC" size="16" type="text" data-inputmask="'mask': '9999-99-99'" value="<?php echo date("Y-m-d");?>">
+                  <?php 
+                   $date = date_create($RecData[0]['game_close']);
+                   $dayMach = date_format($date,"Y-m-d");?>
+                   <input class="form-control form-control-inline input-medium" size="16" type="text" data-inputmask="'mask': '9999-99-99'" value="<?php echo $dayMach;?>" readonly>
+                   <input class="form-control form-control-inline input-medium" name="dateC" size="16" type="hidden" data-inputmask="'mask': '9999-99-99'" value="<?php echo $dayMach;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Jackpot</label>
                   <div class="col-sm-10">
-                    <input type="text" name="jackpot" class="form-control" value="">
+                    <input class="form-control" type="text" value="<?php echo $RecData[0]['per_jackpot'];?>" readonly>
+                    <input name="jackpot" type="hidden" class="form-control" value="<?php echo $RecData[0]['per_jackpot'];?>">
                   </div>
                 </div>
                 <div class="form-group">

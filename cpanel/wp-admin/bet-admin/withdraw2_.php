@@ -13,6 +13,8 @@
       $array_fields = array(
         'status' => $_POST['statusCh'],
         'comment' => $_POST['comment'],
+        'comment_date'=> date("Y-m-d"),
+        'comment_time'=> date("H:i:s"),
       );
       
       $array_where = array(    
@@ -50,6 +52,31 @@
 
   $RecDataSum3 = $db->select("SELECT sum(amount) as sumAmount FROM withdraw_history WHERE withdraw_type='2' AND status = '2'");
   $cancelAmount = number_format($RecDataSum3[0]['sumAmount']);
+  
+
+
+  
+  $dateDayli = strtotime("-1 day");
+  //echo "SELECT sum(amount) as sumAmount FROM withdraw_history WHERE withdraw_type='2' AND status = '1' AND comment_date BETWEEN '".date("Y-m-d",$dateDayli)." 00:00:00' AND '".date("Y-m-d",$dateDayli)." 23:59:59'";
+  $dayliTotalAprove = $db->select("SELECT sum(amount) as sumAmount FROM withdraw_history WHERE withdraw_type='2' AND status = '1' AND comment_date BETWEEN '".date('Y-m-d',$dateDayli)." 00:00:00' AND '".date('Y-m-d',$dateDayli)." 23:59:59'");
+  $dayliTotalAproveShow = number_format($dayliTotalAprove[0]['sumAmount']);
+
+  // $dayliYes = $db->select("SELECT * FROM withdraw_history WHERE withdraw_type='2' AND status = '1' AND `comment_time` IS NULL AND `date` BETWEEN '2019-06-04 00:00:00' AND '2019-06-04 23:59:59'");
+  // foreach ($dayliYes as $key => $value) {
+  //   set_time_limit(0);
+  //   // echo $value['id'];
+  //   // exit();
+  //   $array_fields = array(
+  //     'comment_date'=> $value['date'],
+  //     'comment_time'=> $value['time'],
+  //   );
+    
+  //   $array_where = array(    
+  //   'id' => $value['id'],
+  //   );
+
+  //   $q = $db->Update('withdraw_history', $array_fields, $array_where);
+  // }
 
 
 ?>
@@ -62,7 +89,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -101,7 +128,7 @@
     <section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Withdraw (Online Card)</h3>
-        <div style="margin-bottom: 20px;"><a href="withdraw2_.php?status=1"><button class="btn btn-success">Total Amount : <?php echo $totalAmount;?></button></a> <a href="withdraw2_.php?status=0"><button class="btn btn-primary">Processing Amount : <?php echo $processAmount;?></button></a> <a href="withdraw2_.php?status=2"><button class="btn btn-danger">Cancel Amount : <?php echo $cancelAmount;?></button></a></div>
+        <div style="margin-bottom: 20px;"><a href="withdraw2_.php?status=1"><button class="btn btn-success">Total Amount : <?php echo $totalAmount;?></button></a> <a href="withdraw2_.php?status=0"><button class="btn btn-primary">Processing Amount : <?php echo $processAmount;?></button></a> <a href="withdraw2_.php?status=2"><button class="btn btn-danger">Cancel Amount : <?php echo $cancelAmount;?></button></a> <button class="btn btn-warning">Dayli Total Aprove (<?php echo date('Y-m-d',$dateDayli);?>) : <?php echo $dayliTotalAproveShow;?></button></div>
         <div class="row mb">
 
           <!-- page start-->

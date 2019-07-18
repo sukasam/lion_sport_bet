@@ -28,13 +28,15 @@ $conn = mysqli_connect($db_conn['host'], $db_conn['user'], $db_conn['pass'], $db
  
  
  $sql = "SELECT *";
- $sql.=" FROM commission_history";
- if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+ $sql.=" FROM commission_history WHERE 1";
+ if($requestData['search']['value']) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
    $sql.=" AND ( player LIKE '".$requestData['search']['value']."%' ";  
-   $sql.=" AND ( date LIKE '".$requestData['search']['value']."%' ";  
+   $sql.=" OR  date LIKE '".$requestData['search']['value']."%' ";  
    $sql.=" OR amount LIKE '".$requestData['search']['value']."%' )";
 
  }
+
+ //echo $sql;
 
  $query=mysqli_query($conn, $sql) or die("exchange_commission_ajax.php: get commission_history");
  $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 

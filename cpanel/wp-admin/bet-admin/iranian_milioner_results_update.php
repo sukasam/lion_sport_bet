@@ -29,7 +29,8 @@
     $array_whereD = array(    
 			'history_id' => $id,
 			);
-		$qH = $db->Delete('iranian_milioner_prize',$array_whereD);
+    $qH = $db->Delete('iranian_milioner_prize',$array_whereD);
+    
 
     $configDT = $db->select("SELECT * FROM setting WHERE sid ='1' ORDER BY sid DESC");
     $RecBreakdraw = $db->select("SELECT * FROM iranian_milioner_play WHERE around = '".$_POST['dateC']."'");
@@ -39,8 +40,9 @@
 
     $listLabel = ["Match 5 + 2 Stars","Match 5 + 1 Stars","Match 5","Match 4 + 2 Stars","Match 4 + 1 Stars","Match 4","Match 3 + 2 Stars","Match 3 + 1 Stars","Match 3","Match 2 + 2 Stars","Match 2 + 1 Stars","Match 2","Match 1 + 2 Stars"];
     $prizeVal = [$configDT[0]['match1'],$configDT[0]['match2'],$configDT[0]['match3'],$configDT[0]['match4'],$configDT[0]['match5'],$configDT[0]['match6'],$configDT[0]['match7'],$configDT[0]['match8'],$configDT[0]['match9'],$configDT[0]['match10'],$configDT[0]['match11'],$configDT[0]['match12'],$configDT[0]['match13']];
+    
     $listWin = chkWin($RecBreakdraw,$ballNumList,$luckyStarsList);
-
+    
     $sumAllWin = 0;
     $sumTotalPrizePer = 0;
 
@@ -53,11 +55,11 @@
         'history_id'=> $id, 
         'around'=> $db->CleanDBData($_POST['dateC']), 
         'matches'=> $listLabel[$i], 
-        'all_winners'=> $listWin[$i], 
+        'all_winners'=> (int)$listWin[$i], 
         'prize_per'=> $prizeVal[$i],
         'cash_prize'=> $sumPrizePer,
       );
-      
+
       $q2  = $db->insert('iranian_milioner_prize',$insert_arrays2);
 
       $sumAllWin = $sumAllWin+$listWin[$i];
@@ -68,13 +70,13 @@
       'history_id'=> $_POST['id'], 
       'around'=> $db->CleanDBData($_POST['dateC']), 
       'matches'=> "Totals", 
-      'all_winners'=> $sumAllWin, 
+      'all_winners'=> (int)$sumAllWin, 
       'prize_per'=> "",
       'cash_prize'=> $sumTotalPrizePer,
     );
     
     $q3  = $db->insert('iranian_milioner_prize',$insert_arrays3);
-
+    
     header("Location:iranian_milioner_results.php");
 
   }
@@ -91,7 +93,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -134,13 +136,18 @@
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Date</label>
                   <div class="col-sm-10">
-                  <input class="form-control form-control-inline input-medium default-date-picker" name="dateC" size="16" type="text" data-inputmask="'mask': '9999-99-99'" value="<?php echo $RecDataDrawHistory[0]['date'];?>">
+                  <?php 
+                   $date = date_create($RecDataDrawHistory[0]['date']);
+                   $dayMach = date_format($date,"Y-m-d");?>
+                   <input class="form-control form-control-inline input-medium" size="16" type="text" data-inputmask="'mask': '9999-99-99'" value="<?php echo $dayMach;?>" readonly>
+                   <input class="form-control form-control-inline input-medium" name="dateC" size="16" type="hidden" data-inputmask="'mask': '9999-99-99'" value="<?php echo $dayMach;?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Jackpot</label>
                   <div class="col-sm-10">
-                    <input type="text" name="jackpot" class="form-control" value="<?php echo $RecDataDrawHistory[0]['jackpot'];?>">
+                    <input class="form-control" type="text" value="<?php echo $RecDataDrawHistory[0]['jackpot'];?>" readonly>
+                    <input name="jackpot" type="hidden" class="form-control" value="<?php echo $RecDataDrawHistory[0]['jackpot'];?>">
                   </div>
                 </div>
                 <div class="form-group">

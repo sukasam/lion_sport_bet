@@ -123,6 +123,30 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a class="" href="iranian_milioner_setting.php">
+              <i class="fa fa-retweet"></i>
+              <span>IranianMilioner Setting</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a class="" href="bet_lotorry_play.php">
+              <i class="fa fa-retweet"></i>
+              <span>BetLotorry Play</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a class="" href="bet_lotorry_results.php">
+              <i class="fa fa-retweet"></i>
+              <span>BetLotorry Results</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a class="" href="bet_lotorry_setting.php">
+              <i class="fa fa-retweet"></i>
+              <span>BetLotorry Setting</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a class="" href="setting.php">
               <i class="fa fa-retweet"></i>
               <span>Setting</span>

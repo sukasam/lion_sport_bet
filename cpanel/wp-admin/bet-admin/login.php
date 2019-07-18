@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 error_reporting(0);
 if($_GET['action'] == "login"){
   include_once("../../function/cpanel/login.php");    
@@ -16,7 +15,7 @@ if($_GET['action'] == "login"){
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">

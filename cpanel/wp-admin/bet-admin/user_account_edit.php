@@ -11,10 +11,11 @@
         'RealName' => $_POST['RealName'],
         'Email' => $_POST['Email'],
         'Telephone' => $_POST['Telephone'],
-        'Balance' => $_POST['Balance'],
+        //'Balance' => $_POST['Balance'],
         'onlineCard' => $_POST['onlineCard'],
         'permission' => $_POST['permission'],
         'password' => encode(KEY_HASH,$_POST['Password']),
+        'uactive' => "0",
         // 'inviteUser' => $_POST['inviteUser'],
       );
     }else{
@@ -22,36 +23,29 @@
         'RealName' => $_POST['RealName'],
         'Email' => $_POST['Email'],
         'Telephone' => $_POST['Telephone'],
-        'Balance' => $_POST['Balance'],
+        //'Balance' => $_POST['Balance'],
         'onlineCard' => $_POST['onlineCard'],
         'permission' => $_POST['permission'],
         'password' => $_POST['passOld'],
+        'uactive' => "0",
         // 'inviteUser' => $_POST['inviteUser'],
       );
     }
 
-    
     $where_arrays = array(
       'Player' => $_POST['Player'],
     );
   
     //if ran successfully it will reture last insert id, else 0 for error
-       $q  = $db->Update('user_profile',$update_arrays,$where_arrays);
+    $q  = $db->Update('user_profile',$update_arrays,$where_arrays);
 
-     
-      // $update_arrays3 = array(
-      //   'block' => $_POST['blockUser'],
-      // );
-      // $where_arrays3 = array(
-      //   'Player' => $_POST['Player'],
-      // );
-      
-      //   //if ran successfully it will reture last insert id, else 0 for error
-      // $q  = $db->Update('user_block',$update_arrays3,$where_arrays3);
     
     header("Location:user_account.php");
 
+  }else{
+    
   }
+
   $RecDataUser = $db->select("SELECT * FROM user_profile WHERE Player = '".$_GET['Player']."'");
  // $RecDataUserPin = $db->select("SELECT * FROM user_pin WHERE Player = '".$_GET['Player']."'");
   //$RecDataUserBlock = $db->select("SELECT * FROM user_block WHERE Player = '".$_GET['Player']."'");
@@ -70,7 +64,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -144,12 +138,12 @@
                     <input type="text" name="Location" class="form-control" value="<?php echo $apiUser->Location;?>">
                   </div>
                 </div> -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Balance</label>
                   <div class="col-sm-10">
-                    <input type="text" name="Balance" class="form-control" value="<?php echo $RecDataUser[0]['Balance'];?>">
+                    <input type="text" name="Balance" class="form-control" value="<?php echo $apiUser->Balance;?>">
                   </div>
-                </div>
+                </div> -->
                 <!-- <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Chips Transfer</label>
                   <div class="col-sm-10">
@@ -158,8 +152,8 @@
                       <option value="No" <?php if($apiUser->ChipsTransfer == 'No'){echo 'selected=""';}?>>No</option>
                     </select>
                   </div>
-                </div> -->
-                <!-- <div class="form-group">
+                </div>
+                <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Chips Accept</label>
                   <div class="col-sm-10">
                   <select class="form-control" name="ChipsAccept" title="Chips Accept">

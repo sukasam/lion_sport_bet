@@ -29,12 +29,15 @@ $conn = mysqli_connect($db_conn['host'], $db_conn['user'], $db_conn['pass'], $db
  
  $sql = "SELECT *";
  $sql.=" FROM point_history WHERE point_type = 'top_lost'";
- if( !empty($requestData['search']['value']) ) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
+ if($requestData['search']['value']) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
    $sql.=" AND ( player LIKE '".$requestData['search']['value']."%' ";  
-   $sql.=" AND ( point LIKE '".$requestData['search']['value']."%' ";  
+   $sql.=" OR point LIKE '".$requestData['search']['value']."%' ";  
    $sql.=" OR date LIKE '".$requestData['search']['value']."%' )";
 
  }
+
+ //echo ." MKUNG";
+ //echo $sql;
 
  $query=mysqli_query($conn, $sql) or die("exchange_badbit_ajax.php: get point_history");
  $totalFiltered = mysqli_num_rows($query); // when there is a search parameter then we have to modify total number filtered rows as per search result. 

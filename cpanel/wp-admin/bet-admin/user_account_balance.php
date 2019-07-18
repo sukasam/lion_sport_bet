@@ -7,60 +7,53 @@
   if($_GET['action'] == "submit"){
 
     if($_POST['IncreaseBalance'] != ""){
-
-      $IncB = $db->CleanDBData($_POST['IncreaseBalance'])+$db->CleanDBData($_POST['Balance']);
-      $array_fields = array(
-        'Balance'=> $IncB,
-        );
-    
-        $array_where = array(    
-        'Player' => $db->CleanDBData($_POST['Player']),  
-        );
       
-        $q = $db->Update('user_profile', $array_fields, $array_where);
-    }
+      $RecDataUserBalance = $db->select("SELECT Balance FROM user_profile WHERE Player = '".$_POST['Player']."'");
 
-    $dateLog = date("Y-m-d");
-    $timeLog = date("H:i:s");
-
-    $insert_arrays = array(
-      'player'=> $_POST['Player'],
-      'amount'=> $_POST['IncreaseBalance'],
-      'deposit_type'=> "Online Card",
-      'date'=> $dateLog,
-      'time'=> $timeLog,
-      'tran_id' => $_POST['tran_id'], 
-      'status' => "1",
-    );
+      $UserBalance = $RecDataUserBalance[0]['Balance'];
+      $newBalance = $UserBalance + $_POST['IncreaseBalance'];
     
-    $q  = $db->insert('deposit_history',$insert_arrays);
+      $update_arrays = array(
+        'Balance' => $newBalance,
+      );
 
+      $where_arrays = array(
+        'Player' => $_POST['Player'],
+      );
+    
+      //if ran successfully it will reture last insert id, else 0 for error
+      $q  = $db->Update('user_profile',$update_arrays,$where_arrays);
 
-    // if($_POST['DecreaseBalance'] != ""){
-    //   $params = array("Command"  => "AccountsDecBalance",
-    //     "Player"   => $_POST['Player'],
-    //     "Amount"  => $_POST['DecreaseBalance'],
-    //     "Negative"  => "Allow",
-    //   );
-    //   $api = Poker_API($params);
-    // }
+      if($q == 1){
+        
+        $dateLog = date("Y-m-d");
+        $timeLog = date("H:i:s");
+    
+        $insert_arrays = array(
+          'player'=> $_POST['Player'],
+          'amount'=> $_POST['IncreaseBalance'],
+          'deposit_type'=> "Online Card",
+          'date'=> $dateLog,
+          'time'=> $timeLog,
+          'tran_id' => $_POST['tran_id'], 
+          'status' => "1",
+        );
+        
+        $qq  = $db->insert('deposit_history',$insert_arrays);
 
+      }
+
+    }
     
     header("Location:user_account.php");
 
   }else{
-    // $params = array("Command"  => "AccountsGet",
-    //   "Player" => $_GET['Player']
-    // );
-
-    // $apiUser = Poker_API($params);
+    $RecDataUser = $db->select("SELECT * FROM user_profile WHERE Player = '".$_GET['Player']."'");
   }
 
   /*echo "<pre>";
   print_r($apiUser);
   echo "</pre>";*/
-
-  $RecDataUser = $db->select("SELECT * FROM user_profile WHERE Player = '".$_GET['Player']."'");
 
 ?>
 <!DOCTYPE html>
@@ -72,7 +65,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -101,7 +94,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper site-min-height">
-        <h3><i class="fa fa-angle-right"></i> User Account (Balance -> <?php echo $RecDataUser[0]['Player'];?>)</h3>
+        <h3><i class="fa fa-angle-right"></i> User Account (Balance -> <?php echo $_GET['Player']?>)</h3>
         <div class="row mt">
           <div class="col-lg-12">
           <div class="form-panel">
@@ -117,7 +110,6 @@
                   <label class="col-sm-2 col-sm-2 control-label">Balance</label>
                   <div class="col-sm-10">
                     <p class="form-control-static"><?php echo number_format($RecDataUser[0]['Balance']);?></p>
-                    <input type="hidden" name="Balance" class="form-control" value="<?php echo $RecDataUser[0]['Balance'];?>">
                   </div>
                 </div>
                 <div class="form-group">

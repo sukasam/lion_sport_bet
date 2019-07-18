@@ -105,6 +105,10 @@ if($row['status'] == 0){
   $bocComment = $row['comment'];
 }
 
+if($row["comment_date"] !== ""){
+  $dateTimeComment = "<br>".$row["comment_date"]." ".$row["comment_time"]."";
+}
+
    $nestedData=array(); 
    $nestedData[] = $row["player"];
    $nestedData[] = $row["amount"]."0";
@@ -114,7 +118,7 @@ if($row['status'] == 0){
    $nestedData[] = "<center>".$RecDataBank[0]['bank_card']."</center>";
    $nestedData[] = "<center>".$RecDataBank[0]['bank_sheba']."</center>";
    $nestedData[] = "<center>".$btStatus."</center>";
-   $nestedData[] = "<center>".$bocComment."</center>";
+   $nestedData[] = "<center>".$bocComment.$dateTimeComment."</center>";
    $nestedData[] = "<center>".$btAction."</center>";
    $data[] = $nestedData;
  }

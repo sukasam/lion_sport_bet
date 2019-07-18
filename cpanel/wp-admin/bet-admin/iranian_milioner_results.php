@@ -15,6 +15,14 @@
 
       header("Location:iranian_milioner_results.php");   
     }
+
+    $configDT = $db->select("SELECT * FROM setting WHERE sid ='1' ORDER BY sid DESC");
+
+    $date = date_create($configDT[0]['game_close']);
+    $dayMach = date_format($date,"Y-m-d");
+
+    $RecDataDrawHistory = $db->select("SELECT * FROM iranian_milioner_history WHERE date = '".$dayMach."'");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +33,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -64,7 +72,13 @@
     <section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> IranianMilioner Results</h3>
+        <?php
+          if($RecDataDrawHistory[0]['id'] == ""){
+            ?>
         <div><a href="iranian_milioner_results_add.php"><button class="btn btn-primary">Add Results</button></a></div></div><br>
+        <?php
+          }
+        ?>
         <div class="row mb">
 
           <!-- page start-->

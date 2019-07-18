@@ -3,15 +3,15 @@
 
     if($_GET['action'] == 'delete'){
       
-      // $Player = $_GET['user'];
+      $Player = $_GET['user'];
 
-      // $params = array("Command"  => "AccountsDelete",
-      //               "Player" => $Player
-      //             );
+      $params = array("Command"  => "AccountsDelete",
+                    "Player" => $Player
+                  );
 
-      // $apiUser = Poker_API($params);
+      $apiUser = Poker_API($params);
 
-      // header("Location:user_account.php");
+      header("Location:user_account.php");
     }
     
 ?>
@@ -24,7 +24,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Lion Royal Casino</title>
+  <title>Lion Royal Sports</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">

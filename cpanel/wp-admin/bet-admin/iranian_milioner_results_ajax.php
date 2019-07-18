@@ -48,7 +48,7 @@ $conn = mysqli_connect($db_conn['host'], $db_conn['user'], $db_conn['pass'], $db
 
    $nestedData=array(); 
    $nestedData[] = $row["date"]." ".$row["time"];
-   $nestedData[] = number_format($row["jackpot"]);
+   $nestedData[] = $row["jackpot"];
    $nestedData[] = $row["ball_numbers"];
    $nestedData[] = $row["lucky_stars"];
    $nestedData[] = "<center class=\"btAction\"><button class=\"btn btn-primary btn-xs\" title=\"Edit\" onClick=\"window.location='iranian_milioner_results_update.php?id=".$row["id"]."'\"><i class=\"fa fa-pencil\"></i></button><button class=\"btn btn-warning btn-xs\" title=\"Prize breakdown\" onClick=\"window.location='iranian_milioner_prize.php?id=".$row["id"]."&date=".$row["date"]."'\"><i class=\"fa fa-btc\"></i></button><button class=\"btn btn-danger btn-xs\" title=\"Delete\" onClick=\"window.location='iranian_milioner_results.php?id=".$row["id"]."&action=delete'\"><i class=\"fa fa-times\"></i></button>";

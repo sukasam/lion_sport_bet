@@ -84,4 +84,99 @@ function chkWin($RecBreakdraw,$ballNum,$luckyStar){
     
 }
 
+function chkWinLotorry($db,$dateC,$betresults){
+
+    $allWinCase1 = 0;
+    $allWinCase2 = 0;
+    $allWinCase3 = 0;
+    $allWinCase4 = 0;
+    $allWinCase5 = 0;
+    $allWinCase6 = 0;
+    $allWinCase8 = 0;
+    $allWinCase9 = 0;
+    $allWinCase10 = 0;
+    $allWinCase11 = 0;
+    $allWinCase12 = 0;
+    $allWinCase13 = 0;
+    $allWinCase14 = 0;
+    $allWinCase15 = 0;
+
+    if($betresults){
+
+        $RecBreakdrawP = $db->select("SELECT * FROM bet_lotorry_play WHERE around = '".$dateC."'");
+    
+        foreach ($RecBreakdrawP as $key => $vals) {
+    
+            set_time_limit(0);
+            $RecPlayRes = $db->select("SELECT * FROM bet_lotorry_play_results WHERE id = '".$vals['id']."'");
+            $countMatch = 0;
+            foreach ($RecPlayRes as $key2 => $vals2) {
+                set_time_limit(0);
+                if($vals2['results'] == $betresults[$key2]){
+                    $countMatch = $countMatch+1;
+                }           
+            }
+
+            switch ($countMatch) {
+                case 15:
+                    $allWinCase1 = $allWinCase1+1;
+                    break;
+                case 14:
+                    $allWinCase2 = $allWinCase2+1;
+                    break;
+                case 13:
+                    $allWinCase3 = $allWinCase3+1;
+                    break;
+                case 13:
+                    $allWinCase3 = $allWinCase3+1;
+                    break;
+                case 12:
+                    $allWinCase4 = $allWinCase4+1;
+                    break;
+                case 11:
+                    $allWinCase5 = $allWinCase5+1;
+                    break;
+                case 10:
+                    $allWinCase6 = $allWinCase6+1;
+                    break;
+                case 9:
+                    $allWinCase7 = $allWinCase7+1;
+                    break;
+                case 8:
+                    $allWinCase8 = $allWinCase8+1;
+                    break;
+                case 7:
+                    $allWinCase9 = $allWinCase9+1;
+                    break;
+                case 6:
+                    $allWinCase10 = $allWinCase10+1;
+                    break;
+                case 5:
+                    $allWinCase11 = $allWinCase11+1;
+                    break;
+                case 4:
+                    $allWinCase12 = $allWinCase12+1;
+                    break;
+                case 3:
+                    $allWinCase13 = $allWinCase13+1;
+                    break;
+                case 2:
+                    $allWinCase14 = $allWinCase14+1;
+                    break;
+                case 1:
+                    $allWinCase15 = $allWinCase15+1;
+                    break;
+            }
+        }
+
+        $winList = [$allWinCase1,$allWinCase2,$allWinCase3,$allWinCase4,$allWinCase5,$allWinCase6,$allWinCase7,$allWinCase8,$allWinCase9,$allWinCase10,$allWinCase11,$allWinCase12,$allWinCase13,$allWinCase14,$allWinCase15];
+        return $winList;
+
+    }else{
+        $winList = [$allWinCase1,$allWinCase2,$allWinCase3,$allWinCase4,$allWinCase5,$allWinCase6,$allWinCase7,$allWinCase8,$allWinCase9,$allWinCase10,$allWinCase11,$allWinCase12,$allWinCase13,$allWinCase14,$allWinCase15];
+        return $winList;
+    }
+
+}
+
 ?>

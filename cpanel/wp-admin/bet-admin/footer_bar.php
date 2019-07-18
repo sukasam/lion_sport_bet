@@ -2,7 +2,7 @@
 <footer class="site-footer">
       <div class="text-center">
         <p>
-          &copy; Copyrights <strong>Lion Royal Casino</strong>. All Rights Reserved
+          &copy; Copyrights <strong>Lion Royal Sports</strong>. All Rights Reserved
         </p>
         <!-- <div class="credits">
           Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
