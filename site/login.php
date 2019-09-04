@@ -75,11 +75,14 @@
 			</div>
 			<div class="card-body">
 				<?php if($_SESSION['errors_code'] != ""){?>
-                <div class="alert <?php echo $_SESSION['errors_code'];?>">
+                <div class="alert <?php echo $_SESSION['errors_code'];?>" style="direction: rtl;">
                     <?php echo $_SESSION['errors_msg'];?>
                 </div>
                 <?php }?>
                 <form id="frm_login" name="frm_login" action="login.php?action=login" method="post">
+					
+					 <fieldset>
+                     <legend>Username</legend>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -87,12 +90,20 @@
 						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="username" required>
 						
 					</div>
+					</fieldset>
+					
+					<fieldset>
+                     <legend>Password</legend>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_PASSWORD;?>" name="password" required>
 					</div>
+					</fieldset><br>
+					
+					<fieldset>
+                      <legend>CAPTCHA</legend>
 					<div class="input-group form-group justify-content-center">
 						<!-- <img id="captcha" src="include/captcha.php?v=<?php echo date("YmdHis");?>" alt="CAPTCHA Image" class="img-thumbnail img-thumbnail-captcha"> -->
 						<?php 
@@ -109,6 +120,7 @@
 						</div>
 						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="login_captcha_code" autocomplete="off" required >
 					</div>
+					</fieldset><br>
 					<div class="form-group">
 						<input type="submit" value="<?php echo TITLE_LOGIN;?>" class="btn float-right login_btn" style="width: 120px;">
 					</div>
@@ -116,10 +128,10 @@
 				</form>
 			</div>
 			<div class="card-footer">
-				<!-- <div class="d-flex justify-content-center links">
-					Don't have an account?<a href="contact">Sign Up</a>
+				 <div class="d-flex justify-content-center links">
+					Don't have an account?<a href="register.php">Sign Up</a>
 				</div>
-				<div class="d-flex justify-content-center">
+				<!--<div class="d-flex justify-content-center">
 					<a href="forgot_password.php"><?php echo TITLE_FORGET_PASSWORD;?></a>
 				</div> -->
 			</div>

@@ -11,9 +11,9 @@
         if($_POST){
             //if($_SESSION['security_code'] === $_POST['captcha_change_password']) { // Check 
         
-                $PasswordOld = encode(KEY_HASH,$db->CleanDBData($_POST["old_password"]));
-                $Password1 = encode(KEY_HASH,$db->CleanDBData($_POST["new_password"]));
-                $Password2 = encode(KEY_HASH,$db->CleanDBData($_POST["retype_new_password"]));
+                $PasswordOld = encode($db->CleanDBData($_POST["old_password"]),KEY_HASH);
+                $Password1 = encode($db->CleanDBData($_POST["new_password"]),KEY_HASH);
+                $Password2 = encode($db->CleanDBData($_POST["retype_new_password"]),KEY_HASH);
     
             if($PasswordOld === $_SESSION['Player_PW']){
                 if ($Password1 === $Password2){

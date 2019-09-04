@@ -4,7 +4,7 @@
   include_once("../../_inc/config.php");
   if($_POST){
   
-    $passUser = encode(KEY_HASH,$_POST['password']);
+    $passUser = encode($_POST['password'],KEY_HASH);
 
     $RecDataLoginUserCheck = $db->select("SELECT * FROM `user_profile` WHERE `Player` = '".$_POST['username']."' AND `password` = '".$passUser."' AND `permission` = 'admin'");
 

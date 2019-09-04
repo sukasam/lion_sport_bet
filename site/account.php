@@ -25,8 +25,8 @@
     $realName = explode(" ",$RecDataUserProfile[0]['RealName']);
 
     $RecData = $db->select("SELECT * FROM bank_info WHERE player = '".$_SESSION['Player']."' ORDER BY id DESC");
-    $RecTophand = $db->select("SELECT COUNT(*) as count FROM `top_hand` WHERE `player` = '".$_SESSION['Player']."'");
-    $RecToplost = $db->select("SELECT SUM(point) as point FROM `top_lost` WHERE `player` = '".$_SESSION['Player']."'");
+    //$RecTophand = $db->select("SELECT COUNT(*) as count FROM `top_hand` WHERE `player` = '".$_SESSION['Player']."'");
+    //$RecToplost = $db->select("SELECT SUM(point) as point FROM `top_lost` WHERE `player` = '".$_SESSION['Player']."'");
     $RecDataPoint = $db->select("SELECT * FROM point_history WHERE player = '".$_SESSION['Player']."' ORDER BY id DESC");
     
    
@@ -78,13 +78,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_NAME;?>:</label>
-                                                <input type="text" value="<?php echo $realName[0];?>" name="account_fname" class="form-control" placeholder="<?php echo TITLE_NAME;?>" autofocus="" required <?php if($realName[0] != ""){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $realName[0];?>" name="account_fname" class="form-control" placeholder="<?php echo TITLE_NAME;?>" autofocus required <?php if($realName[0] != ""){echo "readonly";}?>>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_FAMILY_NAME;?>:</label>
-                                                <input type="text" value="<?php echo $realName[1];?>" name="account_lname" class="form-control parsley-validated" placeholder="<?php echo TITLE_FAMILY_NAME;?>" autofocus="" required <?php if($realName[0] != ""){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $realName[1];?>" name="account_lname" class="form-control parsley-validated" placeholder="<?php echo TITLE_FAMILY_NAME;?>" autofocus required <?php if($realName[0] != ""){echo "readonly";}?>>
                                             </div>
                                         </div>
                                     </div>
@@ -92,13 +92,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_EMAIL;?>:</label>
-                                                <input type="text" value="<?php echo $_SESSION['Player_Email'];?>" name="account_email" class="form-control" placeholder="<?php echo TITLE_EMAIL;?>" autofocus="" required <?php if($realName[0] != ""){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $_SESSION['Player_Email'];?>" name="account_email" class="form-control" placeholder="<?php echo TITLE_EMAIL;?>" autofocus required <?php if($realName[0] != ""){echo "readonly";}?>>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_PHONE_NUMBER;?>:</label>
-                                                <input type="text" value="<?php echo $_SESSION['Player_Phone'];?>" name="account_phone" class="form-control parsley-validated" placeholder="<?php echo TITLE_PHONE_NUMBER;?>r" autofocus="" required <?php if($realName[0] != ""){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $_SESSION['Player_Phone'];?>" name="account_phone" class="form-control parsley-validated" placeholder="<?php echo TITLE_PHONE_NUMBER;?>r" autofocus required <?php if($realName[0] != ""){echo "readonly";}?>>
                                             </div>
                                         </div>
                                     </div>
@@ -129,13 +129,13 @@
                                         <div class="col-md-5 col-md-offset-1">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_SHABA;?>:</label>
-                                                <input type="text" value="<?php echo $RecData[0]['bank_sheba'];?>" name="account_bank_sheba" class="form-control" placeholder="Bank Number shaba 24 digits" autofocus="" required maxlength="24" <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $RecData[0]['bank_sheba'];?>" name="account_bank_sheba" class="form-control" placeholder="Bank Number shaba 24 digits" autofocus required maxlength="24" <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
                                             </div>
                                         </div>
                                         <div class="col-md-5">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_CARD_NUMBER;?>:</label>
-                                                <input type="text" value="<?php echo $RecData[0]['bank_card'];?>" name="account_bank_card" class="form-control parsley-validated" placeholder="16-digit card number" autofocus="" required maxlength="16" <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $RecData[0]['bank_card'];?>" name="account_bank_card" class="form-control parsley-validated" placeholder="16-digit card number" autofocus required maxlength="16" <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
                                             </div>
                                         </div>
                                     </div>
@@ -172,11 +172,11 @@
                                             <option value="27">انصار</option>
                                             <option value="28">خاور ميانه</option>
                                         </select> -->
-                                        <input type="text" value="<?php echo $RecData[0]['bank_name'];?>" name="account_bank_name" class="form-control parsley-validated" placeholder="Bank name" autofocus="" required <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
+                                        <input type="text" value="<?php echo $RecData[0]['bank_name'];?>" name="account_bank_name" class="form-control parsley-validated" placeholder="Bank name" autofocus required <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
                                     </div>
                                     <div class="form-group mb-20">
                                         <label><?php echo TITLE_NAME_ACCOUNT;?> :</label>
-                                        <input type="text" value="<?php echo $RecData[0]['fullname'];?>" name="account_bank_fullname" class="form-control parsley-validated" placeholder="Account Holder Name (Please Type in Persian)" autofocus="" required <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
+                                        <input type="text" value="<?php echo $RecData[0]['fullname'];?>" name="account_bank_fullname" class="form-control parsley-validated" placeholder="Account Holder Name (Please Type in Persian)" autofocus required <?php if($RecData[0]['bank_sheba'] != ""){echo "readonly";}?>>
                                     </div>
                                     <?php 
                                     if($RecData[0]['bank_sheba'] == ""){

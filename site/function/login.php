@@ -47,21 +47,31 @@
 
                 if($checkbanPassed === "Yes"){
 
-                    $passUser = encode(KEY_HASH,$_POST['password']);
+                    $passUser = encode($_POST['password'],KEY_HASH);
                     
                     $RecDataLoginUserCheck = $db->select("SELECT * FROM `user_profile` WHERE `Player` = '".$_POST['username']."' AND `password` = '".$passUser."'");
                     
                     if($RecDataLoginUserCheck[0]['Player'] != ""){
             
-                        $_SESSION['Player'] = $RecDataLoginUserCheck[0]['Player'];
-                        $_SESSION['Player_PW'] = $RecDataLoginUserCheck[0]['password'];
-                        $_SESSION['Player_Email'] = $RecDataLoginUserCheck[0]['Email'];
-                        $_SESSION['Player_Phone'] = $RecDataLoginUserCheck[0]['Telephone'];
-                        $_SESSION['Player_RealName'] = $RecDataLoginUserCheck[0]['RealName'];
-                        $_SESSION['Player_Balance'] = $RecDataLoginUserCheck[0]['Balance'];
-                        $_SESSION['Player_Lang'] = "en";
-    
-                        header("Location:".SiteRootDir."index.php");
+                        if($RecDataLoginUserCheck[0]['eactive'] == '1'){
+							
+							$_SESSION['Player'] = $RecDataLoginUserCheck[0]['Player'];
+							$_SESSION['Player_PW'] = $RecDataLoginUserCheck[0]['password'];
+							$_SESSION['Player_Email'] = $RecDataLoginUserCheck[0]['Email'];
+							$_SESSION['Player_Phone'] = $RecDataLoginUserCheck[0]['Telephone'];
+							$_SESSION['Player_RealName'] = $RecDataLoginUserCheck[0]['RealName'];
+							$_SESSION['Player_Balance'] = $RecDataLoginUserCheck[0]['Balance'];
+							$_SESSION['Player_Lang'] = "en";
+
+							header("Location:".SiteRootDir."index.php");
+						}else{
+							
+							$_SESSION['errors_code'] = "alert-danger";
+							//$_SESSION['errors_msg'] = "نام کاربری یا کلمه عبور اشتباه است.";
+							$_SESSION['errors_msg'] = "نام کاربری از طریق ایمیل تأیید نشده است.";
+
+							header("Location:".SiteRootDir."login.php?action=failed");
+						}
             
                     }else{
 

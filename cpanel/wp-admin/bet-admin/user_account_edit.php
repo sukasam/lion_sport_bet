@@ -14,7 +14,7 @@
         //'Balance' => $_POST['Balance'],
         'onlineCard' => $_POST['onlineCard'],
         'permission' => $_POST['permission'],
-        'password' => encode(KEY_HASH,$_POST['Password']),
+        'password' => encode($_POST['Password'],KEY_HASH),
         'uactive' => "0",
         // 'inviteUser' => $_POST['inviteUser'],
       );
