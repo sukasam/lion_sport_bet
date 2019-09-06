@@ -14,7 +14,7 @@
 	
 	$userWemail = explode(' ',base64_decode($Token));
 
-	$RecDataUser = $db->select("SELECT * FROM `user_profile` WHERE `player` = '".$userWemail[0]."' AND Email = '".$userWemail[1]."'");
+	$RecDataUser = $db->select("SELECT * FROM `user_profile` WHERE `Player` = '".$userWemail[0]."' AND Email = '".$userWemail[1]."'");
 
 	if($RecDataUser[0]['id'] != ''){
 		

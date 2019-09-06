@@ -59,13 +59,13 @@
 						$strMessage = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Sports Betting</span>
 								<hr>
 								<span>Hello Dear <b>'.$Player.'</b>,</span>
-								<p>Please use the link below to active your account, <br>
-								<a href="http://sport.omegadishwasher-family.com/NewPlayerActivation.php?Token='.base64_encode($Player.' '.$Email).'" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" style="display: block;height: 30px;width: 220px;border-radius: 2px;background-color: #ffd50f;color: #000;border: 1px solid #000;text-decoration: none;line-height: 30px;margin: 20px auto;text-align: center;" data-saferedirecturl="https://www.google.com/url?q=http://sport.omegadishwasher-family.com/NewPlayerActivation.php?Token='.base64_encode($Player.' '.$Email).'">Activation</a>
-								<br>
-								<span>If the button dose not work, copy and past this link to your browser and replace the Emperor website address with the new one.</span>
+								<p>Please use the link below to active your account, <br><br>
+								<center><a href="http://sport.omegadishwasher-family.com/NewPlayerActivation.php?Token='.base64_encode($Player.' '.$Email).'" target="_blank">Activation</a></center>
+								<br><br>
+								<span>If the button dose not work, copy and past this link to your browser and replace the Lion Royal Online Sports website address with the new one.</span>
 								<br>
 								</p>
-								<p style="font-size:13px"><span>http://sport.omegadishwasher-family.com/NewPlayerActivation.php?Token='.base64_encode($Player.' '.$Email).'</span>
+								<p style="font-size:13px"><a href="http://sport.omegadishwasher-family.com/NewPlayerActivation.php?Token='.base64_encode($Player.' '.$Email).'" target="_blank"><span>http://sport.omegadishwasher-family.com/NewPlayerActivation.php?Token='.base64_encode($Player.' '.$Email).'</span></a>
 								</p>
 								<br>
 								<span>Before starting, please ensure you have read the guidelines completle.</span>
@@ -116,6 +116,7 @@
 				}else{
 					$_SESSION['errors_code'] = "alert-danger";
                  	$_SESSION['errors_msg'] = "رمزهای ورود مطابقت ندارند";
+					header("Location:".SiteRootDir."register.php?action=failed");
 				}
             }else{
                  $_SESSION['errors_code'] = "alert-danger";

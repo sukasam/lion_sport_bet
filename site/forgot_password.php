@@ -12,13 +12,8 @@
 	
 	//echo $_SESSION['count_login'];
 
-	if($_GET['login'] == 'no'){
-		session_destroy();
-		header("Location:login.php");
-	}
-
-    if($_GET['action'] === 'login'){
-		include_once("function/login.php");	
+    if($_GET['action'] === 'forgot_password'){
+		include_once("function/forgot_password.php");	
 	}
 
 	// if(isset($_SESSION['Player']) && isset($_SESSION['Player_PW'])){
@@ -35,6 +30,8 @@
 	define('TITLE_REGISTER_PASSWORD','رمز عبور');
 	define('TITLE_REGISTER_SECURE_CODE','کد امن را وارد نمایید');
 	define('TITLE_LOGIN','ورود به سیستم');
+	define('TITLE_REGISTER_EMAIL','ایمیل');
+	define('TITLE_BACK','بازگشت');
 	$v = date("YmdHis");
 ?>
 
@@ -66,7 +63,7 @@
 	<div class="d-flex h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="d-flex justify-content-center text-center">Sign In <br>(Lion Royal Online Sports Betting)</h3>
+				<h3 class="d-flex justify-content-center text-center">Password Recovery<br>(Lion Royal Online Sports Betting)</h3>
 				<!-- <div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>
@@ -79,7 +76,7 @@
                     <?php echo $_SESSION['errors_msg'];?>
                 </div>
                 <?php }?>
-                <form id="frm_login" name="frm_login" action="login.php?action=login" method="post">
+                <form id="frm_login" name="frm_login" action="forgot_password.php?action=forgot_password" method="post">
 					
 					 <fieldset>
                      <legend>Username</legend>
@@ -87,19 +84,20 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="username" required>
+						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="user_username" required>
 						
 					</div>
 					</fieldset>
 					
 					<fieldset>
-                     <legend>Password</legend>
-					<div class="input-group form-group">
+                     <legend>Email</legend>
+                	<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_PASSWORD;?>" name="password" required>
-					</div>
+						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_EMAIL;?>" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" name="user_email" required>
+                    </div>
+                    <span class="textbox-comment-farsi">لطفا آدرس ایمیل خود را وارد کنید</span>
 					</fieldset><br>
 					
 					<fieldset>
@@ -118,23 +116,28 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="login_captcha_code" autocomplete="off" required >
+						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="forgot_captcha_code" autocomplete="off" required >
 					</div>
 					</fieldset><br>
-					<div class="form-group">
-						<input type="submit" value="<?php echo TITLE_LOGIN;?>" class="btn float-right login_btn" style="width: 120px;">
-					</div>
-					<input type="hidden" name="<?php echo $token_id; ?>" value="<?php echo $token_value; ?>"/>
+					
+					<div class="row">
+                   	<div class="col-6">
+                   		 <div class="form-group">
+							<input type="button" value="<?php echo TITLE_BACK;?>" class="btn float-left login_btn" onclick="javascript:location.href='login.php'">
+						</div>
+                   	</div>
+                   	<div class="col-6">
+                   		<div class="form-group">
+							<input type="submit" value="<?php echo TITLE_LOGIN;?>" class="btn float-right login_btn" style="width: 120px;">
+						</div>
+						<input type="hidden" name="<?php echo $token_id; ?>" value="<?php echo $token_value; ?>"/>
+                   	</div>
+                   </div>
+                   
+					
 				</form>
 			</div>
-			<div class="card-footer">
-				 <div class="d-flex justify-content-center links">
-					Don't have an account?<a href="register.php">Sign Up</a>
-				</div>
-				<div class="d-flex justify-content-center">
-					<a href="forgot_password.php"><?php echo TITLE_FORGET_PASSWORD;?></a>
-				</div>
-			</div>
+
 		</div>
 	</div>
 </div>

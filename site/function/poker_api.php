@@ -165,5 +165,25 @@ function cardFormat($cardNumber){
     return $numMake;
 }
 
+function send_mail($to,$from,$subject,$msg){
+   $headers ="MIME-Version: 1.0";
+   $headers.="from: $from  $subject  ";
+   $headers.="Content-type: text/html;charset=utf-8 ";
+   $headers.="X-Priority: 3";
+   $headers.="X-Mailer: smail-PHP ".phpversion()."";
+   $msg ='
+   	<div style="text-align:left">
+    <h2>'.$subject.'</h2>
+    '.$msg.'
+    </div>
+    ';
+ 
+    if(mail($to,$subject,$msg,$headers) ){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 
 ?>
