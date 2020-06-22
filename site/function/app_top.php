@@ -7,7 +7,7 @@
     include_once('function/csrf.class.php'); 
 
     if(!isset($_SESSION['Player']) && !isset($_SESSION['Player_PW'])){
-        header("Location:".SiteRootDir."login.php");
+        header("Location:".SiteRootDir."main.php");
     }else{
 
         if($_GET['lang'] == "en"){
