@@ -82,7 +82,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="user_username" required>
+						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="user_username" minlength="3" maxlength = "12" required>
 						
 					</div>
 					<span class="textbox-comment-farsi">حداقل 3 و حداکثر 12 کارکتر، فقط حروف و اعداد</span>
@@ -94,13 +94,13 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_PASSWORD;?>" name="user_password" required>
+						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_PASSWORD;?>" name="user_password" minlength="6" maxlength = "20" required>
                     </div>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="<?php echo TITLE_FORGET_PASSWORD_CONFIRM;?>" name="user_password_confirm" required>
+						<input type="password" class="form-control" placeholder="<?php echo TITLE_FORGET_PASSWORD_CONFIRM;?>" name="user_password_confirm" minlength="6" maxlength = "20" required>
                     </div>
                     <span class="textbox-comment-farsi">حداقل 6 و حداکثر 20 کارکتر</span>
                      </fieldset><br>
@@ -136,7 +136,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="register_captcha_code" autocomplete="off" required>
+						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="register_captcha_code" autocomplete="off" maxlength = "4" required>
                     </div>
                     
                     </fieldset><br>

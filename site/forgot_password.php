@@ -84,7 +84,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="user_username" required>
+						<input type="text" class="form-control" placeholder="<?php echo TITLE_REGISTER_USERNAME;?>" name="user_username" minlength="3" maxlength = "12" required>
 						
 					</div>
 					</fieldset>
@@ -116,7 +116,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="forgot_captcha_code" autocomplete="off" required >
+						<input type="password" class="form-control" placeholder="<?php echo TITLE_REGISTER_SECURE_CODE;?>" name="forgot_captcha_code" autocomplete="off" maxlength = "4" required >
 					</div>
 					</fieldset><br>
 					

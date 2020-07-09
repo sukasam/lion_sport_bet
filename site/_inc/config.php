@@ -21,7 +21,7 @@ define('SiteRootDir', $RootSiteURLPath);
 // 	'database' => 'omegadi1_sport', 
 // 	); 
 
-//Local
+// Local
 $db_conn = array(
 	'host' => 'localhost', 
 	'user' => 'root',
