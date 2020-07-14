@@ -12,11 +12,11 @@
 
                 <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li><a href="main.php">Instagram</a></li>
-                    <li><a href="main.php">Telegram</a></li>
-                    <li><a href="main.php">About Us</a></li>
-                    <li><a href="main.php">Register</a></li>
-                    <li><a href="main.php">Login</a></li>
+                    <li><a href="https://www.instagram.com/LionRoyalSupport/">Instagram</a></li>
+                    <li><a href="https://t.me/LionRoyalCasino">Telegram</a></li>
+                    <li><a href="about_us.php">About Us</a></li>
+                    <li><a href="register.php">Register</a></li>
+                    <li><a href="login.php">Login</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         <?php if($_SESSION['Player_Lang'] == "ir"){echo'<img src="img/ir-flag.png" width="20">';}else{echo '<img src="img/en-flag.png" width="20">';}?>

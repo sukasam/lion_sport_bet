@@ -3378,3 +3378,8 @@
         background-position: 50% 50%;
         background-size: cover;
     }
+    
+    .default-header {
+        position: relative;
+        z-index: 99;
+    }
