@@ -5,10 +5,16 @@
     include_once('_inc/config.php'); 
     include_once("function/poker_api.php");
     include_once('function/csrf.class.php'); 
+    include_once('function/function.php'); 
 
     if(!isset($_SESSION['Player']) && !isset($_SESSION['Player_PW'])){
-        header("Location:".SiteRootDir."main.php");
-    }else{
+        
+        $checkMain = explode("?",substr($_SERVER['REQUEST_URI'],1));
+        if($checkMain[0] !== "main.php"){
+            header("Location:".SiteRootDir."main.php");
+        }
+    }
+    else{
 
         if($_GET['lang'] == "en"){
             $_SESSION['Player_Lang'] = "en";

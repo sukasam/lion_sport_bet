@@ -1,32 +1,5 @@
 <?php
-//  include_once("function/app_top.php");
-session_start();
-
-if (isset($_GET['lang'])) {
-    if ($_GET['lang'] === "en") {
-        $_SESSION['Player_Lang'] = "en";
-        header("Location:main.php");
-    } else if ($_GET['lang'] === "ir") {
-        $_SESSION['Player_Lang'] = "ir";
-        header("Location:main.php");
-    } else {
-        $_SESSION['Player_Lang'] = "en";
-        header("Location:main.php");
-    }
-} else {
-    if (isset($_SESSION['Player_Lang'])) {
-        if ($_SESSION['Player_Lang'] === "ir") {
-            include_once "function/lang_ir.php";
-        } else {
-            include_once "function/lang_en.php";
-        }
-    } else {
-        $_SESSION['Player_Lang'] = "en";
-        include_once "function/lang_en.php";
-    }
-
-}
-
+include_once("function/app_top.php");
 ?>
 <!DOCTYPE html>
 	<html lang="en" class="no-js">
@@ -52,131 +25,200 @@ if (isset($_GET['lang'])) {
 			</section>
             <!-- End banner Area -->
 
-            <!-- About Generic Start -->
-		<div class="main-wrapper ">
+		<?php 
+		$RecDataBanner = $db->select("SELECT * FROM main_banner ORDER BY id ASC");
+		?>
 
-
-			<div class="slideWeb d-none d-lg-block d-xl-block">
-				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators">
-						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-						<img src="img/banner/banner1.jpg" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-						<img src="img/banner/banner2.jpg" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-						<img src="img/banner/banner3.jpg" class="d-block w-100" alt="...">
+		<div class="main-content bg-white pb-30 overflow-hidden">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-lg-6 col-md-6 col-sm-6 pl-0 pr-0">
+						<div class="topBannerL">
+							<div class="brand_bg_pattern" style="background-color: <?php echo $RecDataBanner[0]['b_color'];?> !important;">
+								<span class="pixel_placement" > <span class="shape shape_1"></span> <span class="shape shape_2"></span> <span class="shape shape_3"></span> <span class="shape shape_4"></span> </span>
+							</div>
+							<a href="" target="_blank">
+								<div class="content bgBanerL" style="background-image: url(upload/banner/<?php echo $RecDataBanner[0]['b_img'];?>)"></div>
+							</a>
 						</div>
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+					<div class="col-12 col-lg-6 col-md-6 col-sm-6 pl-0 pr-0">
+						<div class="topBannerR">
+							<div class="brand_bg_pattern" style="background-color: <?php echo $RecDataBanner[1]['b_color'];?> !important;">
+								<span class="pixel_placement" style="background: <?php echo $RecDataBanner[1]['b_color']?> !important;"> <span class="shape shape_1"></span> <span class="shape shape_2"></span> <span class="shape shape_3"></span> <span class="shape shape_4"></span> </span>
+							</div>
+							<a href="" target="_blank">
+								<div class="content bgBanerR" style="background-image: url(upload/banner/<?php echo $RecDataBanner[1]['b_img'];?>)"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="main-content bg-white moregame-content pb-60">
+			<div class="container">
+			
+			<div class="top-content">
+				<div class="container-fluid">
+					<div id="carousel-one" class="carousel slide" data-ride="carousel" data-type="multi">
+
+						<div class="controls-top">
+							<?php 
+								if(isMobile()){
+									?>
+									<p class="text-center"><a class="txmore-game">MORE GAMES 01</a></p>
+									<div class="text-center">
+										<a class="btn-floating" href="#carousel-one" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
+										<a class="btn-floating pl-0" href="#carousel-one" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
+									</div>
+									<?php
+								}else{
+									?>
+									<a class="txmore-game">MORE GAMES 01</a>										
+									<a class="btn-floating" href="#carousel-one" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
+									<a class="btn-floating pl-0" href="#carousel-one" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
+									<?php
+								}
+							?>
+						</div>
+
+						<div class="carousel-inner carousel-inner-one row w-100 mx-auto" role="listbox">
+
+							<?php
+							 $RecDataGmaneOne = $db->select("SELECT * FROM game_row WHERE `g_row` = '1' ORDER BY id DESC");
+							 foreach ($RecDataGmaneOne as $key => $value) {
+    						?>
+								<div class="carousel-item carousel-itemone col-12 col-sm-6 col-md-4 col-lg-3 <?php if ($key == 0) {echo "active";}
+    							;?>">
+									<a href="<?php echo $value['g_link']?>" target="_blank">
+										<div class="bodyBox brand_bg_primary" style="background-image: url(upload/game/<?php echo $value['g_img']?>);">
+											<!-- <div class="txBoxtitle">
+												<p>
+													<span class="" role="text">
+														<span class="text_element">This Tuesday <?php echo sprintf("%02d", $i); ?></span>
+														<span class="line_element"></span>
+													</span>
+												</p>
+												
+											</div>
+											
+											<div class="text-center">
+												<button type="button" class="btn btn-primary cuk_btn_primary">PLAY GAME</button>
+											</div> -->
+										</div>
+									</a>
+								</div>
+								<?php
+								}
+								?>
+						</div>
+					</div>
+
+
+					<div id="carousel-two" class="carousel slide mt-50" data-ride="carousel" data-type="multi">
+
+						<div class="controls-top">
+						<?php 
+								if(isMobile()){
+									?>
+									<p class="text-center"><a class="txmore-game">MORE GAMES 02</a></p>
+									<div class="text-center">
+									<a class="btn-floating" href="#carousel-two" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
+							<a class="btn-floating pl-0" href="#carousel-two" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
+									</div>
+									<?php
+								}else{
+									?>
+									<a class="txmore-game">MORE GAMES 02</a>
+									<a class="btn-floating" href="#carousel-two" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
+									<a class="btn-floating pl-0" href="#carousel-two" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
+									<?php
+								}
+							?>
+							
+						</div>
+
+						<div class="carousel-inner carousel-inner-two row w-100 mx-auto" role="listbox">
+
+							<?php
+							 $RecDataGmaneTwo = $db->select("SELECT * FROM game_row WHERE `g_row` = '2' ORDER BY id DESC");
+							 foreach ($RecDataGmaneTwo as $key => $value) {
+    						?>
+								<div class="carousel-item carousel-itemtwo col-12 col-sm-6 col-md-4 col-lg-3 <?php if ($key == 1) {echo "active";}
+								;?>">
+									<a href="<?php echo $value['g_link']?>" target="_blank">
+										<div class="bodyBox brand_bg_primary" style="background-image: url(upload/game/<?php echo $value['g_img']?>);">
+											<!-- <div class="txBoxtitle">
+												<p>
+													<span class="" role="text">
+														<span class="text_element">This Tuesday <?php echo sprintf("%02d", $i); ?></span>
+														<span class="line_element"></span>
+													</span>
+												</p>
+												
+											</div>
+											
+											<div class="text-center">
+												<button type="button" class="btn btn-primary cuk_btn_primary">PLAY GAME</button>
+											</div> -->
+										</div>
+									</a>
+								</div>
+								<?php
+								}
+								?>
+						</div>
+					</div>
+
 				</div>
 			</div>
 
-			<div class="slideMobile d-block d-lg-none .d-xl-none">
-				<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators">
-						<li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-						<li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-						<li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-					</ol>
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-						<img src="img/banner/banner1.jpg" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-						<img src="img/banner/banner2.jpg" class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-						<img src="img/banner/banner3.jpg" class="d-block w-100" alt="...">
-						</div>
-					</div>
-					<a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+			</div>
+		</div>
+
+		<div class="main-content bg-white pt-3 pb-5">
+           <div class="container c-down text-center py-5">
+				<h2 class="mt-3">آیا در سایت تخته نرد تاس بازی اکانت دارین ؟</h2>
+				<div class="row mt-4">
+
+				<div class="col-12 col-lg-6 mt-5">
+					<?php 
+						if($configDT[0]['poker_register']){
+							?>
+							<a href="<?php echo $configDT[0]['poker_register'];?>" target="_blank">
+								<img src="img/register_poker.png" alt="">
+							</a>
+							<?php
+						}else{
+							?>
+							<img src="img/register_poker.png" alt="">
+							<?php
+						}
+					?>
+					
+				</div>
+				<div class="col-12 col-lg-6 mt-5">
+					<?php 
+					if($configDT[0]['poker_login']){
+						?>
+						<a href="<?php echo $configDT[0]['poker_login'];?>" target="_blank">
+							<img src="img/login_poker.png" alt="">
+						</a>
+						<?php
+					}else{
+						?>
+						<img src="img/login_poker.png" alt="">
+						<?php
+					}
+					?>
+					
+				</div>
+				<!-- <div class="col-12 col-lg-12 mt-5">
+							<img src="img/mob.jpg" alt="">
+						</div> -->
 				</div>
 			</div>
-
-			<!-- <div class="row">
-				<div class="col-12">
-					<div class="slide d-none d-lg-block d-xl-none">
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img class="d-block w-100" src="img/banner/banner1.jpg" alt="First slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="img/banner/banner2.jpg" alt="Second slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="img/banner/banner3.jpg" alt="Third slide">
-								</div>
-							</div>
-							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-							</ol>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-					</div>
-
-					<div class="slide d-xl-none">
-						<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img class="d-block w-100" src="img/banner/banner1.jpg" alt="First slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="img/banner/banner2.jpg" alt="Second slide">
-								</div>
-								<div class="carousel-item">
-									<img class="d-block w-100" src="img/banner/banner3.jpg" alt="Third slide">
-								</div>
-							</div>
-							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-							</ol>
-							<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div> -->
-
-
         </div>
 
         <?php include_once "footer.php";?>

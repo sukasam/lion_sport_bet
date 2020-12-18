@@ -9,10 +9,13 @@ include_once('db_class.php');
 
 // define('DownloadPageURL','download.php');
 
-$SiteURLLocal =  "http://localhost" . dirname($_SERVER['PHP_SELF']); 
+$SiteURLLocal =  "http://" .$_SERVER["HTTP_HOST"]. dirname($_SERVER['PHP_SELF']); 
 //Will replace any backward slashes with forward ones
 $RootSiteURLPath = str_replace('\\', '/', $SiteURLLocal); 
 define('SiteRootDir', $RootSiteURLPath); 
+
+define('FRONTSITE', "http://lion_sport_bet.com/"); 
+define('ROOTGAMEIMG', str_replace("cpanel","site",$_SERVER["DOCUMENT_ROOT"]."upload/")); 
 
 //Real Server
 // $db_conn = array(

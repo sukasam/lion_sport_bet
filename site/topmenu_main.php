@@ -4,7 +4,8 @@
         <div class="container">
                 <a class="navbar-brand" href="index.php">
                 <!--<img src="img/logo.png" alt="">-->
-                <span class="spanE"><?php echo TOP_LOGO_LION;?></span> <span class="spanO"><?php echo TOP_LOGO_ROYAL;?></span> <span class="spanE"><?php echo TOP_LOGO_CASINO;?></span>
+                <!-- <span class="spanE"><?php echo TOP_LOGO_LION;?></span> <span class="spanO"><?php echo TOP_LOGO_ROYAL;?></span> <span class="spanE"><?php echo TOP_LOGO_CASINO;?></span> -->
+                <img src="img/lion-online-bet.png" class="hLogo">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="text-white lnr lnr-menu"></span>
@@ -14,7 +15,7 @@
                 <ul class="navbar-nav">
                     <li><a href="https://www.instagram.com/LionRoyalSupport/">Instagram</a></li>
                     <li><a href="https://t.me/LionRoyalCasino">Telegram</a></li>
-                    <li><a href="about_us.php">About Us</a></li>
+                    <li><a href="#">About Us</a></li>
                     <li><a href="register.php">Register</a></li>
                     <li><a href="login.php">Login</a></li>
                     <li class="dropdown">

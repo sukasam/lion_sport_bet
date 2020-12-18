@@ -147,6 +147,30 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a class="" href="main_banner.php">
+              <i class="fa fa-retweet"></i>
+              <span>Main Banner</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a class="" href="game_rowone.php">
+              <i class="fa fa-retweet"></i>
+              <span>Game Row 01</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a class="" href="game_rowtwo.php">
+              <i class="fa fa-retweet"></i>
+              <span>Game Row 02</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a class="" href="poker_setting.php">
+              <i class="fa fa-retweet"></i>
+              <span>Poker Setting</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a class="" href="setting.php">
               <i class="fa fa-retweet"></i>
               <span>Setting</span>

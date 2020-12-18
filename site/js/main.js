@@ -1,53 +1,49 @@
+$(document).ready(function () {
+  "use strict";
 
-$(document).ready(function(){
-	"use strict";
+  var window_width = $(window).width(),
+    window_height = window.innerHeight,
+    header_height = $(".default-header").height(),
+    header_height_static = $(".site-header.static").outerHeight(),
+    fitscreen = window_height - header_height;
 
-	var window_width 	 = $(window).width(),
-	window_height 		 = window.innerHeight,
-	header_height 		 = $(".default-header").height(),
-	header_height_static = $(".site-header.static").outerHeight(),
-	fitscreen 			 = window_height - header_height;
-
-
-	$(".fullscreen").css("height", window_height)
-	$(".fitscreen").css("height", fitscreen);
+  $(".fullscreen").css("height", window_height);
+  $(".fitscreen").css("height", fitscreen);
 
   //-------- Active Sticky Js ----------//
-  $(".default-header").sticky({topSpacing:0});
+  $(".default-header").sticky({ topSpacing: 0 });
 
+  if (document.getElementById("default-select")) {
+    $("select").niceSelect();
+  }
 
-     if(document.getElementById("default-select")){
-          $('select').niceSelect();
-    };
-
-    $('.img-pop-up').magnificPopup({
-        type: 'image',
-        gallery:{
-        enabled:true
-        }
-    });
+  $(".img-pop-up").magnificPopup({
+    type: "image",
+    gallery: {
+      enabled: true,
+    },
+  });
 
   // $('.navbar-nav>li>a').on('click', function(){
   //     $('.navbar-collapse').collapse('hide');
   // });
 
+  //  Counter Js
 
-    //  Counter Js 
+  $(".counter").counterUp({
+    delay: 10,
+    time: 1000,
+  });
 
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000
-    });
+  $(".play-btn").magnificPopup({
+    type: "iframe",
+    mainClass: "mfp-fade",
+    removalDelay: 160,
+    preloader: false,
+    fixedContentPos: false,
+  });
 
-    $('.play-btn').magnificPopup({
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false
-    });
-
-    /*$('.active-works-carousel').owlCarousel({
+  /*$('.active-works-carousel').owlCarousel({
         items:1,
         loop:true,
         margin: 100,
@@ -102,46 +98,78 @@ $('.active-blog-slider').owlCarousel({
         animateOut: 'fadeOut',
       })*/
 
-
-    // Select all links with hashes
-    $('.navbar-nav a[href*="#"]')
+  // Select all links with hashes
+  $('.navbar-nav a[href*="#"]')
     // Remove links that don't actually link to anything
     .not('[href="#"]')
     .not('[href="#0"]')
-    .on('click',function(event) {
-    // On-page links
-    if (
-      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-      && 
-      location.hostname == this.hostname
-    ) {
-      // Figure out element to scroll to
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-      // Does a scroll target exist?
-      if (target.length) {
-        // Only prevent default if animation is actually gonna happen
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: target.offset().top-50
-        }, 1000, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
+    .on("click", function (event) {
+      // On-page links
+      if (
+        location.pathname.replace(/^\//, "") ==
+          this.pathname.replace(/^\//, "") &&
+        location.hostname == this.hostname
+      ) {
+        // Figure out element to scroll to
+        var target = $(this.hash);
+        target = target.length
+          ? target
+          : $("[name=" + this.hash.slice(1) + "]");
+        // Does a scroll target exist?
+        if (target.length) {
+          // Only prevent default if animation is actually gonna happen
+          event.preventDefault();
+          $("html, body").animate(
+            {
+              scrollTop: target.offset().top - 50,
+            },
+            1000,
+            function () {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) {
+                // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              }
+            }
+          );
+        }
       }
-    }
     });
 
-      $(document).ready(function() {
-          $('#mc_embed_signup').find('form').ajaxChimp();
-      });   
+  $(document).ready(function () {
+    $("#mc_embed_signup").find("form").ajaxChimp();
 
- });
+    /*
+    Carousel
+*/
+    $("#carousel-example").on("slide.bs.carousel", function (e) {
+      /*
+      CC 2.0 License Iatek LLC 2018 - Attribution required
+  */
+      var $e = $(e.relatedTarget);
+      var idx = $e.index();
+      var itemsPerSlide = 5;
+      var totalItems = $(".carousel-item").length;
+
+      if (idx >= totalItems - (itemsPerSlide - 1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i = 0; i < it; i++) {
+          // append slides to end
+          if (e.direction == "left") {
+            $(".carousel-item").eq(i).appendTo(".carousel-inner");
+          } else {
+            $(".carousel-item").eq(0).appendTo(".carousel-inner");
+          }
+        }
+      }
+    });
+    
+  });
+
+});
