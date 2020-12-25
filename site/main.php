@@ -177,6 +177,7 @@ include_once("function/app_top.php");
 			</div>
 		</div>
 
+		<?php $RecDataPoker = $db->select("SELECT `poker_register`,`poker_login` FROM setting WHERE sid ='1'");?>
 		<div class="main-content bg-white pt-3 pb-5">
            <div class="container c-down text-center py-5">
 				<h2 class="mt-3">آیا در سایت تخته نرد تاس بازی اکانت دارین ؟</h2>
@@ -184,9 +185,9 @@ include_once("function/app_top.php");
 
 				<div class="col-12 col-lg-6 mt-5">
 					<?php 
-						if($configDT[0]['poker_register']){
+						if($RecDataPoker[0]['poker_register']){
 							?>
-							<a href="<?php echo $configDT[0]['poker_register'];?>" target="_blank">
+							<a href="<?php echo $RecDataPoker[0]['poker_register'];?>" target="_blank">
 								<img src="img/register_poker.png" alt="">
 							</a>
 							<?php
@@ -200,9 +201,9 @@ include_once("function/app_top.php");
 				</div>
 				<div class="col-12 col-lg-6 mt-5">
 					<?php 
-					if($configDT[0]['poker_login']){
+					if($RecDataPoker[0]['poker_login']){
 						?>
-						<a href="<?php echo $configDT[0]['poker_login'];?>" target="_blank">
+						<a href="<?php echo $RecDataPoker[0]['poker_login'];?>" target="_blank">
 							<img src="img/login_poker.png" alt="">
 						</a>
 						<?php

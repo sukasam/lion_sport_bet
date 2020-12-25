@@ -3895,7 +3895,7 @@ p.footer-feedback {
 
 .bgBanerL,.bgBanerR{
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center 0 0;
 }
 
 .bgBanerL,.bgBanerR{
