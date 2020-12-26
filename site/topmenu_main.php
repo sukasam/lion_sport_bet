@@ -1,7 +1,7 @@
 <!-- Start Header Area -->
 <header class="default-header">
     <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
+        <div class="container headNav">
                 <a class="navbar-brand" href="index.php">
                 <!--<img src="img/logo.png" alt="">-->
                 <!-- <span class="spanE"><?php echo TOP_LOGO_LION;?></span> <span class="spanO"><?php echo TOP_LOGO_ROYAL;?></span> <span class="spanE"><?php echo TOP_LOGO_CASINO;?></span> -->
@@ -22,7 +22,7 @@
                         <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         <?php if($_SESSION['Player_Lang'] == "ir"){echo'<img src="img/ir-flag.png" width="20">';}else{echo '<img src="img/en-flag.png" width="20">';}?>
                         </a>
-                        <div class="dropdown-menu">
+                        <div class="dropdown-menu" style="right: 0;left: unset;">
                         <a class="dropdown-item" href="main.php?lang=en"><img src="img/en-flag.png" width="20"> <?php echo TOP_MENU_LANG_EN;?></a>
                         <a class="dropdown-item" href="main.php?lang=ir"><img src="img/ir-flag.png" width="20"> <?php echo TOP_MENU_LANG_IR;?></a>
                         </div>

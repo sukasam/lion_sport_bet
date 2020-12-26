@@ -178,12 +178,12 @@ include_once("function/app_top.php");
 		</div>
 
 		<?php $RecDataPoker = $db->select("SELECT `poker_register`,`poker_login` FROM setting WHERE sid ='1'");?>
-		<div class="main-content bg-white pt-3 pb-5">
+		<div class="main-content bg-white pt-3 bg_poker">
            <div class="container c-down text-center py-5">
-				<h2 class="mt-3">آیا در سایت تخته نرد تاس بازی اکانت دارین ؟</h2>
+				<h2 class="mt-3 txtTitle">آیا در سایت تخته نرد تاس بازی اکانت دارین ؟</h2>
 				<div class="row mt-4">
 
-				<div class="col-12 col-lg-6 mt-5">
+				<div class="col-12 col-lg-6 mt-3 text-center pokerLog">
 					<?php 
 						if($RecDataPoker[0]['poker_register']){
 							?>
@@ -199,7 +199,7 @@ include_once("function/app_top.php");
 					?>
 					
 				</div>
-				<div class="col-12 col-lg-6 mt-5">
+				<div class="col-12 col-lg-6 mt-3 text-center pokerRg">
 					<?php 
 					if($RecDataPoker[0]['poker_login']){
 						?>

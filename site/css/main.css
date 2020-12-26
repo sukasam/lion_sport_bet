@@ -1955,6 +1955,7 @@ h6 {
 .navbar-light .navbar-toggler {
   color: rgba(255, 255, 255, 0.5);
   border-color: rgba(255, 255, 255, 0.1);
+  margin-right: 15px;
 }
 
 .navbar-nav a {
@@ -2008,9 +2009,9 @@ h6 {
 .video-area .overlay-bg,
 .single-footer-widget .click-btn,
 .generic-banner {
-  background-image: -moz-linear-gradient(0deg, #222 0%, #222 100%);
-  background-image: -webkit-linear-gradient(0deg, #222 0%, #222 100%);
-  background-image: -ms-linear-gradient(0deg, #222 0%, #222 100%);
+  background-image: -moz-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  background-image: -webkit-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  background-image: -ms-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
   transition: all 0.3s ease 0s;
 }
 
@@ -2119,7 +2120,11 @@ h6 {
 
 @media (max-width: 992px) {
   .default-header {
-    background-color: #222;
+    /* background-color: #222; */
+    background-image: -moz-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  background-image: -webkit-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  background-image: -ms-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  transition: all 0.3s ease 0s;
   }
 }
 
@@ -3416,7 +3421,7 @@ ul.draw_numbers_list li {
   height: 105px;
 }
 .default-header .container {
-  height: 80px;
+  height: 104px;
 }
 .inner .counter_wrapper,
 .com_counter .inner .counter_wrapper .counter {
@@ -3884,14 +3889,23 @@ p.footer-feedback {
 }
 
 .hLogo {
-  max-height: 70px;
+  max-height: 80px;
+  margin-left: 15px;
 }
 
-.c-down {
+.navbar{
+  padding: 0;
+}
+#navbarSupportedContent{
+  background-color: #000;
+  padding: 0px 20px;
+}
+
+/* .c-down {
   background-image: url(../img/dice.png);
   background-repeat: no-repeat;
   background-position: center 130px;
-}
+} */
 
 .bgBanerL,.bgBanerR{
   background-repeat: no-repeat;
@@ -3902,6 +3916,52 @@ p.footer-feedback {
   height: 394px;
 }
 
+.bg_poker{
+    background-image: url(../img/bg_poker.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.txtTitle{
+  color: #fff;
+}
+
+.pokerLog{
+  text-align: center !important;
+}
+.pokerRg{
+  text-align: center !important;
+}
+
+.footer-area{
+  background-image: -moz-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  background-image: -webkit-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+  background-image: -ms-linear-gradient(0deg, #9f8f8f 0%, #000 100%);
+}
+
+.hLogoFooter{
+  max-height: 120px;
+}
+
+.footer-thanks{
+  text-shadow: 2px 2px #cb942b;
+}
+
+
+a {
+  color: #d5aa55;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.socialFooter{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.headNav{
+  padding-left: 15px;
+}
 /* // Small devices (landscape phones, 375px and up) */
 /* @media (max-width: 375px) { 
 .counter_wrapper .counter_total p span{
@@ -4055,6 +4115,8 @@ p.footer-feedback {
   .hLogo {
     max-height: 80px;
   }
+
+
 }
 /* MD */
 @media (min-width: 768px) {
@@ -4092,6 +4154,7 @@ p.footer-feedback {
     display: block;
     visibility: visible;
   }
+  
 }
 /* LG */
 @media (min-width: 991px) {
@@ -4143,6 +4206,20 @@ p.footer-feedback {
     visibility: visible;
   }
   .hLogo {
-    max-height: 85px;
+    max-height: 90px;
+  }
+  #navbarSupportedContent {
+    background-color: unset;
+    padding: unset;
+  }
+  .default-header .container {
+      height: 100px;
+  }
+  .pokerLog{
+    text-align: right !important;
+  }
+  .pokerRg{
+    text-align: left !important;
   }
 }
+

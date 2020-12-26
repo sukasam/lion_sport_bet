@@ -3,15 +3,28 @@
     <div class="footer-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 align-self-center">
+                <div class="col-12">
                     <div class="">
-                            <p class="footer-thanks text-center">THANKS TO THE PLAYERS</p>
+                        <img src="img/lion-online-bet.png" class="hLogoFooter">
                     </div>
+                    <p class="footer-thanks text-center">Lion Royal Sport Betting</p>
+                </div>
+                <div class="col-12">
+                    <span class="socialFooter">
+                        <a href="https://www.instagram.com/LionRoyalSupport/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-3x fa-instagram"></i>
+                        </a>
+                    </span>
+                    <span>
+                        <a href="https://t.me/LionRoyalCasino" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-3x fa-telegram"></i>
+                        </a>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer2-area">
+    <div class="footer2-area hide">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 align-self-center">
@@ -67,8 +80,8 @@
                             </div>
                         </div>
                     </div>
-                </div> 
-            </div> 
+                </div>
+            </div>
         <div class="container container_line">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-4 pt-30">
@@ -105,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="container container_line cuk_global_disclaimers">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 pt-30">
