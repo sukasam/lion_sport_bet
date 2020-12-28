@@ -67,7 +67,7 @@ include_once("function/app_top.php");
 							<?php 
 								if(isMobile()){
 									?>
-									<p class="text-center"><a class="txmore-game">MORE GAMES 01</a></p>
+									<p class="text-center"><a class="txmore-game">بازى هاى مهم امروز</a></p>
 									<div class="text-center">
 										<a class="btn-floating" href="#carousel-one" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
 										<a class="btn-floating pl-0" href="#carousel-one" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
@@ -75,7 +75,7 @@ include_once("function/app_top.php");
 									<?php
 								}else{
 									?>
-									<a class="txmore-game">MORE GAMES 01</a>										
+									<a class="txmore-game">بازى هاى مهم امروز</a>										
 									<a class="btn-floating" href="#carousel-one" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
 									<a class="btn-floating pl-0" href="#carousel-one" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
 									<?php
@@ -122,7 +122,7 @@ include_once("function/app_top.php");
 						<?php 
 								if(isMobile()){
 									?>
-									<p class="text-center"><a class="txmore-game">MORE GAMES 02</a></p>
+									<p class="text-center"><a class="txmore-game">رویای بزرگ با بازى كوچك</a></p>
 									<div class="text-center">
 									<a class="btn-floating" href="#carousel-two" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
 							<a class="btn-floating pl-0" href="#carousel-two" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
@@ -130,7 +130,7 @@ include_once("function/app_top.php");
 									<?php
 								}else{
 									?>
-									<a class="txmore-game">MORE GAMES 02</a>
+									<a class="txmore-game">رویای بزرگ با بازى كوچك</a>
 									<a class="btn-floating" href="#carousel-two" data-slide="prev"><i class="fa fa-chevron-circle-left fa-3"></i></a>
 									<a class="btn-floating pl-0" href="#carousel-two" data-slide="next"><i class="fa fa-chevron-circle-right fa-3"></i></a>
 									<?php
@@ -180,7 +180,7 @@ include_once("function/app_top.php");
 		<?php $RecDataPoker = $db->select("SELECT `poker_register`,`poker_login` FROM setting WHERE sid ='1'");?>
 		<div class="main-content bg-white pt-3 bg_poker">
            <div class="container c-down text-center py-5">
-				<h2 class="mt-3 txtTitle">آیا در سایت تخته نرد تاس بازی اکانت دارین ؟</h2>
+				<h2 class="mt-3 txtTitle">آيا در بزرگترين سايت پوكر ايران اكانت دارين ؟</h2>
 				<div class="row mt-4">
 
 				<div class="col-12 col-lg-6 mt-3 text-center pokerLog">

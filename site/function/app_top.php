@@ -10,8 +10,14 @@
     if(!isset($_SESSION['Player']) && !isset($_SESSION['Player_PW'])){
         
         $checkMain = explode("?",substr($_SERVER['REQUEST_URI'],1));
-        if($checkMain[0] !== "main.php"){
+        if($checkMain[0] !== "main.php" && $checkMain[0] !== "guide.php"){
             header("Location:".SiteRootDir."main.php");
+        }
+        if($checkMain[0] === "guide.php"){
+            $RecDataGuideCheck = $db->select("SELECT * FROM guide WHERE `status` = '0' ORDER BY id ASC");
+            if(!isset($_GET['id'])){
+                header("Location:guide.php?id=".$RecDataGuideCheck[0]['id']);
+            }
         }
     }
     else{

@@ -140,3 +140,8 @@ jQuery(document).ready(function() {
 $(document).ready(function () {
    
 });
+
+function guideSelect(){
+	var guideList = $("#guideList").val();
+	window.location.href='guide.php?id='+guideList;
+}

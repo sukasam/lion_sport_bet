@@ -3962,6 +3962,72 @@ a {
 .headNav{
   padding-left: 15px;
 }
+
+.navbar-nav a.login:hover {
+  color: #7a7a7a;
+}
+.navbar-nav a.login {
+  background: #655f5f !important;
+}
+.navbar-nav a.login {
+  background: #0e0e0e;
+  color: #fff;
+  border: 2px solid #7a7a7a;
+  padding: 5px 20px 5px 20px;
+  font-weight: 500;
+  border-radius: 4px;
+  margin: 8px 2px 0px 2px;
+  font-size: 14px;
+}
+
+.navbar-nav a.signup:hover {
+  color: #7a7a7a;
+}
+.navbar-nav a.signup {
+  background: #feca49 !important;
+}
+.navbar-nav a.signup {
+  background: #ffcb39;
+  color: #000;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 6px 20px 6px 20px;
+  font-size: 14px;
+  margin: 8px 2px 0px 2px;
+}
+
+li.guide:hover {
+  background: #0e0e0e;
+  color: #fff;
+}
+li.guide {
+  background: #feca49;
+}
+li.guide{
+  background: #ffcb39;
+  color: #000;
+  font-weight: 500;
+  border-radius: 4px;
+  padding: 6px 20px 6px 20px;
+  font-size: 14px;
+  margin: 8px 2px 0px 2px;
+  text-align: center;
+  cursor: pointer;
+}
+
+li.guide a{
+  color: #000;
+}
+
+li.activeC{
+  background: #0e0e0e !important;
+  color: #fff !important;
+}
+
+.guideCon{
+  color: #000;
+}
+
 /* // Small devices (landscape phones, 375px and up) */
 /* @media (max-width: 375px) { 
 .counter_wrapper .counter_total p span{

@@ -13,12 +13,19 @@
 
                 <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li><a href="https://www.instagram.com/LionRoyalSupport/">Instagram</a></li>
-                    <li><a href="https://t.me/LionRoyalCasino">Telegram</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="register.php">Register</a></li>
-                    <li><a href="login.php">Login</a></li>
-                    <li class="dropdown">
+                    
+                    <li><a href="guide.php" class="">راهنما</a></li>
+                    <li><a href="#" class="">پشتیبانی</a></li>
+                    <li><a href="https://www.instagram.com/LionRoyalSupport/">اينستاگرام ما</a></li>
+                    <li><a href="https://t.me/LionRoyalCasino">تلگرام ما</a></li>
+                    <li><a href="#">درباره ما</a></li>
+                    <li>
+                        <a href="login.php" class="link login">ورود به حساب کاربری</a>
+                    </li>
+                    <li>
+                        <a href="register.php" class="link signup">ثبت نام</a>
+                    </li>
+                    <!-- <li class="dropdown">
                         <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         <?php if($_SESSION['Player_Lang'] == "ir"){echo'<img src="img/ir-flag.png" width="20">';}else{echo '<img src="img/en-flag.png" width="20">';}?>
                         </a>
@@ -26,7 +33,7 @@
                         <a class="dropdown-item" href="main.php?lang=en"><img src="img/en-flag.png" width="20"> <?php echo TOP_MENU_LANG_EN;?></a>
                         <a class="dropdown-item" href="main.php?lang=ir"><img src="img/ir-flag.png" width="20"> <?php echo TOP_MENU_LANG_IR;?></a>
                         </div>
-                    </li>
+                    </li> -->
                     <?php 
                     /*<!-- <li><a href="javascript:void(0);"><?php echo $_SESSION['Player'];?> : <span class="spanO"><?php echo number_format($_SESSION['Player_Balance'])?></span> Toman</a></li> -->
                     <li><a href="main.php"><?php echo TOP_MENU_HOME;?></a></li>
