@@ -165,6 +165,12 @@
               </a>
           </li>
           <li class="sub-menu">
+            <a class="" href="guide.php">
+              <i class="fa fa-retweet"></i>
+              <span>Guide</span>
+              </a>
+          </li>
+          <li class="sub-menu">
             <a class="" href="poker_setting.php">
               <i class="fa fa-retweet"></i>
               <span>Poker Setting</span>

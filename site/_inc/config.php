@@ -5,6 +5,9 @@ $SiteURLLocal =  "http://" .$_SERVER["HTTP_HOST"]. dirname($_SERVER['PHP_SELF'])
 $RootSiteURLPath = str_replace('\\', '/', $SiteURLLocal); 
 define('SiteRootDir', $RootSiteURLPath); 
 
+define('SiteImgDir', "http://admin.thaiger-yes.com"); 
+
+
 //Real Server
 // $db_conn = array(
 // 	'host' => 'localhost', 

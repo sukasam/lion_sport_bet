@@ -58,7 +58,12 @@ include_once "function/app_top.php";
                     $RecDataGuideCon = $db->select("SELECT * FROM guide WHERE `status` = '0' AND `id` = ".$_GET['id']);
                     ?>
                     <h3 class="mb-2"><?php echo $RecDataGuideCon[0]['g_name'];?></h3>
-                    <div class="guideCon"><?php echo $RecDataGuideCon[0]['g_detail'];?></div>
+                    <div class="guideCon">
+                        <?php 
+                            $strCon = $RecDataGuideCon[0]['g_detail'];
+                            $newCon = preg_replace("/\/userfiles/", SiteImgDir."/userfiles", $strCon);
+                            echo stripslashes($newCon);?>
+                        </div>
                     </div>
                 </div>
 			</div>
