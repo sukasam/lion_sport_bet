@@ -38,7 +38,7 @@ include_once("function/app_top.php");
 								<span class="pixel_placement" > <span class="shape shape_1"></span> <span class="shape shape_2"></span> <span class="shape shape_3"></span> <span class="shape shape_4"></span> </span>
 							</div>
 							<a href="" target="_blank">
-								<div class="content bgBanerL" style="background-image: url(upload/banner/<?php echo $RecDataBanner[0]['b_img'];?>)"></div>
+								<div class="content bgBanerL" style="background-image: url(upload/banner/<?php echo $RecDataBanner[0]['b_img'];?>);background-size: cover;background-position: center;"></div>
 							</a>
 						</div>
 					</div>
@@ -48,7 +48,7 @@ include_once("function/app_top.php");
 								<span class="pixel_placement" style="background: <?php echo $RecDataBanner[1]['b_color']?> !important;"> <span class="shape shape_1"></span> <span class="shape shape_2"></span> <span class="shape shape_3"></span> <span class="shape shape_4"></span> </span>
 							</div>
 							<a href="" target="_blank">
-								<div class="content bgBanerR" style="background-image: url(upload/banner/<?php echo $RecDataBanner[1]['b_img'];?>)"></div>
+								<div class="content bgBanerR" style="background-image: url(upload/banner/<?php echo $RecDataBanner[1]['b_img'];?>);background-size: cover;background-position: center;"></div>
 							</a>
 						</div>
 					</div>
