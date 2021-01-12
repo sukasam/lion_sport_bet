@@ -7,6 +7,12 @@
     define('TOP_MENU_PLAY_GAME3','Pre match');
     define('TOP_MENU_TICKETS','Support');
     define('TOP_MENU_INVITE','Agent');
+    define('TOP_MENU_DEPOSITS','Deposits');
+    define('TOP_MENU_DEPOSITS_PM_VOUCHER','Perfect Money Voucher');
+    define('TOP_MENU_DEPOSITS_CRYPTO','Cryptocurrency');
+    define('TOP_MENU_CASHOUTS','Cashouts');
+    define('TOP_MENU_CASHOUTS_PM_VOUCHER','Perfect Money Voucher');
+    define('TOP_MENU_CASHOUTS_PM_ACCOUNT','Perfect Money To Account');
 
     define('TOP_MENU_PAYMENT','Payment');
     define('TOP_MENU_DEPOSIT','Deposit');
@@ -28,6 +34,14 @@
     define('TOP_LOGO_LION','Lion');
     define('TOP_LOGO_ROYAL','Royal');
     define('TOP_LOGO_CASINO','Sports Betting');
+
+    define('TITLE_TYPE_HERE','Type Here');
+    define('TITLE_SUPPORT_DETAIL','Let us know your problems, comments and suggestions. The support team is ready to respond to you 24 hours a day, seven days a week. Note that reviewing some items may take time, please be patient.
+    Maximum 750 characterss');
+    define('TITLE_TYPE_MESSAGE','Message');
+
+    define('TITLE_SEND','Send');
+
     
     
     // HOME PAGE
@@ -98,7 +112,9 @@
     define('TITLE_WITHDRAW_ONCE_APPLOVED','** You can withdraw money once the previous withdrawal has been approved. **');
     
     define('TITLE_YOUR_ACCOUNT','Your Account');
-    define('TITLE_YOUR_BANK','Your Bank');
+    define('TITLE_YOUR_BANK','Perfect Money Account');
+    define('TITLE_PM_ACCOUNT','P.M USD Account Information');
+    define('TITLE_PM_ACCOUNT_DETAIL','Your Perfect Money account number is Uxxxxxxxx.');
     define('TITLE_YOUR_POINT','Your Point');
     define('TITLE_FAMILY_NAME','Family name');
     define('TITLE_EMAIL','Email');
@@ -119,7 +135,11 @@
 
     define('TITLE_AMOUNT','Amount');
     define('TITLE_DEPOSIT_HISTORY','Deposit History');
+    define('TITLE_DEPOSIT_PM_HISTORY','Deposits Perfec Money Voucher History');
     define('TITLE_WITHDRAW_HISTORY','Withdraw History');
+    define('TITLE_CASHOUT_PM_VOUCHER_HISTORY','Cashout Perfect Money Voucher History');
+    define('TITLE_CASHOUT_PM_DIRECT_HISTORY','Cashout Perfect Money Direct History');
+    
 
     define('TITLE_CHANGE_PASS_DETAIL','Please change your password periodically for more security.<br>
     Also, to prevent abuse, do not use the password that you have on other sites here at all.');
@@ -148,8 +168,39 @@
     define('TITLE_PINS_01','For security purposes, you need to select a 4-digit code as ((PIN code))');
     define('TITLE_PINS_02','Note that you will not forget the PIN code at all. Because it can not be undone, the PIN code must be 4 digits.');
     
-    define('TITLE_DEPOSIT_DESC','You can use our help desk on the support telegram to provide your complete support.');
+    define('TITLE_DEPOSIT_DESC','<li>You will receive %s1 chips per Perfect Money dollar.</li>
+    <li>Perfect Money is a common currency on Internet sites that you must buy from exchange offices to buy or sell. If you have a Perfect Money account, you can keep this currency in your account and use it if needed.</li>
+    <li>In this section, you can use Perfect Money to recharge your account. If you are not familiar with this method, you can ask the site support for help.</li>
+    <li>Please use only Perfect Money dollar vouchers.</li>
+    <li>Be sure to note that the Prose site is not an exchange and this service has been added for the welfare of the players.<br>
+    A team of 24-hour site sponsors will review your cache requests and your cache and account will be blocked if you see any abuse.
+    The amount of chips and sticks you play on will also be checked.
+    In the end, if you are a player, you will not have a problem, but any abuse will be dealt with.</li>
+    <li>So if you decided to buy a Perfect Money chip and for any reason you changed your mind and did not want to play, please do your Cash August in the same way as Perfect Money. Because in case of August cash, your August cash will not be paid.</li>');
     
+    define('TITLE_CASHOUTS_DESC','
+    <li> You will receive a Perfect Money for every %s1 chips. </li>
+    <li> The maximum waiting time for paying the Perfect Money August and Cash payment is 1 hour if confirmation is required. Otherwise the automatic August cache will be paid.</li>
+    <li> There should be a half hour interval between Cash August and Perfect Money requests.</li>
+    <br>
+    <li> To use this feature, you must enable your second password. This password will be sent to you via email.
+    <br>
+        If you do not have a second password or you have forgotten it, use the link below to download it.
+        <br>
+        <a href="">Request For Second Password</a>
+        <br>
+        <ul>
+            <li> Please note that after submitting a request for a new second password, the previous second password will be invalid.</li>
+            <li>
+                <span class = "persian-important-comment"> There must be a 24 hour interval between each second password request. </span>
+            </li>
+            <li> Your second password is a 5-digit code that will be sent to you via email.</li>
+        </ul>
+    </li>
+    <br>
+    <li> Prose site has no responsibility for where you will use this voucher and after creating and sending the voucher for you, we will not be able to follow these transactions in any way.
+    </li>');
+
     define('TITLE_FORGET_PASSWORD','Forgot your password?');
 
     define('TITLE_TICKETS_DESC','Call the following telegram to support');

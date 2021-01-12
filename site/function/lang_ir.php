@@ -7,6 +7,12 @@
     define('TOP_MENU_PLAY_GAME3','Pre match');
     define('TOP_MENU_TICKETS','Support');
     define('TOP_MENU_INVITE','Agent');
+    define('TOP_MENU_DEPOSITS','Deposits');
+    define('TOP_MENU_DEPOSITS_PM_VOUCHER','Perfect Money Voucher');
+    define('TOP_MENU_DEPOSITS_CRYPTO','Cryptocurrency');
+    define('TOP_MENU_CASHOUTS','Cashouts');
+    define('TOP_MENU_CASHOUTS_PM_VOUCHER','Perfect Money Voucher');
+    define('TOP_MENU_CASHOUTS_PM_ACCOUNT','Perfect Money To Account');
 
     define('TOP_MENU_PAYMENT','امور مالی');
     define('TOP_MENU_DEPOSIT','خرید');
@@ -47,6 +53,12 @@
     define('HOME_SEE_MY_RANKING','See my ranking');
 
     define('HOME_BET_LOTORRY','Bet Lotorry');
+
+    define('TITLE_TYPE_HERE','Type Here');
+    define('TITLE_SUPPORT_DETAIL','مشکلات، نظرات و پیشنهادهای خود را با ما درمیان بگذارید. تیم پشتیبانی 24 ساعت و هفت روز هفته آماده پاسخ گویی به شما هستند. توجه داشته باشید بررسی بعضی موارد ممکن است نیاز به زمان داشته باشد لطفا شکیبا باشید.
+    حداکثر 750 کارکتر');
+    define('TITLE_TYPE_MESSAGE','Message');
+    define('TITLE_SEND','Send');
 
 
     //TOP HAND PAGE
@@ -97,7 +109,9 @@
 
     // ACCOUNT PAGE
     define('TITLE_YOUR_ACCOUNT','اطلاعات شما');
-    define('TITLE_YOUR_BANK','اطلاعات بانکی');
+    define('TITLE_YOUR_BANK','Perfect Money Account');
+    define('TITLE_PM_ACCOUNT','P.M USD Account Information');
+    define('TITLE_PM_ACCOUNT_DETAIL','شماره حساب شما در پرفکت مانی شماره ایی که به صورت Uxxxxxxxx می باشد.');
     define('TITLE_YOUR_POINT','امتیاز شما');
     define('TITLE_FAMILY_NAME','نام خانوادگی');
     define('TITLE_EMAIL','ایمیل');
@@ -118,6 +132,9 @@
 
     define('TITLE_AMOUNT','مقدار');
     define('TITLE_DEPOSIT_HISTORY','تراکنش های خرید');
+    define('TITLE_DEPOSIT_PM_HISTORY','Deposits Perfec Money Voucher History');
+    define('TITLE_CASHOUT_PM_VOUCHER_HISTORY','Cashout Perfect Money Voucher History');
+    define('TITLE_CASHOUT_PM_DIRECT_HISTORY','Cashout Perfect Money Direct History');
     define('TITLE_WITHDRAW_HISTORY','تراکنش های برداشت');
     
     define('TITLE_CHANGE_PASS_DETAIL','لطفا جهت امنیت بیشتر ، پسورد خود را به طور دوره ای تغییر دهید .<br>
@@ -145,7 +162,43 @@
     define('TITLE_PINS_01','پین کد ۴ رقمی خود را انتخاب نمایید');
     define('TITLE_PINS_02','پین کد خود را فراموش نکنید ، این پین کد قابل بازیابی نمی باشد');
 
-    define('TITLE_DEPOSIT_DESC','شما براى تهيه  وچر پرفكت مانى  مى توانيد از راهنما ما در تلگرام  ساپورت استفاده نماييد');
+    define('TITLE_DEPOSIT_DESC','<li> شما به ازای هر دلار پرفکت مانی %s1 چیپ دریافت خواهید کرد.</li>
+    <li>پرفکت مانی یک ارز رایج در سایت های اینترنتی می باشد که برای خرید یا فروش آن شما باید از صرافی ها کمک بگیرید. در صورت دارا بودن حساب پرفکت مانی شما می توانید این ارز را در حساب خود نگهدارید و در صورت نیاز از آن استفاده کنید.</li>
+    <li>در این قسمت شما می توانید از طریق وچر پرفکت مانی نسبت به شارژ اکانت خود استفاده کنید. در صورت عدم آشنایی با این روش می توانید از پشتیبانی سایت درخواست راهنمایی بفرمایید.</li>
+    <li>لطفا فقط از وچر های دلار پرفکت مانی استفاده کنید.
+    </li><li>حتما دقت داشته باشید که سایت پروز صرافی نیست و این سرویس برای رفاه بازیکنان اضافه شده است.
+    <br>
+    یک تیم از پشتیبانان سایت 24 ساعته درخواستهای کش اوت رو بررسی می کنند و در صورت مشاهده هر گونه سوء استفاده کش اوت و اکانت شما بلاک خواهد شد.
+    <br>
+    میزان خرید چیپ و استکی که در آن بازی می کنید هم چک خواهد شد.
+    <br>
+    در نهایت اگر شما بازیکن هستید براتون مشکلی پیش نخواهد آمد، اما با هر گونه سوءاستفاده برخورد خواهد شد.
+</li>
+<li>پس اگر تصمیم گرفتید با پرفکت مانی چیپ بخرید و به هر دلیل نظرتون عوض شد و نخواستید بازی کنید لطفا کش اوت خود را به همان صورت پرفکت مانی انجام دهید. به دلیل اینکه در صورت کش اوت ریالی کش اوت شما پرداخت نخواهد شد.
+</li>');
+
+define('TITLE_CASHOUTS_DESC','
+<li> You will receive a Perfect Money for every %s1 chips. </li>
+<li> The maximum waiting time for paying the Perfect Money August and Cash payment is 1 hour if confirmation is required. Otherwise the automatic August cache will be paid.</li>
+<li> There should be a half hour interval between Cash August and Perfect Money requests.</li>
+<br>
+<li> To use this feature, you must enable your second password. This password will be sent to you via email.
+<br>
+    If you do not have a second password or you have forgotten it, use the link below to download it.
+    <br>
+    <a href="">Request For Second Password</a>
+    <br>
+    <ul>
+        <li> Please note that after submitting a request for a new second password, the previous second password will be invalid.</li>
+        <li>
+            <span class = "persian-important-comment"> There must be a 24 hour interval between each second password request. </span>
+        </li>
+        <li> Your second password is a 5-digit code that will be sent to you via email.</li>
+    </ul>
+</li>
+<br>
+<li> Prose site has no responsibility for where you will use this voucher and after creating and sending the voucher for you, we will not be able to follow these transactions in any way.
+</li>');
     
     define('TITLE_FORGET_PASSWORD','بازیابی رمز ورود');
 

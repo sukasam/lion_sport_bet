@@ -15,7 +15,7 @@
             $RecDataDrawHistory2 = $db->select("SELECT * FROM bet_lotorry_history WHERE bet_lotorry_date = '".$around."'");
             $RecDataDrawResults2 = $db->select("SELECT * FROM bet_lotorry_results WHERE id = '".$RecDataDrawHistory2[0]['id']."'");
             
-            if(intval($_SESSION['Player_Balance']) >= intval($configDT[0]['lotorry_per_play'])){
+            if(intval($_SESSION['Player_DBalance']) >= intval($configDT[0]['lotorry_per_play'])){
                 
                 $insert_arrays = array(
                     'player'=> $_SESSION['Player'],
@@ -41,7 +41,7 @@
                   $q = $db->insert('bet_lotorry_play_results', $insert_arrays);
                 }
 
-                $updateBalance = $_SESSION['Player_Balance']-$configDT[0]['lotorry_per_play'];
+                $updateBalance = $_SESSION['Player_DBalance']-$configDT[0]['lotorry_per_play'];
 
                 $array_fields = array(
                     'Balance' => $updateBalance,

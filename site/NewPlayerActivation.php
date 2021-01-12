@@ -17,7 +17,7 @@
 	// 	header("Location:set_pin.php");
 	// }
 	
-	if($_GET['Token'] != "" && isset($_GET['Token'])){
+	if(isset($_GET['Token']) && $_GET['Token'] != ""){
 		include_once("function/NewPlayerActivation.php");
 		exit();
 	}

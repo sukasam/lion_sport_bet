@@ -10,15 +10,16 @@
     if($csrf->check_valid('post')) {
         if($_POST){
 
-            $pkamount = $db->CleanDBData(decode($_POST['amount'],KEY_HASH));
-            $pincode = $db->CleanDBData($_POST['pin_code']);
-            $withdrwaType = $db->CleanDBData($_POST['withdraw_type']);
+            $pkamount = $db->CleanDBData($_POST['amount']);
+            $second_password = $db->CleanDBData($_POST['second_password']);
+            $withdrwaType = $db->CleanDBData('1');
     
-            if($withdrwaType == 1){
-                $callBackW = "withdraw.php";
-            }else if($withdrwaType == 2){
-                $callBackW = "withdraw2.php";
-            }
+            $callBackW = "withdraw.php";
+
+            $_SESSION['errors_code'] = "alert-danger";
+            $_SESSION['errors_msg'] = "Invalid Second Password.";
+            
+            header("Location:".SiteRootDir."".$callBackW."?action=failed");
     
             if($_SESSION['security_code'] === $db->CleanDBData($_POST['withdraw_captcha_code'])) { // Check 
     

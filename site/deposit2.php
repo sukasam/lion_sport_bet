@@ -64,7 +64,7 @@
                             <?php if($RecDataUser[0]['onlineCard'] == 1){
                                // if($_SESSION['Player'] == "adminT-T" || $_SESSION['Player'] == "roxy"){    
                             ?>
-                            <div class="col-md-8 col-md-offset-2">
+                            <div class="col-md-8 offset-md-2">
                                 <?php if($_SESSION['errors_code1'] != ""){?>
                                 <div class="alert <?php echo $_SESSION['errors_code1'];?>">
                                     <?php echo $_SESSION['errors_msg1'];?>

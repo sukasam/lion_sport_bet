@@ -45,7 +45,7 @@
                         </div>
 						<div class="col-12">
                             <form id="frm_ticket" name="frm_ticket" action="set_pin.php?action=pinset" method="post">
-                                <div class="col-md-8 col-md-offset-2">
+                                <div class="col-md-8 offset-md-2">
                                     <div class="headTitlePage text-center mb-20">4 digit PIN code</div>
                                     <?php if($_SESSION['errors_code'] != ""){?>
                                     <div class="alert <?php echo $_SESSION['errors_code'];?>">

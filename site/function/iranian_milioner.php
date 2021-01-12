@@ -13,7 +13,7 @@
             $around = $game_close[2]."-".$game_close[0]."-".$game_close[1];
 
         
-            if(intval($_SESSION['Player_Balance']) >= intval($_POST['totalPrice'])){
+            if(intval($_SESSION['Player_DBalance']) >= intval($_POST['totalPrice'])){
 
                 function checkL($numB){
                     if(strlen($numB) <= 1){
@@ -103,7 +103,7 @@
 
                 }
 
-                $updateBalance = $_SESSION['Player_Balance']-$_POST['totalPrice'];
+                $updateBalance = $_SESSION['Player_DBalance']-$_POST['totalPrice'];
 
                 $array_fields = array(
                     'Balance' => $updateBalance,

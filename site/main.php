@@ -1,5 +1,8 @@
 <?php
-include_once("function/app_top.php");
+include_once('_inc/config.php'); 
+include_once("_inc/model.php");
+include_once('function/function.php'); 
+$model=new Model();
 ?>
 <!DOCTYPE html>
 	<html lang="en" class="no-js">
@@ -26,7 +29,9 @@ include_once("function/app_top.php");
             <!-- End banner Area -->
 
 		<?php 
-		$RecDataBanner = $db->select("SELECT * FROM main_banner ORDER BY id ASC");
+		$RecDataBannerSQL = "SELECT * FROM main_banner WHERE 1=? ORDER BY id ASC";  
+		$values=array(1);
+		$RecDataBanner = $model->doSelect($RecDataBannerSQL,$values); 
 		?>
 
 		<div class="main-content bg-white pb-30 overflow-hidden">
@@ -86,7 +91,9 @@ include_once("function/app_top.php");
 						<div class="carousel-inner carousel-inner-one row w-100 mx-auto" role="listbox">
 
 							<?php
-							 $RecDataGmaneOne = $db->select("SELECT * FROM game_row WHERE `g_row` = '1' ORDER BY id DESC");
+							 $RecDataGmaneOneSQL = "SELECT * FROM game_row WHERE `g_row` = ? ORDER BY id DESC";  
+							 $values=array('1');
+							 $RecDataGmaneOne = $model->doSelect($RecDataGmaneOneSQL,$values); 
 							 foreach ($RecDataGmaneOne as $key => $value) {
     						?>
 								<div class="carousel-item carousel-itemone col-12 col-sm-6 col-md-4 col-lg-3 <?php if ($key == 0) {echo "active";}
@@ -142,7 +149,9 @@ include_once("function/app_top.php");
 						<div class="carousel-inner carousel-inner-two row w-100 mx-auto" role="listbox">
 
 							<?php
-							 $RecDataGmaneTwo = $db->select("SELECT * FROM game_row WHERE `g_row` = '2' ORDER BY id DESC");
+							$RecDataGmaneTwoSQL = "SELECT * FROM game_row WHERE `g_row` = ? ORDER BY id DESC";  
+							$values=array('2');
+							$RecDataGmaneTwo = $model->doSelect($RecDataGmaneTwoSQL,$values); 
 							 foreach ($RecDataGmaneTwo as $key => $value) {
     						?>
 								<div class="carousel-item carousel-itemtwo col-12 col-sm-6 col-md-4 col-lg-3 <?php if ($key == 1) {echo "active";}
@@ -177,7 +186,11 @@ include_once("function/app_top.php");
 			</div>
 		</div>
 
-		<?php $RecDataPoker = $db->select("SELECT `poker_register`,`poker_login` FROM setting WHERE sid ='1'");?>
+		<?php 
+		$RecDataPokerSQL = "SELECT `poker_register`,`poker_login` FROM setting WHERE sid =?";  
+		$values=array('1');
+		$RecDataPoker = $model->doSelect($RecDataPokerSQL,$values); 
+		?>
 		<div class="main-content bg-white pt-3 bg_poker">
            <div class="container c-down text-center py-5">
 				<h2 class="mt-3 txtTitle">آيا در بزرگترين سايت پوكر ايران اكانت دارين ؟</h2>

@@ -4028,6 +4028,82 @@ li.activeC{
   color: #000;
 }
 
+.lblChat {
+  display: block;
+  height: 379px;
+  width: 100%;
+  margin: 7px 3px;
+  padding: 3px;
+  border: 1px dotted rgba(73, 184, 255, 0.9);
+  box-shadow: inset 0 0 10px rgba(73, 184, 255, 0.20);
+  background-color: rgba(73, 184, 255, 0.10);
+  border-radius: 4px;
+  overflow-y: scroll;
+  text-transform: none;
+}
+
+.chat-support {
+  display: block;
+  font-size: 13px;
+  color: rgba(252, 255, 0, 0.9);
+  border: 1px solid rgba(252, 255, 0, 0.30);
+  box-shadow: inset 0 0 10px rgba(252, 255, 0, 0.20);
+  background-color: rgba(252, 255, 0, 0.10);
+  padding: 3px;
+  margin: 2px;
+  border-radius: 4px;
+  text-shadow: 0 0 2px #000;
+  letter-spacing: 1px;
+  text-align: justify;
+}
+
+.chat-you {
+  display: block;
+  font-size: 13px;
+  color: rgba(73, 184, 255, 0.9);
+  padding: 3px;
+  margin: 2px;
+  border-radius: 4px;
+  text-shadow: 0 0 3px #000;
+  text-align: justify;
+  letter-spacing: 1px;
+}
+
+#ContentPlaceHolder1_lblChat::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#ContentPlaceHolder1_lblChat::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #EEE;
+}
+
+#ContentPlaceHolder1_lblChat::-webkit-scrollbar-thumb {
+  background-color: rgb(201 141 27)
+}
+
+.captcha {
+  background-color: #ffc411;
+  width: 100%;
+  text-align: center;
+  border: 3px solid #FFFFFF;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-family: robotobold;
+  letter-spacing: 2px;
+  color: #000000;
+}
+
+.rate-span {
+  color: orangered;
+  text-shadow: 0 0 5px #000;
+  font-size: 19px;
+  font-weight: 700;
+}
+
 /* // Small devices (landscape phones, 375px and up) */
 /* @media (max-width: 375px) { 
 .counter_wrapper .counter_total p span{

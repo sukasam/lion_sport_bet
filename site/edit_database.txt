@@ -1,0 +1,39 @@
+CREATE TABLE `pm_info` (
+  `id` int(11) NOT NULL,
+  `player` varchar(20) NOT NULL,
+  `pm_account` varchar(16) NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `action` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `pm_info`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `pm_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+
+
+CREATE TABLE `support` (
+  `id` int(11) NOT NULL,
+  `player` varchar(50) NOT NULL,
+  `s_message` text NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
+  `s_action` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+ALTER TABLE `support`
+  ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `support`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+  ALTER TABLE `user_profile` CHANGE `Balance` `DBalance` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+  ALTER TABLE `user_profile` ADD `CBalance` VARCHAR(50) NULL DEFAULT '0' AFTER `DBalance`;
+  ALTER TABLE `user_profile` CHANGE `DBalance` `DBalance` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0';
+  

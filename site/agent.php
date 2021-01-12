@@ -152,7 +152,7 @@
 									
 								/////////////////////////							?></span> <?php echo TITLE_TOMAN;?></h3>
                         </div>
-                        <div class="col-md-8 col-md-offset-2 mb-60">
+                        <div class="col-md-8 offset-md-2 mb-60">
                             <?php if($_SESSION['errors_code'] != ""){
                                 if($_GET['action'] === "success"){
                                     ?>

@@ -1,7 +1,7 @@
 <?php
     include_once("function/app_top.php");
 
-    if($_GET['action'] === 'changePass'){
+    if(isset($_GET['action']) && $_GET['action'] === 'changePass'){
 		include_once("function/change_pass.php");	
     }
     
@@ -40,7 +40,7 @@
 				<div class="container card-content">					
 					<div class="row">
                         <div class="col-12">
-                            <h3 class="text-heading">Change Password</h3> 
+                            <h3 class="text-heading"><?php echo TOP_MENU_CHANGE_PASSWORD;?></h3> 
                         </div>
 						<div class="col-12">
                             <div class="text-center"> 
@@ -50,7 +50,7 @@
                     </div>
                     <form id="frm_login" name="frm_login" action="change_password.php?action=changePass" method="post">
 					<div class="row section-top-border">
-                        <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-8 offset-md-2">
                             <?php if($_SESSION['errors_code'] != ""){?>
                             <div class="alert <?php echo $_SESSION['errors_code'];?>">
                                 <?php echo $_SESSION['errors_msg'];?>

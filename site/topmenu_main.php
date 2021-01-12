@@ -35,7 +35,7 @@
                         </div>
                     </li> -->
                     <?php 
-                    /*<!-- <li><a href="javascript:void(0);"><?php echo $_SESSION['Player'];?> : <span class="spanO"><?php echo number_format($_SESSION['Player_Balance'])?></span> Toman</a></li> -->
+                    /*<!-- <li><a href="javascript:void(0);"><?php echo $_SESSION['Player'];?> : <span class="spanO"><?php echo number_format($_SESSION['Player_DBalance'])?></span> Toman</a></li> -->
                     <li><a href="main.php"><?php echo TOP_MENU_HOME;?></a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

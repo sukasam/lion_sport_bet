@@ -56,18 +56,18 @@
                             if($RecDataWithdrawStatus[0]['id'] == ""){
                             ?>
                         <?php if($_SESSION['errors_code'] != ""){?>
-                            <div class="col-md-8 col-md-offset-2">
+                            <div class="col-md-8 offset-md-2">
                                 <div class="col-12 alert <?php echo $_SESSION['errors_code'];?> mb-20" id="mainAl">
                                     <?php echo $_SESSION['errors_msg'];?>
                                 </div>
                             </div>
                         <?php }?>
-                        <div class="col-md-8 col-md-offset-2" style="display:none;" id="packageSL">
+                        <div class="col-md-8 offset-md-2" style="display:none;" id="packageSL">
                             <div class="col-12 alert alert-success mb-20">
                                 <?php echo WITHDRAW_PACKAGE_SELECT;?> <span class="pkamount"></span> <?php echo WITHDRAW_PACKAGE_SELECT2;?>
                             </div>
                         </div>
-						<div class="col-12 col-md-8 col-md-offset-2 justify-content-center text-center mb-40">
+						<div class="col-12 col-md-8 offset-md-2 justify-content-center text-center mb-40">
                              <button class="genric-btn success circle arrow mb-10" onClick="packageAmount('3000000')"><span style="padding-right: 10px;"><?php echo WITHDRAW_PACKAGE_3M;?></span><i class="fa fa-credit-card-alt" aria-hidden="true"></i></button> 
                             <!--<button class="genric-btn info circle arrow mb-10" onClick="packageAmount('2000000')"><span style="padding-right: 10px;"><?php echo WITHDRAW_PACKAGE_2M;?></span><i class="fa fa-credit-card-alt" aria-hidden="true"></i></button> 
                             <button class="genric-btn warning circle arrow mb-10" onClick="packageAmount('1500000')"><span style="padding-right: 10px;"><?php echo WITHDRAW_PACKAGE_1_5M;?></span><i class="fa fa-credit-card-alt" aria-hidden="true"></i></button> 
@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-12 mb-40">
                             <form id="frm_deposit" name="frm_deposit" action="withdraw2.php?action=withdraw" method="post">
-                            <div class="col-md-8 col-md-offset-2">
+                            <div class="col-md-8 offset-md-2">
                                 <!-- <div class="input-group form-group">
                                     <input type="password" class="form-control" placeholder="Pin Code" name="pin_code" id="pin_code" autocomplete="off" required>
                                 </div> -->

@@ -12,18 +12,14 @@
 	
 	//echo $_SESSION['count_login'];
 
-	if($_GET['login'] == 'no'){
+	if(isset($_GET['login']) && $_GET['login'] == 'no'){
 		session_destroy();
 		header("Location:login.php");
 	}
 
-    if($_GET['action'] === 'login'){
+    if(isset($_GET['action']) && $_GET['action'] === 'login'){
 		include_once("function/login.php");	
 	}
-
-	// if(isset($_SESSION['Player']) && isset($_SESSION['Player_PW'])){
-	// 	header("Location:set_pin.php");
-	// }
 
 	if(!isset($_GET['action'])){
         $_SESSION['errors_code'] = "";

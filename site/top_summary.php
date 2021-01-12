@@ -160,7 +160,7 @@
                             <div class="text-center"><?php echo TITLE_CONDITION_POINT;?></div> 
                         </div>
                         <div class="col-12 mb-20">
-                            <div class="col-md-10 col-md-offset-1 ">
+                            <div class="col-md-10 offset-md-1 ">
                                 <?php if($_SESSION['errors_code2'] != ""){?>
                                 <div class="alert <?php echo $_SESSION['errors_code2'];?> mb-20">
                                     <?php echo $_SESSION['errors_msg2'];?>
