@@ -51,7 +51,7 @@ $RecDataNotiTotal = $db->select("SELECT count(*) as countNoti FROM notification 
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="deposit.php"><img style="height: 25px; width: 25px; margin-top: -2px;" src="img/emp-perfmoney.png"> <?php echo TOP_MENU_DEPOSITS_PM_VOUCHER; ?></a>
-                            <a class="dropdown-item" href="deposit.php"><img style="height: 25px; width: 25px; margin-top: -2px;" src="img/emp-crypto.png"> <?php echo TOP_MENU_DEPOSITS_CRYPTO; ?></a>
+                            <a class="dropdown-item" href="deposit2.php"><img style="height: 25px; width: 25px; margin-top: -2px;" src="img/emp-crypto.png"> <?php echo TOP_MENU_DEPOSITS_CRYPTO; ?></a>
                         </div>
                     </li>
                     <li class="dropdown">
