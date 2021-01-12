@@ -186,7 +186,7 @@ define('TITLE_CASHOUTS_DESC','
 <br>
     If you do not have a second password or you have forgotten it, use the link below to download it.
     <br>
-    <a href="">Request For Second Password</a>
+    <a href="withdraw.php?action=SecondPassword">Request For Second Password</a>
     <br>
     <ul>
         <li> Please note that after submitting a request for a new second password, the previous second password will be invalid.</li>
@@ -199,6 +199,12 @@ define('TITLE_CASHOUTS_DESC','
 <br>
 <li> Prose site has no responsibility for where you will use this voucher and after creating and sending the voucher for you, we will not be able to follow these transactions in any way.
 </li>');
+
+define('TITLE_CASHOUTS_DESC_PM_ACCOUNT','                             
+            <li> The maximum waiting time for a Perfect Money August cash payment is 1 hour.</li>
+            <li> Dear user, please note that your account information was entered by you during registration and it is not possible to change or edit it. If you are not sure about the correctness of this account number, contact the site support.</li>
+            <li> If the account number entered is incorrect, the site will not be responsible for refunding your money.</li>
+            <li> After registering the cache, you will be given a 4-digit code. You can use this code to cancel your August cache. It should be noted that without this code, it is not possible to cancel the August cache in any way.</li>');
     
     define('TITLE_FORGET_PASSWORD','بازیابی رمز ورود');
 

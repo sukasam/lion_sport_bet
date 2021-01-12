@@ -4104,6 +4104,13 @@ li.activeC{
   font-weight: 700;
 }
 
+a.orange-link{
+  color: orangered;
+}
+a.orange-link:hover{
+  color: rgb(0, 38, 255);
+}
+
 /* // Small devices (landscape phones, 375px and up) */
 /* @media (max-width: 375px) { 
 .counter_wrapper .counter_total p span{

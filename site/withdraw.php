@@ -5,6 +5,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'withdraw') {
     include_once "function/withdraw.php";
 }
 
+if (isset($_GET['action']) && $_GET['action'] === 'SecondPassword') {
+    include_once "function/secondpassword.php"; 
+}
+
 if (!isset($_GET['action'])) {
     $_SESSION['errors_code'] = "";
 }
@@ -67,34 +71,20 @@ $RecDataWithdraw = $model->doSelect($RecDataWithdrawSQL, $values);
                                         </div>
                                         <div class="form-group">
                                             <label>Amount:</label>
-                                            <input type="text" class="form-control" placeholder="Amount" name="amount" id="amount" autocomplete="off" required>
+                                            <input type="tel" class="form-control" placeholder="0" name="amount" id="amount" autocomplete="off" required onkeypress="return isNumberKey(event);">
                                         </div>
                                         <div class="form-group">
                                             <label>Second Password:</label>
-                                            <input type="password" class="form-control" placeholder="Second Password" name="second_password" id="second_password" autocomplete="off" required>
+                                            <input type="password" class="form-control" placeholder="Second Password" name="second_password" id="second_password" autocomplete="off" required onkeypress="return isNumberKey(event);">
                                         </div>
                                         <div class="form-group text-center">
                                         <button class="genric-btn primary circle arrow" id="btWithdraw"><?php echo WITHDRAW_CONFIRMATION; ?>&nbsp&nbsp<i class="fa fa-spinner fa-spin hide" aria-hidden="true" id='spexWithdraw'></i></button>
                                         </div>
-                                        <!-- <div class="input-group form-group justify-content-center">
-                                            <?php
-$_SESSION['security_code'] = generateCode(4);
-?>
-                                            <div class="captcha">
-                                                <?php echo $_SESSION['security_code']; ?>
-                                            </div>
-
-                                        </div>
-                                        <div class="input-group form-group">
-                                            <div class="input-group-prepend">
-                                            </div>
-                                            <input type="password" class="form-control" placeholder="Secured Code" id="withdraw_captcha_code" name="withdraw_captcha_code" autocomplete="off" required>
-                                        </div> -->
                                     </div>
                                     <div class="col-md-7">
                                         <?php
-$TITLE_CASHOUTS_DESC = str_replace("%s1", number_format($configDT[0]['currency_withdraw']), TITLE_CASHOUTS_DESC);
-echo $TITLE_CASHOUTS_DESC;?>
+                                        $TITLE_CASHOUTS_DESC = str_replace("%s1", number_format($configDT[0]['currency_withdraw']), TITLE_CASHOUTS_DESC);
+                                        echo $TITLE_CASHOUTS_DESC;?>
                                     </div>
                                 </div>
                                 <input type="hidden" name="<?php echo $token_id; ?>" value="<?php echo $token_value; ?>"/>
@@ -188,9 +178,9 @@ if (!empty($RecDataWithdraw)) {
 
             var wType = "";
             if(withdrawType == '1'){
-                wType = 'E-Voucher';
+                wType = 'Perfect Money Voucher';
             }else{
-                wType = 'Online Card';
+                wType = 'Perfect Money Direct';
             }
 
             var conDetail = '<span style="font-weight: bold;">Amount : </span>'+amount+' <span style="font-weight: bold;">Toman</span><br>';

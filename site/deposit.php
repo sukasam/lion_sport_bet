@@ -62,18 +62,18 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
                                         <?php }?>
                                         <div class="row mb-20">
                                             <div class="col-12 text-center mb-20">
-                                                <span class="rate-span"><?php echo number_format($configDT[0]['currency_withdraw']);?> <span class="small-text">Chips</span> -&gt; 1$ <span class="small-text">Perfect Money</span></span>
+                                                <span class="rate-span">  1$ <span class="small-text">Perfect Money</span> -&gt; <?php echo number_format($configDT[0]['currency_withdraw']);?> <span class="small-text">Chips</span></span>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label>E-Voucher:</label>
-                                                    <input type="text" value="" name="e_voucher" id="e_voucher" class="form-control" placeholder="E-Voucher" autofocus="" required>
+                                                    <input type="tel" value="" name="e_voucher" id="e_voucher" class="form-control" placeholder="E-Voucher" autofocus="" required onkeypress="return isNumberKey(event);">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label>Activation Code:</label>
-                                                    <input type="text" value="" name="activation_code" id="activation_code" class="form-control parsley-validated" placeholder="Activation Code" autofocus="" required>
+                                                    <input type="tel" value="" name="activation_code" id="activation_code" class="form-control parsley-validated" placeholder="Activation Code" autofocus="" required onkeypress="return isNumberKey(event);">
                                                 </div>
                                             </div>
                                             <div class="col-12">
@@ -90,7 +90,7 @@ $_SESSION['security_code'] = generateCode(4);
                                                 <div class="input-group form-group">
                                                     <div class="input-group-prepend">
                                                     </div>
-                                                    <input type="password" class="form-control" placeholder="Secured Code" name="deposit_captcha_code" id="deposit_captcha_code" autocomplete="off" required>
+                                                    <input type="password" class="form-control" placeholder="Secured Code" name="deposit_captcha_code" id="deposit_captcha_code" autocomplete="off" required onkeypress="return isNumberKey(event);">
                                                 </div>
                                             </div>
                                         </div>
