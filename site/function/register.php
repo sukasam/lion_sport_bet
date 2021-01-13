@@ -51,8 +51,8 @@ if ($csrf->check_valid('post')) {
 
                     // $qUser  = $db->insert('user_profile',$insert_arrays);
 
-                    $RegisterSQL = "insert into user_profile (Player,Email,Telephone,onlineCard,inviteUser,uactive,password) values (?,?,?,?,?,?,?)";
-                    $values = array($Player, $Email, $Phone, 0, 0, 0, $enPass);
+                    $RegisterSQL = "insert into user_profile (Player,Email,Telephone,onlineCard,inviteUser,uactive,password,eactive) values (?,?,?,?,?,?,?,?)";
+                    $values = array($Player, $Email, $Phone, 0, 0, 0, $enPass,0);
                     $model->doinsert($RegisterSQL, $values);
 
                     $_SESSION['errors_code'] = "alert-success";

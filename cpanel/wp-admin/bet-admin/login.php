@@ -1,10 +1,15 @@
 <?php
+include_once "../../function/csrf.class.php";
 session_start();
-error_reporting(0);
-if($_GET['action'] == "login"){
-  include_once("../../function/cpanel/login.php");    
+//error_reporting(0);
+if (isset($_GET['action']) && $_GET['action'] === "login") {
+    include_once "../../function/cpanel/login.php";
 }
-  
+
+$csrf = new csrf();
+$token_id = $csrf->get_token_id();
+$token_value = $csrf->get_token($token_id);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +33,7 @@ if($_GET['action'] == "login"){
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
   <link href="css/style-responsive.css" rel="stylesheet">
-  
+
   <!-- =======================================================
     Template Name: Dashio
     Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
@@ -56,6 +61,7 @@ if($_GET['action'] == "login"){
             <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
             </span>
             </label>-->
+            <input type="hidden" name="<?php echo $token_id; ?>" value="<?php echo $token_value; ?>"/>
           <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
           <!-- <hr>
           <div class="login-social-link centered">
@@ -71,14 +77,14 @@ if($_GET['action'] == "login"){
           </div>  -->
         </div>
         <?php
-        if($_GET['action'] == 'login'){
-          ?>
+if (isset($_GET['action']) && $_GET['action'] === 'login') {
+    ?>
           <div class="alert alert-danger"><b>Oh snap!</b> Username or password is invalid.</div>
           <?php
-        }
-        ?>
+}
+?>
       </form>
-      
+
     </div>
   </div>
   <!-- js placed at the end of the document so the pages load faster -->

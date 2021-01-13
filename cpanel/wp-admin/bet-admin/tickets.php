@@ -94,7 +94,7 @@
   <script src="js/jquery.dataTables.min.js"></script>
 
   <!--common script for all pages-->
-  <!-- <script src="lib/common-scripts.js"></script> -->
+  <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
   <script type="text/javascript">
     /* Formating function for row details */
@@ -125,6 +125,9 @@
        var dataTable = $('#hidden-table-info').DataTable( {
 					"processing": true,
 					"serverSide": true,
+          "aaSorting": [
+            [0, 'desc']
+          ],
           "iDisplayLength": 25,
 					"ajax":{
 						url :"tickets_ajax.php", // json datasource
@@ -135,7 +138,14 @@
 							$("#hidden-table-info_processing").css("display","none");
 						
 						}
-					}
+					},initComplete: function() {
+              $('#hidden-table-info_filter input').unbind();
+              $('#hidden-table-info_filter input').bind('keyup', function(e) {
+                  if(e.keyCode == 13) {
+                    dataTable.search(this.value).draw();
+                  }
+              });
+          },
 				} );
 
      

@@ -78,7 +78,7 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
 
                                     <div class="col-md-7">
                                         <?php
-$TITLE_DEPOSITS_DESC_CC = str_replace("%s1", number_format($configDT[0]['currency']), TITLE_DEPOSITS_DESC_CC);
+$TITLE_DEPOSITS_DESC_CC = str_replace("%s1", number_format($configDT[0]['currency_cc']), TITLE_DEPOSITS_DESC_CC);
 echo $TITLE_DEPOSITS_DESC_CC;
 ?>
                                     </div>

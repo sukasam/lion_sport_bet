@@ -5,7 +5,7 @@ include_once("../../function/poker_config.php");
 include_once("../../function/poker_api.php");
 include_once('../../_inc/config.php');
 
-if($_GET['action'] == 'submit'){
+if(isset($_GET['action']) && $_GET['action'] === 'submit'){
 
   $insert_arrays = array(
 		'tid' => $_POST['tid'],

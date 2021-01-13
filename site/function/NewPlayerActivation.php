@@ -21,8 +21,8 @@ $RecDataUser = $model->doSelect($RecDataUserSQL, $values);
 
 if ($RecDataUser[0]['id'] != '') {
 
-    $ActiveUserSQL = "update user_profile set eactive=? where id=?";
-    $values = array('1', $RecDataUser[0]['id']);
+    $ActiveUserSQL = "update user_profile set uactive=?, eactive=? where id=?";
+    $values = array('1','1', $RecDataUser[0]['id']);
     $model->doUpdate($ActiveUserSQL, $values);
 
     $_SESSION['errors_code'] = "alert-success";

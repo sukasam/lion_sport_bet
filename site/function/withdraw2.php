@@ -19,8 +19,12 @@ if ($csrf->check_valid('post')) {
 
         if ($pkamount <= $RecData[0]['CBalance']) {
 
-            $sqli = "insert into withdraw_history (player,amount,evoucher,activation_code,evoucher_amount,date,time,withdraw_type,status,auto_withdraw) values (?,?,?,?,?,?,?,?,?,?)";
-            $values = array($_SESSION['Player'], $pkamount, '', '', '', date("Y-m-d"), date("H:i:s"), '2', '0', '0');
+            $sqlST = "SELECT * FROM setting WHERE `sid` = ?";
+            $valuesST = array('1');
+            $RecDataST = $model->doSelect($sqlST, $valuesST);
+
+            $sqli = "insert into withdraw_history (player,amount,evoucher,activation_code,evoucher_amount,currency,date,time,withdraw_type,status,auto_withdraw) values (?,?,?,?,?,?,?,?,?,?,?)";
+            $values = array($_SESSION['Player'], $pkamount, '', '', '', $RecDataST[0]['currency'], date("Y-m-d"), date("H:i:s"), '2', '0', '0');
             $model->doinsert($sqli, $values);
 
             //Updated CBalance

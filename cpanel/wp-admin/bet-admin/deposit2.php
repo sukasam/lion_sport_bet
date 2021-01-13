@@ -1,6 +1,6 @@
 <?php  
     include_once("../../function/cpanel/app_top.php");
-    if($_GET['action'] == "submit"){
+    if(isset($_GET['action']) && $_GET['action'] === "submit"){
       $array_fields = array(
 			'status' => $_REQUEST['status'],
 			);
@@ -122,13 +122,13 @@
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <!-- <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script> -->
-  <!-- <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script> -->
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
   <!-- <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script> -->
   <!--common script for all pages-->
-  <!-- <script src="lib/common-scripts.js"></script> -->
+  <script src="lib/common-scripts.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
   <!--script for this page-->
   <script type="text/javascript">
@@ -145,6 +145,9 @@
       var dataTable = $('#hidden-table-info').DataTable( {
 					"processing": true,
 					"serverSide": true,
+          "aaSorting": [
+            [0, 'desc']
+          ],
           "iDisplayLength": 25,
 					"ajax":{
 						url :"deposit2_ajax.php", // json datasource
@@ -155,7 +158,15 @@
 							$("#hidden-table-info_processing").css("display","none");
 						}
 					},
-          "order": [[ 0, "desc" ]],
+          "order": [[ 0, "desc" ]]
+          ,initComplete: function() {
+              $('#hidden-table-info_filter input').unbind();
+              $('#hidden-table-info_filter input').bind('keyup', function(e) {
+                  if(e.keyCode == 13) {
+                    dataTable.search(this.value).draw();
+                  }
+              });
+          },
 				} );
     });
   </script>

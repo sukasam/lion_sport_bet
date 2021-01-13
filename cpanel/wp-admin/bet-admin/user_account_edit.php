@@ -1,58 +1,41 @@
 <?php
- 
-  include_once("../../function/cpanel/app_top.php");
-  include_once("../../function/poker_config.php");
-  include_once("../../function/poker_api.php");
 
-  if($_GET['action'] == "submit"){
+include_once "../../function/cpanel/app_top.php";
 
-    if($_POST['Password'] != ""){
-      $update_arrays = array(
-        'RealName' => $_POST['RealName'],
-        'Email' => $_POST['Email'],
-        'Telephone' => $_POST['Telephone'],
-        //'Balance' => $_POST['Balance'],
-        'onlineCard' => $_POST['onlineCard'],
-        'permission' => $_POST['permission'],
-        'password' => encode($_POST['Password'],KEY_HASH),
-        'uactive' => "0",
-        // 'inviteUser' => $_POST['inviteUser'],
-      );
-    }else{
-      $update_arrays = array(
-        'RealName' => $_POST['RealName'],
-        'Email' => $_POST['Email'],
-        'Telephone' => $_POST['Telephone'],
-        //'Balance' => $_POST['Balance'],
-        'onlineCard' => $_POST['onlineCard'],
-        'permission' => $_POST['permission'],
-        'password' => $_POST['passOld'],
-        'uactive' => "0",
-        // 'inviteUser' => $_POST['inviteUser'],
-      );
+if (isset($_GET['action']) && $_GET['action'] === "submit") {
+
+    if ($_POST['Password'] != "") {
+        $sqlu = "update user_profile set Email=?, Telephone=?, permission=?, password=?, uactive=?, eactive=? where Player=?";
+        $values = array($_POST['Email'], $_POST['Telephone'], $_POST['permission'], encode($_POST['Password'], KEY_HASH), $_POST['uactive'], $_POST['eactive'], $_POST['Player']);
+
+    } else {
+        $sqlu = "update user_profile set Email=?, Telephone=?, permission=?, uactive=?, eactive=? where Player=?";
+        $values = array($_POST['Email'], $_POST['Telephone'], $_POST['permission'], $_POST['uactive'], $_POST['eactive'], $_POST['Player']);
     }
 
-    $where_arrays = array(
-      'Player' => $_POST['Player'],
-    );
-  
-    //if ran successfully it will reture last insert id, else 0 for error
-    $q  = $db->Update('user_profile',$update_arrays,$where_arrays);
+    $model->doUpdate($sqlu, $values);
 
-    
+    /// Updated Banks
+    $sqlu2 = "update pm_info set pm_account=? where player=?";
+    $values2 = array($_POST['pm_account'], $_POST['Player']);
+    $model->doUpdate($sqlu2, $values2);
+
     header("Location:user_account.php");
 
-  }else{
-    
-  }
+} 
 
-  $RecDataUser = $db->select("SELECT * FROM user_profile WHERE Player = '".$_GET['Player']."'");
- // $RecDataUserPin = $db->select("SELECT * FROM user_pin WHERE Player = '".$_GET['Player']."'");
-  //$RecDataUserBlock = $db->select("SELECT * FROM user_block WHERE Player = '".$_GET['Player']."'");
+$RecDataUserSQL = "SELECT * FROM user_profile WHERE Player = ?";
+$valuesRecDataUserSQL = array($_GET['Player']);
+$RecDataUser = $model->doSelect($RecDataUserSQL, $valuesRecDataUserSQL);
 
-  /*echo "<pre>";
-  print_r($apiUser);
-  echo "</pre>";*/
+$RecDataBankSQL = "SELECT * FROM pm_info WHERE player = ?";
+$valuesRecDataBankSQL = array($_GET['Player']);
+$RecDataBank = $model->doSelect($RecDataBankSQL, $valuesRecDataBankSQL);
+
+
+// echo "<pre>";
+// print_r($RecDataUser[0]);
+// echo "</pre>";
 
 ?>
 <!DOCTYPE html>
@@ -88,12 +71,12 @@
 
 <body>
   <section id="container">
-    <?php include_once("top_bar.php");?>
-    <?php include_once("sidebar_menu.php");?>
+    <?php include_once "top_bar.php";?>
+    <?php include_once "sidebar_menu.php";?>
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper site-min-height">
-        <h3><i class="fa fa-angle-right"></i> User Account (Edit -> <?php echo $_GET['Player'];?>)</h3>
+        <h3><i class="fa fa-angle-right"></i> User Account <i class="fa fa-angle-right"></i> Active Users <i class="fa fa-angle-right"></i> (Edit -> <?php echo $_GET['Player']; ?>)</h3>
         <div class="row mt">
           <div class="col-lg-12">
           <div class="form-panel">
@@ -101,120 +84,78 @@
                 <div class="form-group">
                   <label class="col-lg-2 col-sm-2 control-label">Player</label>
                   <div class="col-lg-10">
-                    <p class="form-control-static"><?php echo $RecDataUser[0]['Player'];?></p>
-                    <input type="hidden" name="Player" class="form-control" value="<?php echo $RecDataUser[0]['Player'];?>">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">RealName</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="RealName" class="form-control" value="<?php echo $RecDataUser[0]['RealName'];?>">
+                    <p class="form-control-static"><?php echo $RecDataUser[0]['Player']; ?></p>
+                    <input type="hidden" name="Player" class="form-control" value="<?php echo $RecDataUser[0]['Player']; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="text" name="Email" class="form-control" value="<?php echo $RecDataUser[0]['Email'];?>">
+                    <input type="text" name="Email" class="form-control" value="<?php echo $RecDataUser[0]['Email']; ?>">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Phone</label>
                   <div class="col-sm-10">
-                    <input type="text" name="Telephone" class="form-control" value="<?php echo $RecDataUser[0]['Telephone'];?>">
+                    <input type="text" name="Telephone" class="form-control" value="<?php echo $RecDataUser[0]['Telephone']; ?>">
                   </div>
                 </div>
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Gender</label>
-                  <div class="col-sm-10">
-                    <select class="form-control" name="Gender" title="Player's gender.">
-                      <option value="Male" <?php if($apiUser->Gender == 'Male'){echo 'selected=""';}?>>Male</option>
-                      <option value="Female" <?php if($apiUser->Gender == 'Female'){echo 'selected=""';}?>>Female</option>
-                    </select>
-                  </div>
-                </div> -->
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Location</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="Location" class="form-control" value="<?php echo $apiUser->Location;?>">
-                  </div>
-                </div> -->
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Balance</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="Balance" class="form-control" value="<?php echo $apiUser->Balance;?>">
-                  </div>
-                </div> -->
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Chips Transfer</label>
-                  <div class="col-sm-10">
-                  <select class="form-control" name="ChipsTransfer" title="Chips Transfer">
-                      <option value="Yes" <?php if($apiUser->ChipsTransfer == 'Yes'){echo 'selected=""';}?>>Yes</option>
-                      <option value="No" <?php if($apiUser->ChipsTransfer == 'No'){echo 'selected=""';}?>>No</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Chips Accept</label>
-                  <div class="col-sm-10">
-                  <select class="form-control" name="ChipsAccept" title="Chips Accept">
-                      <option value="Yes" <?php if($apiUser->ChipsAccept == 'Yes'){echo 'selected=""';}?>>Yes</option>
-                      <option value="No" <?php if($apiUser->ChipsAccept == 'No'){echo 'selected=""';}?>>No</option>
-                    </select>
-                  </div>
-                </div> -->
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">
                     <input type="text" name="Password" class="form-control" value="">
-                    <input type="hidden" name="passOld" value="<?php echo $RecDataUser[0]['password'];?>">
+                    <input type="hidden" name="passOld" value="<?php echo $RecDataUser[0]['password']; ?>">
                     <br>Password not displayed. Leave blank to keep existing password.
                   </div>
                 </div>
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Player Pin</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="playerPin" class="form-control" value="<?php echo $apiUser->Note;?>" maxlength="4">
-                  </div>
-                </div> -->
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Permissions</label>
                   <div class="col-sm-10">
                   <select class="form-control" name="permission" title="Permissions">
-                      <option value="" <?php if($RecDataUser[0]['permission'] == ''){echo 'selected=""';}?>></option>
-                      <option value="D1" <?php if($RecDataUser[0]['permission'] == 'D1'){echo 'selected=""';}?>>D1</option>
-                      <option value="D2" <?php if($RecDataUser[0]['permission'] == 'D2'){echo 'selected=""';}?>>D2</option>
-                      <?php if($RecDataUser[0]['Player'] == "adminT-T"){
-                        ?>
-                        <option value="admin" <?php if($RecDataUser[0]['permission'] == 'admin'){echo 'selected=""';}?>>Administrator</option>
+                      <option value="Customer" <?php if ($RecDataUser[0]['permission'] == 'Customer') {echo 'selected=""';}?>>Customer</option>
+                      <!-- <option value="D1" <?php if ($RecDataUser[0]['permission'] == 'D1') {echo 'selected=""';}?>>D1</option>
+                      <option value="D2" <?php if ($RecDataUser[0]['permission'] == 'D2') {echo 'selected=""';}?>>D2</option> -->
+                      <?php if ($RecDataUser[0]['Player'] === "adminT-T") {
+    ?>
+                        <option value="admin" <?php if ($RecDataUser[0]['permission'] == 'admin') {echo 'selected=""';}?>>Administrator</option>
                         <?php
-                      }?>
-                    </select>
-                  </div>
-                </div>
-                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Payment Online</label>
-                  <div class="col-sm-10">
-                    <select class="form-control" name="onlineCard" title="Payment Online">
-                      <option value="0" <?php if($RecDataUser[0]['onlineCard'] == 0){echo 'selected=""';}?>>No</option>
-                      <option value="1" <?php if($RecDataUser[0]['onlineCard'] == 1){echo 'selected=""';}?>>Yes</option>
-                    </select>
-                  </div>
-                </div>
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Invite User</label>
-                  <div class="col-sm-10">
-                    <select class="form-control" name="inviteUser" title="Invite User">
-                      <option value="0" <?php if($RecDataUser[0]['inviteUser'] == 0){echo 'selected=""';}?>>No</option>
-                      <option value="1" <?php if($RecDataUser[0]['inviteUser'] == 1){echo 'selected=""';}?>>Yes</option>
+}?>
                     </select>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Block User</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Active User</label>
                   <div class="col-sm-10">
-                    <select class="form-control" name="blockUser" title="Block User">
-                      <option value="0" <?php if($RecDataUserBlock[0]['block'] == 0){echo 'selected=""';}?>>No</option>
-                      <option value="1" <?php if($RecDataUserBlock[0]['block'] == 1){echo 'selected=""';}?>>Yes</option>
+                    <select class="form-control" name="uactive" title="Status User">
+                      <option value="0" <?php if ($RecDataUser[0]['uactive'] == '0') {echo 'selected=""';}?>>No</option>
+                      <option value="1" <?php if ($RecDataUser[0]['uactive'] == '1') {echo 'selected=""';}?>>Yes</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Active User by Email</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" name="eactive" title="Active User by Email">
+                      <option value="0" <?php if ($RecDataUser[0]['eactive'] == '0') {echo 'selected=""';}?>>No</option>
+                      <option value="1" <?php if ($RecDataUser[0]['eactive'] == '1') {echo 'selected=""';}?>>Yes</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-12 control-label"><strong>Perfect Money Account Information</strong></label>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P.M Account</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="pm_account" class="form-control" value="<?php if(isset($RecDataBank[0]['pm_account'])){echo $RecDataBank[0]['pm_account'];} ?>">
+                  </div>
+                </div>
+                <!-- <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">P.M Account Status</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" name="pmaction" title="P.M Account Status">
+                      <option value="0" <?php if ($RecDataUser[0]['active'] == 'Enable') {echo 'selected=""';}?>>Enable</option>
+                      <option value="1" <?php if ($RecDataUser[0]['active'] == 'Disable') {echo 'selected=""';}?>>Disable</option>
                     </select>
                   </div>
                 </div> -->
@@ -224,7 +165,7 @@
                   <button class="btn btn-theme04" type="button" onClick="window.location='user_account.php';">Cancel</button>
                   </div>
                 </div>
-                
+
               </form>
             </div>
           </div>
@@ -234,7 +175,7 @@
     </section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
-    <?php include_once("footer_bar.php");?>
+    <?php include_once "footer_bar.php";?>
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>

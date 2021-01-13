@@ -6,7 +6,7 @@ include_once "../../function/poker_api.php";
 include_once "../../function/fucntion.php";
 include_once "fckeditor/fckeditor.php";
 
-if ($_GET['action'] == "submit") {
+if (isset($_GET['action']) && $_GET['action'] === "submit") {
 
     $id = $db->CleanDBData($_POST['id']);
     $g_name = $db->CleanDBData($_POST['g_name']);
@@ -135,7 +135,7 @@ $RecDataGuide = $db->select("SELECT * FROM guide WHERE `id` = '" . $_GET['id'] .
   <!-- <script src="lib/jquery/jquery.min.js"></script> -->
   <!-- <script src="lib/bootstrap/js/bootstrap.min.js"></script> -->
   <!-- <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script> -->
-  <!-- <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script> -->
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <!-- <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
   <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
@@ -150,7 +150,7 @@ $RecDataGuide = $db->select("SELECT * FROM guide WHERE `id` = '" . $_GET['id'] .
   <script type="text/javascript" src="lib/jquery.inputmask.bundle.min.js"></script>
 
   <!--common script for all pages-->
-  <!-- <script src="lib/common-scripts.js"></script> -->
+  <script src="lib/common-scripts.js"></script>
   <!--script for this page-->
 
 </body>

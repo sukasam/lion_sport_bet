@@ -2,7 +2,7 @@
 
   include_once("../../function/poker_api.php"); 
 
-  if($_GET['action'] == "login"){
+  if(isset($_GET['action']) && $_GET['action'] === "login"){
       include_once("../../function/cpanel/login_a.php");
   }
 
@@ -131,7 +131,7 @@
           </div>  -->
         </div>
         <?php
-        if($_GET['action'] == 'login'){
+        if(isset($_GET['action']) && $_GET['action'] === 'login'){
           ?>
           <div class="alert alert-danger"><b>Oh snap!</b> Username or password is invalid.</div>
           <?php

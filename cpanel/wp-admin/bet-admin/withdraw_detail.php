@@ -2,7 +2,7 @@
  
   include_once("../../function/cpanel/app_top.php");
 
-  if($_GET['action'] == "submit"){
+  if(isset($_GET['action']) && $_GET['action'] === "submit"){
       $array_fields = array(
 			'status' => $_POST['status'],
 			);

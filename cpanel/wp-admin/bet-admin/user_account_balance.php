@@ -1,59 +1,54 @@
 <?php
- 
-  include_once("../../function/cpanel/app_top.php");
-  include_once("../../function/poker_config.php");
-  include_once("../../function/poker_api.php");
 
-  if($_GET['action'] == "submit"){
+include_once "../../function/cpanel/app_top.php";
+include_once "../../function/poker_config.php";
+include_once "../../function/poker_api.php";
 
-    if($_POST['IncreaseBalance'] != ""){
-      
-      $RecDataUserBalance = $db->select("SELECT Balance FROM user_profile WHERE Player = '".$_POST['Player']."'");
+if (isset($_GET['action']) && $_GET['action'] === "submit") {
 
-      $UserBalance = $RecDataUserBalance[0]['Balance'];
-      $newBalance = $UserBalance + $_POST['IncreaseBalance'];
-    
-      $update_arrays = array(
-        'Balance' => $newBalance,
-      );
+    if ($_POST['IncreaseDBalance'] != "") {
 
-      $where_arrays = array(
-        'Player' => $_POST['Player'],
-      );
-    
-      //if ran successfully it will reture last insert id, else 0 for error
-      $q  = $db->Update('user_profile',$update_arrays,$where_arrays);
+        $RecDataUserBalanceSQL = "SELECT DBalance FROM user_profile WHERE Player = ? LIMIT 1";
+        $valuesRecDataUserBalanceSQL = array($_POST['Player']);
+        $RecDataUserBalance = $model->doSelect($RecDataUserBalanceSQL, $valuesRecDataUserBalanceSQL);
 
-      if($q == 1){
-        
-        $dateLog = date("Y-m-d");
-        $timeLog = date("H:i:s");
-    
-        $insert_arrays = array(
-          'player'=> $_POST['Player'],
-          'amount'=> $_POST['IncreaseBalance'],
-          'deposit_type'=> "Online Card",
-          'date'=> $dateLog,
-          'time'=> $timeLog,
-          'tran_id' => $_POST['tran_id'], 
-          'status' => "1",
-        );
-        
-        $qq  = $db->insert('deposit_history',$insert_arrays);
+        $RecDataConvestSQL = "SELECT currency,currency_cc FROM setting WHERE `sid` = ? LIMIT 1";
+        $valuesRecDataConvestSQL = array('1');
+        $RecDataConvest = $model->doSelect($RecDataConvestSQL, $valuesRecDataConvestSQL);
 
-      }
+        $UserBalance = $RecDataUserBalance[0]['DBalance'];
+
+        if($_POST['deposit_type'] === "PM"){
+          $currency = $RecDataConvest[0]['currency'];
+          $newBalance = $UserBalance + ($_POST['IncreaseDBalance'] * $currency);
+        }else if($_POST['deposit_type'] === "CC"){
+          $currency = $RecDataConvest[0]['currency_cc'];
+          $newBalance = $UserBalance + ($_POST['IncreaseDBalance'] * $currency);
+        }else{
+          
+        }
+
+        $sqlu2 = "update user_profile set DBalance=? where Player=?";
+        $values2 = array($newBalance, $_POST['Player']);
+        $model->doUpdate($sqlu2, $values2);
+
+        $sqliH = "insert into deposit_history (player,amount,deposit_type,date,time,tran_id,currency,status) values (?,?,?,?,?,?,?,?)";
+        $valuesH = array($_POST['Player'], $_POST['IncreaseDBalance'], $_POST['deposit_type'], date("Y-m-d"), date("H:i:s"), $_POST['tran_id'],$currency,'1');
+        $model->doinsert($sqliH, $valuesH);
 
     }
-    
+
     header("Location:user_account.php");
 
-  }else{
-    $RecDataUser = $db->select("SELECT * FROM user_profile WHERE Player = '".$_GET['Player']."'");
-  }
+} else {
+    $RecDataUserSQL = "SELECT * FROM user_profile WHERE Player = ?";
+    $valuesRecDataUserSQL = array($_GET['Player']);
+    $RecDataUser = $model->doSelect($RecDataUserSQL, $valuesRecDataUserSQL);
+}
 
-  /*echo "<pre>";
-  print_r($apiUser);
-  echo "</pre>";*/
+/*echo "<pre>";
+print_r($apiUser);
+echo "</pre>";*/
 
 ?>
 <!DOCTYPE html>
@@ -89,12 +84,12 @@
 
 <body>
   <section id="container">
-    <?php include_once("top_bar.php");?>
-    <?php include_once("sidebar_menu.php");?>
+    <?php include_once "top_bar.php";?>
+    <?php include_once "sidebar_menu.php";?>
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper site-min-height">
-        <h3><i class="fa fa-angle-right"></i> User Account (Balance -> <?php echo $_GET['Player']?>)</h3>
+        <h3><i class="fa fa-angle-right"></i> User Account <i class="fa fa-angle-right"></i> Active Users <i class="fa fa-angle-right"></i> (Balance -> <?php echo $_GET['Player'] ?>)</h3>
         <div class="row mt">
           <div class="col-lg-12">
           <div class="form-panel">
@@ -102,42 +97,44 @@
                 <div class="form-group">
                   <label class="col-lg-2 col-sm-2 control-label">Player</label>
                   <div class="col-lg-10">
-                    <p class="form-control-static"><?php echo $RecDataUser[0]['Player'];?></p>
-                    <input type="hidden" name="Player" class="form-control" value="<?php echo $RecDataUser[0]['Player'];?>">
+                    <p class="form-control-static"><?php echo $RecDataUser[0]['Player']; ?></p>
+                    <input type="hidden" name="Player" class="form-control" value="<?php echo $RecDataUser[0]['Player']; ?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Balance</label>
+                <!-- <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Deposits Balance</label>
                   <div class="col-sm-10">
-                    <p class="form-control-static"><?php echo number_format($RecDataUser[0]['Balance']);?></p>
+                    <p class="form-control-static"><?php echo number_format($RecDataUser[0]['DBalance']); ?></p>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Increase Balance</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Increase Deposits (USD)</label>
                   <div class="col-sm-10">
-                    <input type="text" name="IncreaseBalance" class="form-control" value="">
+                    <input type="text" name="IncreaseDBalance" class="form-control" value="">
                   </div>
                 </div>
-                
                 <div class="form-group">
                   <label class="col-sm-2 col-sm-2 control-label">Transaction ID</label>
                   <div class="col-sm-10">
                     <input type="text" name="tran_id" class="form-control" value="">
                   </div>
-                </div> 
-                <!-- <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Decrease Balance</label>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 col-sm-2 control-label">Deposits Type</label>
                   <div class="col-sm-10">
-                    <input type="text" name="DecreaseBalance" class="form-control" value="">
+                    <select class="form-control" name="deposit_type" title="Deposit Type">
+                      <option value="PM">Perfect Money</option>
+                      <option value="CC">Cryptocurrency</option>
+                    </select>
                   </div>
-                </div> -->
+                </div>
                 <div class="form-group">
                   <div class="col-sm-12 text-center">
                   <button class="btn btn-theme" type="submit">Save</button>
                   <button class="btn btn-theme04" type="button" onClick="window.location='user_account.php';">Cancel</button>
                   </div>
                 </div>
-                
+
               </form>
             </div>
           </div>
@@ -147,7 +144,7 @@
     </section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
-    <?php include_once("footer_bar.php");?>
+    <?php include_once "footer_bar.php";?>
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="lib/jquery/jquery.min.js"></script>

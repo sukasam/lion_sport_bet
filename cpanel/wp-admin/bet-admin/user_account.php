@@ -1,17 +1,17 @@
 <?php  
     include_once("../../function/cpanel/app_top.php");
 
-    if($_GET['action'] == 'delete'){
+    if(isset($_GET['action']) && $_GET['action'] === 'delete'){
       
-      $Player = $_GET['user'];
+      // $Player = $_GET['user'];
 
-      $params = array("Command"  => "AccountsDelete",
-                    "Player" => $Player
-                  );
+      // $params = array("Command"  => "AccountsDelete",
+      //               "Player" => $Player
+      //             );
 
-      $apiUser = Poker_API($params);
+      // $apiUser = Poker_API($params);
 
-      header("Location:user_account.php");
+      // header("Location:user_account.php");
     }
     
 ?>
@@ -62,7 +62,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> User Account</h3>
+        <h3><i class="fa fa-angle-right"></i> User Account <i class="fa fa-angle-right"></i> Active Users</h3>
         <div class="row mb">
 
           <!-- page start-->
@@ -72,10 +72,10 @@
                 <thead>
                   <tr>
                     <th>Player</th>
-                    <th>Name</th>
                     <th>EMail</th>
                     <th>Telephone</th>
-                    <th>Balance</th>
+                    <th>DBalance</th>
+                    <th>CBalance</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </thead>
@@ -116,13 +116,13 @@
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <!-- <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script> -->
-  <!-- <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script> -->
+  <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/jquery.scrollTo.min.js"></script>
   <script src="lib/jquery.nicescroll.js" type="text/javascript"></script>
   <!-- <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script> -->
   <!--common script for all pages-->
-  <!-- <script src="lib/common-scripts.js"></script> -->
+  <script src="lib/common-scripts.js"></script>
 
 <script src="js/jquery.dataTables.min.js"></script>
 
@@ -146,6 +146,9 @@
       var dataTable = $('#hidden-table-info').DataTable( {
 					"processing": true,
 					"serverSide": true,
+          "aaSorting": [
+            [0, 'desc']
+          ],
           "iDisplayLength": 25,
 					"ajax":{
 						url :"user_account_ajax.php", // json datasource
@@ -156,7 +159,14 @@
 							$("#hidden-table-info_processing").css("display","none");
 						
 						}
-					}
+					},initComplete: function() {
+              $('#hidden-table-info_filter input').unbind();
+              $('#hidden-table-info_filter input').bind('keyup', function(e) {
+                  if(e.keyCode == 13) {
+                    dataTable.search(this.value).draw();
+                  }
+              });
+          },
 				} );
 
 

@@ -2,7 +2,7 @@
     include_once("../../function/cpanel/app_top.php");
 
     
-    if($_GET['action'] == "changeStatus"){
+    if(isset($_GET['action']) && $_GET['action'] === "changeStatus"){
 
       // print_r($_POST);
       // exit();

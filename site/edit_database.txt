@@ -1,0 +1,3 @@
+ALTER TABLE `setting` ADD `currency_cc` VARCHAR(20) NULL AFTER `currency`;
+ALTER TABLE `support` ADD `status` VARCHAR(1) NOT NULL DEFAULT '0' AFTER `s_action`;
+ALTER TABLE `withdraw_history` ADD `currency` VARCHAR(20) NOT NULL DEFAULT '0' AFTER `date`;

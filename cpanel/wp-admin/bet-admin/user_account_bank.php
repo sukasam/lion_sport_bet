@@ -4,7 +4,7 @@
     include_once("../../function/poker_api.php");
     include_once('../../_inc/config.php');
 
-    if($_GET['action'] == "savebank"){
+    if(isset($_GET['action']) && $_GET['action'] === "savebank"){
 
       $Player = $_POST['Player'];
 
@@ -95,7 +95,7 @@
                         <tr role="row" class="gradeA">
                             <td><?php echo $value['player'];?></td>
                             <td>
-                            <?php if($_GET['action'] == "edit"){
+                            <?php if(isset($_GET['action']) && $_GET['action'] === "edit"){
                                ?>
                                <input type="text" class="text-center" name="bank_name" value="<?php echo $value['bank_name'];?>">
                                <?php 
@@ -104,7 +104,7 @@
                               }?>
                             </td>
                             <td>
-                            <?php if($_GET['action'] == "edit"){
+                            <?php if(isset($_GET['action']) && $_GET['action'] === "edit"){
                                ?>
                                <input type="text" class="text-center" name="fullname" value="<?php echo $value['fullname'];?>">
                                <?php 
@@ -113,7 +113,7 @@
                               }?>
                             </td>
                             <td class="text-center">
-                              <?php if($_GET['action'] == "edit"){
+                              <?php if(isset($_GET['action']) && $_GET['action'] === "edit"){
                                ?>
                                <input type="text" class="text-center" name="bank_card" value="<?php echo $value['bank_card'];?>" maxlength="16">
                                <?php 
@@ -122,7 +122,7 @@
                                echo $value['bank_card'];
                               }?>
                             </td>
-                            <td class="text-center"><?php if($_GET['action'] == "edit"){
+                            <td class="text-center"><?php if(isset($_GET['action']) && $_GET['action'] === "edit"){
                               ?>
                               <input type="text" class="text-center" name="bank_sheba" value="<?php echo $value['bank_sheba'];?>" maxlength="24" style="width:170px;">
                               <?php
@@ -140,7 +140,7 @@
           <div class="form-group">
                   <div class="col-sm-12 text-center">
                   <button class="btn btn-theme04" type="button" onClick="window.location='user_account.php';">Back</button>
-                  <?php if($_GET['action'] == "edit"){
+                  <?php if(isset($_GET['action']) && $_GET['action'] === "edit"){
                     ?>
                     <input type="hidden" name="Player" value="<?php echo $_GET['Player'];?>">
                     <button class="btn btn-warning" type="submit" name="submitBT">Save</button>

@@ -2,7 +2,18 @@
 include_once('_inc/config.php'); 
 include_once("_inc/model.php");
 include_once('function/function.php'); 
+
 $model=new Model();
+
+$configDTSQL = "SELECT * FROM setting WHERE sid = ? ORDER BY sid DESC";
+$values = array('1');
+$configDT = $model->doSelect($configDTSQL, $values);
+
+if ($configDT[0]['maintenance'] == 1) {
+	session_destroy();
+	header("Location:" . SiteRootDir . "maintenance");
+}
+
 ?>
 <!DOCTYPE html>
 	<html lang="en" class="no-js">
