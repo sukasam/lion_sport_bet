@@ -23,7 +23,7 @@ $columns = array(
 
 // getting total number records without any search
 $sql = "SELECT *";
-$sql .= " FROM support WHERE `status` = '" . $requestData['status'] . "'";
+$sql .= " FROM support WHERE 1=1 AND `status` = '" . $requestData['status'] . "'";
 $query = mysqli_query($conn, $sql) or die("support_all_ajax: get support");
 $totalData = mysqli_num_rows($query);
 $totalFiltered = $totalData; // when there is no search parameter then total number rows = total number filtered rows.
