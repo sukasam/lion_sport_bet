@@ -40,6 +40,15 @@ $valuesRecWithdrawYesRemainPenSQL = array($dateYesterday,'0');
 $RecWithdrawYesRemainPen = $model->doSelect($RecWithdrawYesRemainPenSQL, $valuesRecWithdrawYesRemainPenSQL);
 
 
+$RecDPBalanceSQL = "SELECT SUM(`DBalance`) AS total FROM user_profile WHERE `DBalance` != ?";
+$valuesRecDPBalanceSQL = array('0');
+$RecDPBalance = $model->doSelect($RecDPBalanceSQL, $valuesRecDPBalanceSQL);
+
+$RecCOBalanceSQL = "SELECT SUM(`CBalance`) AS total FROM user_profile WHERE `DBalance` != ?";
+$valuesRecCOBalanceSQL = array('0');
+$RecCOBalance = $model->doSelect($RecCOBalanceSQL, $valuesRecCOBalanceSQL);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,17 +134,29 @@ $RecWithdrawYesRemainPen = $model->doSelect($RecWithdrawYesRemainPenSQL, $values
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6 col-12">
-							<div class="small-box bg-info">
+						<div class="col-lg-3 col-12">
+							<div class="small-box bg-success">
 								<div class="inner">
-									<h4><?php echo number_format($TotalDepositToday);?></h4>
-									<p>Today Total Deposit (Perface Money + Cryptocurrency)</p>
+									<h4><?php echo number_format($RecDPBalance[0]['total'])?></h4>
+									<p>Total Balance Deposits (All Users)</p>
 								</div>
 								<div class="icon">
-									<i class="ion ion-pie-graph"></i>
+									<i class="ion ion-stats-bars"></i>
 								</div>
 							</div>
 						</div>
+						<div class="col-lg-3 col-12">
+							<div class="small-box bg-warning">
+								<div class="inner">
+									<h4><?php echo number_format($RecCOBalance[0]['total'])?></h4>
+									<p>Today Balance Cashouts (All Users)</p>
+								</div>
+								<div class="icon">
+									<i class="ion ion-person-add"></i>
+								</div>
+							</div>
+						</div>
+						
 						<div class="col-lg-3 col-12">
 							<div class="small-box bg-success">
 								<div class="inner">
@@ -174,6 +195,18 @@ $RecWithdrawYesRemainPen = $model->doSelect($RecWithdrawYesRemainPenSQL, $values
 								<div class="inner">
 									<h4><?php echo number_format($RecWithdrawYesPen[0]['total'])?></h4>
 									<p>Withdraw Pending from yesterday</p>
+								</div>
+								<div class="icon">
+									<i class="ion ion-pie-graph"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6 col-12">
+							<div class="small-box bg-info">
+								<div class="inner">
+									<h4><?php echo number_format($TotalDepositToday);?></h4>
+									<p>Today Total Deposit (Perface Money + Cryptocurrency)</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-pie-graph"></i>
