@@ -160,18 +160,18 @@ define('TITLE_WITHDRAW_CLOSE', "Withdrawal will be available on the opening day.
 define('TITLE_PINS_01', 'For security purposes, you need to select a 4-digit code as ((PIN code))');
 define('TITLE_PINS_02', 'Note that you will not forget the PIN code at all. Because it can not be undone, the PIN code must be 4 digits.');
 
-define('TITLE_DEPOSIT_DESC', '<li>You will receive %s1 chips per Perfect Money dollar.</li>
+define('TITLE_DEPOSIT_DESC', '<li>You will receive %s1 Toman per Perfect Money dollar.</li>
     <li>Perfect Money is a common currency on Internet sites that you must buy from exchange offices to buy or sell. If you have a Perfect Money account, you can keep this currency in your account and use it if needed.</li>
     <li>In this section, you can use Perfect Money to recharge your account. If you are not familiar with this method, you can ask the site support for help.</li>
     <li>Please use only Perfect Money dollar vouchers.</li>
     <li>Be sure to note that the Prose site is not an exchange and this service has been added for the welfare of the players.<br>
     A team of 24-hour site sponsors will review your cache requests and your cache and account will be blocked if you see any abuse.
-    The amount of chips and sticks you play on will also be checked.
+    The amount of Toman and sticks you play on will also be checked.
     In the end, if you are a player, you will not have a problem, but any abuse will be dealt with.</li>
     <li>So if you decided to buy a Perfect Money chip and for any reason you changed your mind and did not want to play, please do your Cash August in the same way as Perfect Money. Because in case of August cash, your August cash will not be paid.</li>');
 
 define('TITLE_CASHOUTS_DESC', '
-    <li> You will receive a Perfect Money for every %s1 chips. </li>
+    <li> You will receive a Perfect Money for every %s1 Toman. </li>
     <li> The maximum waiting time for paying the Perfect Money August and Cash payment is 1 hour if confirmation is required. Otherwise the automatic August cache will be paid.</li>
     <li> There should be a half hour interval between Cash August and Perfect Money requests.</li>
     <br>
@@ -200,7 +200,7 @@ define('TITLE_CASHOUTS_DESC_PM_ACCOUNT', '
             <li> After registering the cache, you will be given a 4-digit code. You can use this code to cancel your August cache. It should be noted that without this code, it is not possible to cancel the August cache in any way.</li>');
 
 define('TITLE_DEPOSITS_DESC_CC', '
-            <li> You will receive %s1 chips for every cryptocurrency. </li>
+            <li> You will receive %s1 Toman for every cryptocurrency. </li>
             <li> Please note the following points before using this payment service.
             <p>
                 </p> <ul class = "persian-important-comment">

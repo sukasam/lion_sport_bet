@@ -175,7 +175,7 @@ define('TITLE_DEPOSIT_DESC', '<li> شما به ازای هر دلار پرفکت
 </li>');
 
 define('TITLE_CASHOUTS_DESC', '
-<li> You will receive a Perfect Money for every %s1 chips. </li>
+<li> You will receive a Perfect Money for every %s1 Toman. </li>
 <li> The maximum waiting time for paying the Perfect Money August and Cash payment is 1 hour if confirmation is required. Otherwise the automatic August cache will be paid.</li>
 <li> There should be a half hour interval between Cash August and Perfect Money requests.</li>
 <br>
@@ -204,7 +204,7 @@ define('TITLE_CASHOUTS_DESC_PM_ACCOUNT', '
             <li> After registering the cache, you will be given a 4-digit code. You can use this code to cancel your August cache. It should be noted that without this code, it is not possible to cancel the August cache in any way.</li>');
 
 define('TITLE_DEPOSITS_DESC_CC', '
-            <li> You will receive %s1 chips for every cryptocurrency. </li>
+            <li> You will receive %s1 Toman for every cryptocurrency. </li>
             <li> Please note the following points before using this payment service.
             <p>
                 </p> <ul class = "persian-important-comment">

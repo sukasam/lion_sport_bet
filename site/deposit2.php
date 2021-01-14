@@ -62,7 +62,7 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
                                         <?php }?>
                                         <div class="row mb-20">
                                             <div class="col-12 text-center mb-20">
-                                                <span class="rate-span">  1$ <span class="small-text">Cryptocurrency</span> -&gt; <?php echo number_format($configDT[0]['currency']);?> <span class="small-text">Chips</span></span>
+                                                <span class="rate-span">  1$ <span class="small-text">Cryptocurrency</span> -&gt; <?php echo number_format($configDT[0]['currency']);?> <span class="small-text">Toman</span></span>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">

@@ -67,7 +67,7 @@ $RecDataWithdraw = $model->doSelect($RecDataWithdrawSQL, $values);
                                             </div>
                                         <?php }?>
                                         <div class="text-center mb-20">
-                                            <span class="rate-span"><?php echo number_format($configDT[0]['currency_withdraw']); ?> <span class="small-text">Chips</span> -&gt; 1$ <span class="small-text">Perfect Money</span></span>
+                                            <span class="rate-span"><?php echo number_format($configDT[0]['currency_withdraw']); ?> <span class="small-text">Toman</span> -&gt; 1$ <span class="small-text">Perfect Money</span></span>
                                         </div>
                                         <div class="form-group">
                                             <label>Amount:</label>

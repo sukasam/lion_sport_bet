@@ -2807,6 +2807,42 @@ h6 {
   }
 }
 
+@media (max-width: 375px){
+  .tMenuL{
+    width: 100% !important;
+    justify-content: flex-start;
+  }
+  .tMenuR{
+    width: 100% !important;
+    justify-content: flex-end;
+    margin-top: 0;
+    padding-bottom: 20px;
+  }
+}
+@media (max-width: 991px) {
+  .tMenuL{
+    width: 50%;
+    justify-content: flex-start;
+  }
+  .tMenuR{
+    width: 40%;
+    justify-content: flex-end;
+  }
+}
+@media (min-width: 1200px) {
+  .tMenuL{
+    width: 50%;
+    justify-content: flex-start;
+  }
+  .tMenuR{
+    width: 35%;
+    justify-content: flex-end;
+  }
+}
+
+
+
+
 .generic-content h1 {
   font-weight: 600;
 }
@@ -3418,10 +3454,10 @@ ul.draw_numbers_list li {
 }
 
 .default-header {
-  height: 105px;
+  height: 45px;
 }
 .default-header .container {
-  height: 104px;
+  height: 45px;
 }
 .inner .counter_wrapper,
 .com_counter .inner .counter_wrapper .counter {
@@ -4111,6 +4147,10 @@ a.orange-link:hover{
   color: rgb(0, 38, 255);
 }
 
+.navbar-light .navbar-brand {
+  padding-left: 10px;
+}
+
 /* // Small devices (landscape phones, 375px and up) */
 /* @media (max-width: 375px) { 
 .counter_wrapper .counter_total p span{
@@ -4362,7 +4402,8 @@ a.orange-link:hover{
     padding: unset;
   }
   .default-header .container {
-      height: 100px;
+      height: 45px;
+      max-width: initial;
   }
   .pokerLog{
     text-align: right !important;
@@ -4370,5 +4411,11 @@ a.orange-link:hover{
   .pokerRg{
     text-align: left !important;
   }
+
 }
 
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+      display: contents !important;
+  }
+}
