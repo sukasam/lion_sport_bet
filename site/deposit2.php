@@ -12,10 +12,6 @@ if (!isset($_GET['action'])) {
 
 }
 
-$RecDataDepositSQL = "SELECT * FROM deposit_history WHERE player = ? AND deposit_type = 'CC' ORDER BY id DESC";
-$values = array($_SESSION['Player']);
-$RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
-
 ?>
 <!DOCTYPE html>
 	<html lang="en" class="no-js">
@@ -62,7 +58,7 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
                                         <?php }?>
                                         <div class="row mb-20">
                                             <div class="col-12 text-center mb-20">
-                                                <span class="rate-span">  1$ <span class="small-text">Cryptocurrency</span> -&gt; <?php echo number_format($configDT[0]['currency']);?> <span class="small-text">Toman</span></span>
+                                                <span class="rate-span">  1$ <span class="small-text">Cryptocurrency</span> -&gt; <?php echo number_format($configDT[0]['currency_cc']);?> <span class="small-text">Toman</span></span>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -86,54 +82,6 @@ echo $TITLE_DEPOSITS_DESC_CC;
 
                                 <input type="hidden" name="<?php echo $token_id; ?>" value="<?php echo $token_value; ?>"/>
                             </form>
-                        </div>
-
-                        <div class="col-12">
-                            <h3 class="text-heading"><?php echo TOP_MENU_DEPOSITS_CC_HISTORY; ?></h3>
-                        </div>
-						<div class="col-12 mb-60">
-                        <table id="deposit" class="table table-striped table-bordered display responsive nowrap" style="width: 100%;">
-                            <thead>
-								<tr>
-									<th>#</th>
-                                    <th><?php echo TITLE_AMOUNT; ?></th>
-                                    <th class="text-center"><?php echo TITLE_DATE_TIME; ?></th>
-                                    <!-- <th class="text-center"><?php echo TITLE_TYPE; ?></th> -->
-                                    <th class="text-center"><?php echo TITLE_TRANID; ?></th>
-                                    <th class="text-center"><?php echo TITLE_STATUS; ?></th>
-                                    <!-- <th class="text-center">Action</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                            if(!empty($RecDataDeposit)){
-                                foreach ($RecDataDeposit as $key => $value) {
-                                    ?>
-                                    <tr>
-                                        <th><?php echo $key + 1; ?>.</th>
-                                        <th><?php if ($value['deposit_type'] == "CC") {echo number_format($value['amount'] * $value['currency']);} else {echo number_format($value['amount']);}?></th>
-                                        <th class="text-center"><?php echo date("m/d/Y", strtotime($value['date'])); ?> <?php echo $value['time']; ?></th>
-                                        <!-- <th class="text-center"><?php echo $value['deposit_type']; ?></th> -->
-                                        <th class="text-center"><?php echo $value['tran_id']; ?></th>
-                                        <th class="text-center"><?php if ($value['status'] == 1) {echo '<button class="genric-btn success circle" style="width: 130px;">' . TITLE_COMPLATED . '</button>';} else if ($value['status'] == 2) {echo '<button class="genric-btn danger circle" style="width: 130px;">' . TITLE_CANCEL . '</button>';} else {echo '<button class="genric-btn info circle" style="width: 130px;">' . TITLE_PROCESSING . '</button>';}?></th>
-                                        <!-- <th class="text-center"><a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info-circle" style="font-size: 3.3em;color: #ffb320;"></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://t.me/lionroyalsup" target="_blank"><i class="fa fa-telegram fa-3x" style="color: #FFFFFF;"></i></a> -->
-                                    </tr>
-                                <?php }
-                            }    
-                            ?>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>#</th>
-                                    <th><?php echo TITLE_AMOUNT; ?></th>
-                                    <th class="text-center"><?php echo TITLE_DATE_TIME; ?></th>
-                                    <!-- <th class="text-center"><?php echo TITLE_TYPE; ?></th> -->
-                                    <th class="text-center"><?php echo TITLE_TRANID; ?></th>
-                                    <th class="text-center"><?php echo TITLE_STATUS; ?></th>
-                                    <!-- <th class="text-center">Action</th> -->
-                                </tr>
-                            </tfoot>
-                        </table>
                         </div>
                     </div>
 				</div>
@@ -171,11 +119,6 @@ echo $TITLE_DEPOSITS_DESC_CC;
             $('#deposit').DataTable();
         } );
 
-        $( "#deposit_captcha_code" ).keypress(function( event ) {
-            if ( event.which == 13 ) {
-                event.preventDefault();
-            }
-        });
 
         $("#btDeposit").click(function() {
 

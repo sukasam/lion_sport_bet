@@ -31,11 +31,13 @@ if (!isset($_SESSION['Player']) && !isset($_SESSION['Player_PW'])) {
         header("Location:" . SiteRootDir . "index.php");
     }
 
-    if ($_SESSION['Player_Lang'] == "en") {
-        include_once "function/lang_en.php";
-    } else {
-        include_once "function/lang_ir.php";
-    }
+    // if ($_SESSION['Player_Lang'] == "en") {
+    //     include_once "function/lang_en.php";
+    // } else {
+    //     include_once "function/lang_ir.php";
+    // }
+
+    include_once "function/lang_ir.php";
 
     $csrf = new csrf();
     $model = new Model();

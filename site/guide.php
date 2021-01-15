@@ -1,5 +1,9 @@
 <?php
 include_once "function/app_top.php";
+if(!isset($_GET['id']) || $_GET['id'] === ""){
+    header("Location:index.php");
+}
+
 ?>
 <!DOCTYPE html>
 	<html lang="en" class="no-js">
@@ -21,7 +25,13 @@ include_once "function/app_top.php";
 		<body>
 			<!-- Start banner Area -->
 			<section class="generic-banner relative">
-                <?php include_once "topmenu_main.php";?>
+                <?php 
+                if(isset($_SESSION['Player']) && $_SESSION['Player'] != ""){
+                    include_once "topmenu.php";
+                }else{
+                    include_once "topmenu_main.php";
+                }
+                ?>
 			</section>
             <!-- End banner Area -->
 
@@ -32,11 +42,19 @@ include_once "function/app_top.php";
                         <div class="form-group">
                             <select class="form-control" id="guideList" onchange="guideSelect()">
                             <?php
-							 $RecDataGuideList = $db->select("SELECT * FROM guide WHERE `status` = '0' ORDER BY id ASC");
-							 foreach ($RecDataGuideList as $key => $value) {
-    						?>
-                                <option value="<?php echo $value['id'];?>" <?php if($_GET['id'] === $value['id']){echo "selected";}?>><?php echo $value['g_name'];?></option>
-                            <?php }?>
+                            
+                            $RecDataGuideListSQL = "SELECT * FROM guide WHERE `status` = ? ORDER BY id ASC";
+                            $valuesRecDataGuideListSQL = array('0');
+                            $RecDataGuideList = $model->doSelect($RecDataGuideListSQL, $valuesRecDataGuideListSQL);
+
+                            if(!empty($RecDataGuideList)){
+                                foreach ($RecDataGuideList as $key => $value) {
+                                ?>
+                                    <option value="<?php echo $value['id'];?>" <?php if($_GET['id'] === $value['id']){echo "selected";}?>><?php echo $value['g_name'];?></option>
+                                <?php 
+                                }
+                            }
+                            ?>
                             
                             </select>
                         </div>
@@ -45,24 +63,35 @@ include_once "function/app_top.php";
                         <div>
                             <ul>
                             <?php
-							 $RecDataGuideMenu = $db->select("SELECT * FROM guide WHERE `status` = '0' ORDER BY id ASC");
+                             $RecDataGuideMenuSQL = "SELECT * FROM guide WHERE `status` = ? ORDER BY id ASC";
+                             $valuesRecDataGuideMenuSQL = array('0');
+                             $RecDataGuideMenu = $model->doSelect($RecDataGuideMenuSQL, $valuesRecDataGuideMenuSQL);
+
+                             if(!empty($RecDataGuideMenu)){
 							 foreach ($RecDataGuideMenu as $key => $value) {
     						?>
                                 <li class="guide <?php if($_GET['id'] === $value['id']){echo "activeC";}?>" onclick="window.location.href='guide.php?id=<?php echo $value['id'];?>'"><a class="link"><?php echo $value['g_name'];?></a></li>
-                            <?php }?>
+                            <?php }
+                             }
+                            ?>
                             </ul>
                         </div>
                     </div>
                     <div class="<?php if(isMobile()){echo "col-12";}else{echo "col-md-9";}?>">
                     <?php
-                    $RecDataGuideCon = $db->select("SELECT * FROM guide WHERE `status` = '0' AND `id` = ".$_GET['id']);
+                    $RecDataGuideConSQL = "SELECT * FROM guide WHERE `status` = ? AND `id` = ?";
+                    $valuesRecDataGuideConSQL = array('0',$_GET['id']);
+                    $RecDataGuideCon = $model->doSelect($RecDataGuideConSQL, $valuesRecDataGuideConSQL);
                     ?>
                     <h3 class="mb-2"><?php echo $RecDataGuideCon[0]['g_name'];?></h3>
                     <div class="guideCon">
                         <?php 
-                            $strCon = $RecDataGuideCon[0]['g_detail'];
-                            $newCon = preg_replace("/\/userfiles/", SiteImgDir."/userfiles", $strCon);
-                            echo stripslashes($newCon);?>
+                            if(!empty($RecDataGuideCon)){
+                                $strCon = $RecDataGuideCon[0]['g_detail'];
+                                $newCon = preg_replace("/\/userfiles/", SiteImgDir."/userfiles", $strCon);
+                                echo stripslashes($newCon);
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

@@ -128,7 +128,8 @@ define('TITLE_PROCESSING', 'Processing');
 define('TITLE_COMPLATED', 'Complated');
 define('TITLE_EXCHANGE_POINT_HISTORY', 'Exchange Point History');
 
-define('TITLE_AMOUNT', 'Amount');
+define('TITLE_AMOUNT', 'Usd Amount');
+define('TITLE_AMOUNT_TOMAN', 'Toman Amount');
 define('TITLE_DEPOSIT_HISTORY', 'Deposit History');
 define('TITLE_DEPOSIT_PM_HISTORY', 'Deposits Perfec Money Voucher History');
 define('TITLE_WITHDRAW_HISTORY', 'Withdraw History');
@@ -160,15 +161,15 @@ define('TITLE_WITHDRAW_CLOSE', "Withdrawal will be available on the opening day.
 define('TITLE_PINS_01', 'For security purposes, you need to select a 4-digit code as ((PIN code))');
 define('TITLE_PINS_02', 'Note that you will not forget the PIN code at all. Because it can not be undone, the PIN code must be 4 digits.');
 
-define('TITLE_DEPOSIT_DESC', '<li>You will receive %s1 Toman per Perfect Money dollar.</li>
-    <li>Perfect Money is a common currency on Internet sites that you must buy from exchange offices to buy or sell. If you have a Perfect Money account, you can keep this currency in your account and use it if needed.</li>
-    <li>In this section, you can use Perfect Money to recharge your account. If you are not familiar with this method, you can ask the site support for help.</li>
-    <li>Please use only Perfect Money dollar vouchers.</li>
-    <li>Be sure to note that the Prose site is not an exchange and this service has been added for the welfare of the players.<br>
-    A team of 24-hour site sponsors will review your cache requests and your cache and account will be blocked if you see any abuse.
-    The amount of Toman and sticks you play on will also be checked.
-    In the end, if you are a player, you will not have a problem, but any abuse will be dealt with.</li>
-    <li>So if you decided to buy a Perfect Money chip and for any reason you changed your mind and did not want to play, please do your Cash August in the same way as Perfect Money. Because in case of August cash, your August cash will not be paid.</li>');
+define('TITLE_DEPOSIT_DESC', '<li>You will receive a Perfect Money (%s1) Toman for every dollar.
+Perfect Money is a common currency on Internet sites that you must get help from exchange offices to buy or sell. If you have a Perfect Money account, you can keep this currency in your account and use it if needed</li>
+<li>In this section, you can use Perfect Money to recharge your account. If you are not familiar with this method, you can ask the site support for help.</li>
+<li>Please use only Perfect Money dollar vouchers.</li>
+<li>Be sure to note that the Lion Royal site is not an exchange and this service is for buying players</li>
+<li>Your purchase is for the game. Read the site rules for purchase <a href="guide.php?id=1">(in this section)</a></li>
+<li>So if you decided to buy with Perfect Money and for any reason you changed your mind and did not want to play, please refer to the site support.</li>
+<li><a href="deposit_history.php">Go to this page to view your purchase history</a></li>
+   ');
 
 define('TITLE_CASHOUTS_DESC', '
     <li> You will receive a Perfect Money for every %s1 Toman. </li>
@@ -209,7 +210,8 @@ define('TITLE_DEPOSITS_DESC_CC', '
                     <li> - Confirming a transaction may take time depending on the type of cryptocurrency used. Please be patient. </li>
                     <li> - In cases where you do not know what is the equivalent of your Ramzarz Toman, enter the number zero in the amount field. In this case, after completing the transaction, the amount paid in Tomans will be added to your chip account. </li>
                 </ul>
-            </li>');
+            </li>
+            <li><a href="deposit2_history.php">Go to this page to view your purchase history</a></li>');
 
 define('TITLE_FORGET_PASSWORD', 'Forgot your password?');
 
