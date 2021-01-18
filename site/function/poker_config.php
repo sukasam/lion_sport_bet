@@ -12,4 +12,6 @@
       define('PERFECT_PASSPHRASE','saman@1365');
       define('PERFECT_PAYEE_ACCOUNT','U18118429');
 
+      define('COINBASE_API_KEY','7bdc2bba-b0d3-4472-8b89-80f5b6add509');
+      define('COINBASE_WEBHOOK_API_KEY','6a27b0c8-5820-4b2b-be64-8f4418357b65');
 ?>

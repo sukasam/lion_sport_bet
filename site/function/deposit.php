@@ -16,6 +16,13 @@ if ($csrf->check_valid('post')) {
             $e_voucher = $db->CleanDBData($_POST['e_voucher']);
             $activation_code = $db->CleanDBData($_POST['activation_code']);
 
+            $dateLog = date("Y-m-d");
+            $timeLog = date("H:i:s");
+
+            $sqli = "insert into deposit_history (player,amountU,amountT,deposit_type,date,time,tran_id,currency,status) values (?,?,?,?,?,?,?,?,?)";
+            $values = array($_SESSION['Player'], '0', '0', "PM", $dateLog, $timeLog, '', $configDT[0]['currency'], "0");
+            $insertID = $model->doinsert($sqli, $values);
+
             $postfields = array(
                 'AccountID' => PERFECT_ACCOUNTID,
                 'PassPhrase' => PERFECT_PASSPHRASE,
@@ -38,27 +45,17 @@ if ($csrf->check_valid('post')) {
                 $ar[$key] = $item[2];
             }
 
-            $dateLog = date("Y-m-d");
-            $timeLog = date("H:i:s");
-
             if (empty($ar['ERROR'])) {
 
                 $sqli = "insert into deposit_evoucher (player,VOUCHER_NUM,VOUCHER_ACTIVE,VOUCHER_AMOUNT,VOUCHER_AMOUNT_CURRENCY,Payee_Account,PAYMENT_BATCH_NUM,date,time) values (?,?,?,?,?,?,?,?,?)";
                 $values = array($_SESSION['Player'], $ar['VOUCHER_NUM'], $activation_code, $ar['VOUCHER_AMOUNT'], $ar['VOUCHER_AMOUNT_CURRENCY'], $ar['Payee_Account'], $ar['PAYMENT_BATCH_NUM'], $dateLog, $timeLog);
                 $model->doinsert($sqli, $values);
 
-                $sql = "SELECT * FROM deposit_history WHERE tran_id=? AND player =? AND amount = ?";
-                $values = array($_SESSION['Player'], $ar['PAYMENT_BATCH_NUM'], $ar['VOUCHER_AMOUNT']);
-                $RecData = $model->doSelect($sql, $values);
-                if ($RecData[0]['id'] != "") {
-                    $sqlu = "update deposit_history set status=? where tran_id=?";
-                    $values = array("1", $ar['PAYMENT_BATCH_NUM']);
-                    $model->doUpdate($sqlu, $values);
-                } else {
-                    $sqli = "insert into deposit_history (player,amount,deposit_type,date,time,tran_id,currency,status) values (?,?,?,?,?,?,?,?)";
-                    $values = array($_SESSION['Player'], $ar['VOUCHER_AMOUNT'], "PM", $dateLog, $timeLog, $ar['PAYMENT_BATCH_NUM'], $configDT[0]['currency'], "1");
-                    $model->doinsert($sqli, $values);
-                }
+                $amountT = ($ar['VOUCHER_AMOUNT'] * $configDT[0]['currency']);
+
+                $sqlu = "update deposit_history set amountU=?,amountT=?, status=?, tran_id=? where id=?";
+                $values = array($ar['VOUCHER_AMOUNT'], $amountT, "1", $ar['PAYMENT_BATCH_NUM'], $insertID);
+                $model->doUpdate($sqlu, $values);
 
                 $sqlST = "SELECT * FROM setting WHERE `sid` = ?";
                 $valuesST = array('1');
@@ -80,8 +77,8 @@ if ($csrf->check_valid('post')) {
                 header("Location:../deposit.php?action=success");
             } else {
 
-                $sqlu = "update deposit_history set status=? where tran_id=?";
-                $values = array("2", $ar['PAYMENT_BATCH_NUM']);
+                $sqlu = "update deposit_history set status=?, tran_id=? where id=?";
+                $values = array("2", $ar['PAYMENT_BATCH_NUM'],$insertID);
                 $model->doUpdate($sqlu, $values);
 
                 $_SESSION['errors_code'] = "alert-danger";

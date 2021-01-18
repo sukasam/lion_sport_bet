@@ -42,7 +42,7 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
                         <div class="col-12">
                             <h3 class="text-heading"><?php echo TITLE_DEPOSIT_PM_HISTORY; ?></h3>
                         </div>
-						<div class="col-12 mb-60">
+						<div class="col-12 mb-60" style="overflow-x:auto;">
                         <table id="deposit" class="table table-striped table-bordered display responsive nowrap" style="width: 100%;">
                             <thead>
 								<tr>
@@ -59,13 +59,14 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
                             <?php
                             if(!empty($RecDataDeposit)){
                                 foreach ($RecDataDeposit as $key => $value) {
+
                                     ?>
                                     <tr>
                                         <th><?php echo $key + 1; ?>.</th>
                                         <th class="text-center"><?php echo date("m/d/Y", strtotime($value['date'])); ?> <?php echo $value['time']; ?></th>
-                                        <th class="text-center"><?php echo number_format($value['amount'] * $value['currency']); ?></th>
+                                        <th class="text-center"><?php echo number_format($value['amountT']); ?></th>
                                         <th class="text-center"><?php if ($value['status'] == 1) {echo '<button class="genric-btn success circle" style="width: 130px;">' . TITLE_COMPLATED . '</button>';} else if ($value['status'] == 2) {echo '<button class="genric-btn danger circle" style="width: 130px;">' . TITLE_CANCEL . '</button>';} else {echo '<button class="genric-btn info circle" style="width: 130px;">' . TITLE_PROCESSING . '</button>';}?></th>
-                                        <th class="text-center"><?php echo number_format($value['amount']);?>$</th>
+                                        <th class="text-center">$<?php echo number_format($value['amountU']);?></th>
                                         <th class="text-center"><?php echo $value['tran_id']; ?></th>
                                         
                                         <!-- <th class="text-center"><a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-info-circle" style="font-size: 3.3em;color: #ffb320;"></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href="https://t.me/lionroyalsup" target="_blank"><i class="fa fa-telegram fa-3x" style="color: #FFFFFF;"></i></a> -->
@@ -122,37 +123,6 @@ $RecDataDeposit = $model->doSelect($RecDataDepositSQL, $values);
         $(document).ready(function() {
             $('#deposit').DataTable();
         } );
-
-        $( "#deposit_captcha_code" ).keypress(function( event ) {
-            if ( event.which == 13 ) {
-                event.preventDefault();
-            }
-        });
-
-        $("#btDeposit").click(function() {
-
-
-            if($('#e_voucher').val() == ""){
-                $('#e_voucher').focus();
-                return false;
-            }
-
-            if($('#activation_code').val() == ""){
-                $('#activation_code').focus();
-                return false;
-            }
-
-            if($('#deposit_captcha_code').val() == ""){
-                $('#deposit_captcha_code').focus();
-                return false;
-            }
-
-            $("#spexDeposit").removeClass('hide');
-            $('#btDeposit').prop('disabled', true);
-
-            $('#frm_deposit').submit();
-
-        });
 
         </script>
 	</body>

@@ -62,7 +62,7 @@ if (!isset($_GET['action'])) {
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label>Amount:</label>
+                                                    <label>Amount (Toman):</label>
                                                     <input type="tel" value="" name="amount" id="amount" class="form-control parsley-validated" placeholder="0" autofocus="" required onkeypress="return isNumberKey(event);">
                                                 </div>
                                             </div>

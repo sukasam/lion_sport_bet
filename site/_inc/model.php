@@ -56,7 +56,9 @@ class Model
         foreach ($values as $key => $value) {
             $stmt->bindValue($key + 1, $value);
         }
-        $stmt->execute();
+		$stmt->execute();
+		$id = self::$conn->lastInsertId();
+		return $id;
 		$stmt=null;
 		// self::$conn=null;
     }

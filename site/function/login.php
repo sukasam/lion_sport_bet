@@ -58,6 +58,7 @@ if ($csrf->check_valid('post')) {
 
                     if ($RecDataLoginUserCheck[0]['eactive'] === '1' && $RecDataLoginUserCheck[0]['uactive'] == '1') {
 
+                        $_SESSION['Player_ID'] = $RecDataLoginUserCheck[0]['id'];
                         $_SESSION['Player'] = $RecDataLoginUserCheck[0]['Player'];
                         $_SESSION['Player_PW'] = $RecDataLoginUserCheck[0]['password'];
                         $_SESSION['Player_Email'] = $RecDataLoginUserCheck[0]['Email'];
