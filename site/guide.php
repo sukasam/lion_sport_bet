@@ -1,8 +1,6 @@
 <?php
 include_once "function/app_top.php";
-if(!isset($_GET['id']) || $_GET['id'] === ""){
-    header("Location:index.php");
-}
+$model = new Model();
 
 ?>
 <!DOCTYPE html>
@@ -46,6 +44,10 @@ if(!isset($_GET['id']) || $_GET['id'] === ""){
                             $RecDataGuideListSQL = "SELECT * FROM guide WHERE `status` = ? ORDER BY id ASC";
                             $valuesRecDataGuideListSQL = array('0');
                             $RecDataGuideList = $model->doSelect($RecDataGuideListSQL, $valuesRecDataGuideListSQL);
+                            
+                            // echo "<pre>";
+                            // print_r($RecDataGuideList);
+                            // echo"</pre>";
 
                             if(!empty($RecDataGuideList)){
                                 foreach ($RecDataGuideList as $key => $value) {
@@ -66,6 +68,10 @@ if(!isset($_GET['id']) || $_GET['id'] === ""){
                              $RecDataGuideMenuSQL = "SELECT * FROM guide WHERE `status` = ? ORDER BY id ASC";
                              $valuesRecDataGuideMenuSQL = array('0');
                              $RecDataGuideMenu = $model->doSelect($RecDataGuideMenuSQL, $valuesRecDataGuideMenuSQL);
+
+                            //  echo "<pre>";
+                            // print_r($RecDataGuideMenu);
+                            // echo"</pre>";
 
                              if(!empty($RecDataGuideMenu)){
 							 foreach ($RecDataGuideMenu as $key => $value) {

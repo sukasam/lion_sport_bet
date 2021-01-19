@@ -13,11 +13,11 @@ $TimeToday = date("H:i:s", $timestamp);
 
 $dateYesterday = date( "Y-m-d", strtotime( $dateToday . "-1 day"));
 
-$RecDepositPMSQL = "SELECT SUM(`amount` * `currency`) AS total FROM deposit_history WHERE `date` = ? AND `deposit_type`=?";
+$RecDepositPMSQL = "SELECT SUM(`amountT`) AS total FROM deposit_history WHERE `date` = ? AND `deposit_type`=?";
 $valuesRecDepositPMSQL = array($dateToday,'PM');
 $RecDepositPM = $model->doSelect($RecDepositPMSQL, $valuesRecDepositPMSQL);
 
-$RecDepositCCSQL = "SELECT SUM(`amount` * `currency`) AS total FROM deposit_history WHERE `date` = ? AND `deposit_type`=?";
+$RecDepositCCSQL = "SELECT SUM(`amountT`) AS total FROM deposit_history WHERE `date` = ? AND `deposit_type`=?";
 $valuesRecDepositCCSQL = array($dateToday,'CC');
 $RecDepositCC = $model->doSelect($RecDepositCCSQL, $valuesRecDepositCCSQL);
 

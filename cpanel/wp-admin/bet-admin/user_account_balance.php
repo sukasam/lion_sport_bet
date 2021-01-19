@@ -18,22 +18,24 @@ if (isset($_GET['action']) && $_GET['action'] === "submit") {
 
         $UserBalance = $RecDataUserBalance[0]['DBalance'];
 
-        if($_POST['deposit_type'] === "PM"){
-          $currency = $RecDataConvest[0]['currency'];
-          $newBalance = $UserBalance + ($_POST['IncreaseDBalance'] * $currency);
-        }else if($_POST['deposit_type'] === "CC"){
-          $currency = $RecDataConvest[0]['currency_cc'];
-          $newBalance = $UserBalance + ($_POST['IncreaseDBalance'] * $currency);
-        }else{
-          
+        if ($_POST['deposit_type'] === "PM") {
+            $currency = $RecDataConvest[0]['currency'];
+            $newBalance = $UserBalance + $_POST['IncreaseDBalance'];
+            $amountU = round(($_POST['IncreaseDBalance'] / $RecDataConvest[0]['currency']), 4);
+        } else if ($_POST['deposit_type'] === "CC") {
+            $currency = $RecDataConvest[0]['currency_cc'];
+            $newBalance = $UserBalance + $_POST['IncreaseDBalance'];
+            $amountU = round(($_POST['IncreaseDBalance'] / $RecDataConvest[0]['currency_cc']), 4);
+        } else {
+
         }
 
         $sqlu2 = "update user_profile set DBalance=? where Player=?";
         $values2 = array($newBalance, $_POST['Player']);
         $model->doUpdate($sqlu2, $values2);
 
-        $sqliH = "insert into deposit_history (player,amount,deposit_type,date,time,tran_id,currency,status) values (?,?,?,?,?,?,?,?)";
-        $valuesH = array($_POST['Player'], $_POST['IncreaseDBalance'], $_POST['deposit_type'], date("Y-m-d"), date("H:i:s"), $_POST['tran_id'],$currency,'1');
+        $sqliH = "insert into deposit_history (player,amountU,amountT,deposit_type,date,time,tran_id,currency,status) values (?,?,?,?,?,?,?,?,?)";
+        $valuesH = array($_POST['Player'], $amountU, $_POST['IncreaseDBalance'], $_POST['deposit_type'], date("Y-m-d"), date("H:i:s"), $_POST['tran_id'], $currency, '1');
         $model->doinsert($sqliH, $valuesH);
 
     }
@@ -108,7 +110,7 @@ echo "</pre>";*/
                   </div>
                 </div> -->
                 <div class="form-group">
-                  <label class="col-sm-2 col-sm-2 control-label">Increase Deposits (USD)</label>
+                  <label class="col-sm-2 col-sm-2 control-label">Increase Deposits (Toman)</label>
                   <div class="col-sm-10">
                     <input type="text" name="IncreaseDBalance" class="form-control" value="">
                   </div>
