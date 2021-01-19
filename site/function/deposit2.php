@@ -3,10 +3,6 @@
 include_once "app_top.php";
 include_once "poker_config.php";
 include_once "poker_api.php";
-include_once "vendor/autoload.php";
-
-use CoinbaseCommerce\ApiClient;
-use CoinbaseCommerce\Resources\Charge;
 
 // Generate Token Id and Valid
 $token_id = $csrf->get_token_id();
@@ -15,58 +11,95 @@ $token_value = $csrf->get_token($token_id);
 if ($csrf->check_valid('post')) {
     if ($_POST) {
 
-        $amount = $db->CleanDBData($_POST['amount']);
+        $iramount = $db->CleanDBData($_POST['amount']);
         $dateLog = date("Y-m-d");
         $timeLog = date("H:i:s");
 
-        if ($amount >= 1) {
+        if ($iramount >= 1) {
 
             $sqlST = "SELECT * FROM setting WHERE `sid` = ?";
             $valuesST = array('1');
             $RecDataST = $model->doSelect($sqlST, $valuesST);
 
-            $amountConv = round($amount / $RecDataST[0]['currency_cc'], 2);
-            
+            $amountConv = round($iramount / $RecDataST[0]['currency_cc'], 4);
+
             if ($amountConv >= 5) {
 
-                $sqli = "insert into deposit_history (player,amountU,amountT,amountC,Bonus,deposit_type,date,time,tran_id,currency,status) values (?,?,?,?,?,?,?,?,?,?,?)";
-                $values = array($_SESSION['Player'], $amountConv, $amount, '0', '0', "CC", $dateLog, $timeLog, '', $RecDataST[0]['currency_cc'], "0");
-                $insertID = $model->doinsert($sqli, $values);
-
-                $apiClientObj = ApiClient::init(COINBASE_API_KEY);
-
-                $chargeData = [
-                    'name' => "Player : " . $_SESSION['Player'],
-                    'description' => 'Top up money to the digital wallet',
-                    'local_price' => [
-                        'amount' => $amountConv,
+                $apikey = COINBASE_API_KEY;
+                $version = COINBASE_VERSION;
+                $id = "id-" . time() . "-" . (rand(100000, 999999));
+                $player = $_SESSION['Player'];
+                $amountD = round(($iramount / $RecDataST[0]['currency_cc']), 4);
+                $amount = $amountD;
+                $currency = $RecDataST[0]['currency_cc'];
+                $hashValueCa = $player . "-" . $amount . "-" . $id . "cancel";
+                $tokenid_cancel = hash('sha256', $hashValueCa);
+                $hashValueCo = $player . "-" . $amountD . "-" . $id . "complete";
+                $tokenid_complete = hash('sha256', $hashValueCo);
+                $data = array(
+                    'name' => $player,
+                    'description' => 'Lion Royal Sport Betting',
+                    'local_price' => array(
+                        'amount' => $amount,
                         'currency' => 'USD',
-                    ],
+                    ),
                     'pricing_type' => 'fixed_price',
-                    'metadata' => [
-                        'customer_id' => $_SESSION['Player_ID'],
-                        'customer_name' => $_SESSION['Player'],
-                    ],
-                    'redirect_url' => SiteRootDir . 'coinbase/success.php',
-                    'cancel_url' => SiteRootDir . 'coinbase/cancel.php',
-                ];
+                    'metadata' => array(
+                        'customer_id' => $id,
+                        'customer_name' => $player,
+                    ),
+                    'redirect_url' => SiteRootDir . 'deposit2.php?action=complete&token=' . $tokenid_complete,
+                    'cancel_url' => SiteRootDir . 'deposit2.php?action=cancel&token=' . $tokenid_cancel,
+                );
+                $reqBody = json_encode($data);
+                $curl = curl_init();
 
-                $dataCharge = Charge::create($chargeData);
+                curl_setopt_array($curl, array(
+                    //curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . "/cacert.pem"),
+                    CURLOPT_URL => "https://api.commerce.coinbase.com/charges",
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "POST",
+                    CURLOPT_POSTFIELDS => $reqBody,
+                    CURLOPT_HTTPHEADER => array(
+                        "cache-control: no-cache",
+                        "content-type: application/json",
+                        "x-cc-api-key: " . $apikey,
+                        "x-cc-version: " . $version,
+                    ),
+                ));
 
-                // echo "<pre>";
-                // echo print_r($dataCharge);
-                // echo "</pre>";
-                //Updated Data Response from coinbase
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
 
-                $sqliCC = "insert into deposit_crypto (player,pay_id,code) values (?,?,?)";
-                $valuesCC = array($_SESSION['Player'], $dataCharge->id, $dataCharge->code);
-                $model->doinsert($sqliCC, $valuesCC);
+                curl_close($curl);
 
-                $sqluPay = "update deposit_history set pay_id=? where id=?";
-                $valuesPay = array($dataCharge->id, $insertID);
-                $model->doUpdate($sqluPay, $valuesPay);
+                if ($err) {
+                    $_SESSION['errors_code'] = "alert-danger";
+                    $_SESSION['errors_msg'] = "مشکلی ایجاد ارتباط با COINBASE به وجود آمده است لطفاً دوباره لاش کنید.";
 
-                header("Location:" . $dataCharge->hosted_url);
+                    header("Location:../deposit2.php?action=failed");
+                } else {
+
+                    $response = json_decode($response, true);
+                    $total = intval($amountD) * intval($currency);
+                    $trans_code = $response['data']['code'];
+                    $trans_id = $response['data']['id'];
+                    $hosted_url = $response['data']['hosted_url'];
+
+                    $sqli = "insert into deposit_history (player,amountU,amountT,amountC,Bonus,deposit_type,date,time,tran_id,currency,status,pay_id,token_ca, token_co) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    $values = array($player, $amountD, $iramount, '0', '0', "CC", $dateLog, $timeLog, $trans_code, $RecDataST[0]['currency_cc'], "0", $trans_id, $tokenid_cancel, $tokenid_complete);
+                    $insertID = $model->doinsert($sqli, $values);
+
+                    $sqliCC = "insert into deposit_crypto (player,pay_id,code) values (?,?,?)";
+                    $valuesCC = array($player, $trans_id, $trans_code);
+                    $model->doinsert($sqliCC, $valuesCC);
+
+                    header("Location:" . $hosted_url);
+                }
 
             } else {
 

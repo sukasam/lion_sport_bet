@@ -5,6 +5,122 @@ include_once "function/app_top.php";
 if (isset($_GET['action']) && $_GET['action'] === 'cryptocurrency') {
     $_SESSION['errors_code'] = "";
     include_once "function/deposit2.php";
+} else if (isset($_GET['action']) && $_GET['action'] === 'complete') {
+
+    if (isset($_GET['token'])) {
+
+        $token = $_GET['token'];
+        $sql = "SELECT `amountT`,`tran_id`,`status` From `deposit_history` WHERE `token_co`=? and `player`=?";
+        $values = array($token, $_SESSION['Player']);
+        $result = $model->doSelect($sql, $values);
+        $totalConvert = $result[0]['amountT'];
+        $dbStatus = $result[0]['status'];
+
+        if ($result) {
+
+            if ($dbStatus == 0 || $dbStatus === '0') {
+
+                //////////////////////////////////
+                $show = $result[0]['tran_id'];
+                $apikey = COINBASE_API_KEY;
+                $version = COINBASE_VERSION;
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    //curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . "/cacert.pem"),
+                    CURLOPT_URL => "https://api.commerce.coinbase.com/charges/" . $show,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => "",
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 30,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => "GET",
+                    CURLOPT_HTTPHEADER => array(
+                        "cache-control: no-cache",
+                        "x-cc-api-key: " . $apikey,
+                        "x-cc-version: " . $version,
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+                $err = curl_error($curl);
+                curl_close($curl);
+
+                // echo "<pre>";
+                // print_r($response);
+                // echo "</pre>";
+                // exit();
+
+                if ($err) {
+                    // echo "cURL Error #:" . $err;
+                    $_SESSION['errors_code'] = "alert-danger";
+                    $_SESSION['errors_msg'] = "خطایی رخ داده است، لطفاً صبر کنید";
+
+                    header("Location:../deposit2.php?action=failed");
+                } else {
+                    // echo $response;
+                    $response = json_decode($response, true);
+                    $timeline = count($response['data']['timeline']);
+                    $paymentStatus = $response['data']['timeline'][$timeline - 1]['status'];
+                    $paymentTime = $response['data']['timeline'][$timeline - 1]['time'];
+                    $paymentAmount = $response['data']['timeline'][$timeline - 1]['payment']['value']['amount'];
+                    $paymentNetwork = $response['data']['timeline'][$timeline - 1]['payment']['value']['currency'];
+                    // echo $response['data']['timeline'][2]['status'];
+                    // echo $response['data']['timeline'][2]['payment']['value']['amount'];
+                    // echo $response['data']['timeline'][2]['payment']['value']['amount'];
+                }
+                //////////////////////////////////
+
+                if($paymentStatus === "COMPLETED"){
+                    $sqlu = "UPDATE `deposit_history` SET `status`=?,`amountC`=?,`Crypto`=?,`update_done`=? WHERE `token_co`=?";
+                    $values = array(1, $paymentAmount, $paymentNetwork, $paymentTime, $token);
+                    $model->doUpdate($sqlu, $values);
+    
+                    $sqlProfileSQL = "SELECT * FROM user_profile WHERE `Player` = ?";
+                    $valuesST2 = array($_SESSION['Player']);
+                    $RecProfileC = $model->doSelect($sqlProfileSQL, $valuesST2);
+    
+                    $totalAmount = $totalConvert + $RecProfileC[0]['DBalance'];
+    
+                    $UBalanceSQL = "update user_profile set DBalance=? where Player=?";
+                    $valuesBL = array($totalAmount, $_SESSION['Player']);
+                    $model->doUpdate($UBalanceSQL, $valuesBL);
+    
+                    $_SESSION['errors_code'] = "alert-success";
+                    $_SESSION['errors_msg'] = "حساب شما با موفقیت شارژ شد.";
+    
+                    header("Location:../deposit2.php?action=success");
+                }else{
+                    // if Case status return is not COMPLETED
+                    $_SESSION['errors_code'] = "alert-success";
+                    $_SESSION['errors_msg'] = "حساب شما با موفقیت شارژ شد.";
+                    header("Location:../deposit2.php?action=success");
+                }
+                
+            } else {
+                $_SESSION['errors_code'] = "alert-danger";
+                $_SESSION['errors_msg'] = "تراکنش تکراری";
+
+                header("Location:../deposit2.php?action=failed");
+            }
+        } else {
+            $_SESSION['errors_code'] = "alert-danger";
+            $_SESSION['errors_msg'] = "تراکنش مورد نظر موجود نمی باشد";
+
+            header("Location:../deposit2.php?action=failed");
+        }
+    }
+} else if (isset($_GET['action']) && $_GET['action'] === 'cancel') {
+    if (isset($_GET['token'])) {
+        $token = $_GET['token'];
+        $sqlu = "UPDATE `deposit_history` SET `status`=?,`update_done`=? WHERE `token_ca`=? and `status`=? and `player`=?";
+        $values = array(2, date("Y-m-d H:i:s"), $token, 0, $_SESSION['Player']);
+        $model->doUpdate($sqlu, $values);
+
+        $_SESSION['errors_code'] = "alert-danger";
+        $_SESSION['errors_msg'] = "تراکنش از جانب شما کنسل گردید.";
+
+        header("Location:../deposit2.php?action=failed");
+    }
 }
 
 if (!isset($_GET['action'])) {
@@ -44,7 +160,7 @@ if (!isset($_GET['action'])) {
 				<div class="container card-content">
 					<div class="row">
                         <div class="col-12 mb-40">
-                            <h3 class="text-heading"><?php echo TOP_MENU_DEPOSITS." - ".TOP_MENU_DEPOSITS_CRYPTO; ?></h3>
+                            <h3 class="text-heading"><?php echo TOP_MENU_DEPOSITS . " - " . TOP_MENU_DEPOSITS_CRYPTO; ?></h3>
                         </div>
 
 						<div class="col-12 mb-60" id="aTab">
@@ -58,7 +174,7 @@ if (!isset($_GET['action'])) {
                                         <?php }?>
                                         <div class="row mb-20">
                                             <div class="col-12 text-center mb-20">
-                                                <span class="rate-span">  1$ <span class="small-text">Cryptocurrency</span> -&gt; <?php echo number_format($configDT[0]['currency_cc']);?> <span class="small-text">Toman</span></span>
+                                                <span class="rate-span">  1$ <span class="small-text">Cryptocurrency</span> -&gt; <?php echo number_format($configDT[0]['currency_cc']); ?> <span class="small-text">Toman</span></span>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
@@ -127,7 +243,7 @@ echo $TITLE_DEPOSITS_DESC_CC;
                 $('#amount').focus();
                 return false;
             }
-            
+
             $('#frm_deposit').submit();
 
         });
