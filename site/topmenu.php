@@ -48,7 +48,6 @@ $RecDataNotiTotal = $db->select("SELECT count(*) as countNoti FROM notification 
                     </li>
                 </ul>
                 <ul class="navbar-nav tMenuR">
-                    <li><a href="support.php"><?php echo TOP_MENU_TICKETS; ?></a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
                         [<?php echo $RecDataUserProfile[0]['Player']; ?>]

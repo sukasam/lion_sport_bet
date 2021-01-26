@@ -179,17 +179,6 @@
 
           <li class="sub-menu">
             <a class="" href="javascript:;">
-              <i class="fa fa-comments-o"></i>
-              <span>Support</span>
-              </a>
-            <ul class="sub">
-              <li class=""><a href="support.php">New Message</a></li>
-              <li><a href="support_all.php">All Message</a></li>
-            </ul>
-          </li>
-
-          <li class="sub-menu">
-            <a class="" href="javascript:;">
               <i class="fa fa-money"></i>
               <span>Financial</span>
               </a>
