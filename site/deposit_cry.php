@@ -140,7 +140,6 @@ if (!isset($_GET['action'])) {
 <body class="dark-theme-layout">
     <div class="" id="testtheme"></div>
     <input type="hidden" id="token" value="Qs8ERsZpmWnFqvKN5iVen1SmapOWE150y8VHJiTC">
-    <input type="hidden" id="base_url" value="https://coinremitter.com/">
     <?php include_once 'head2.php';?>
     <section class="page-paddings">
         <div class="container">

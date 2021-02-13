@@ -235,80 +235,10 @@ if (empty($RecData[0])) {
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="modal fade" aria-hidden="true" role="dialog" id="change-password">
-                            <div class="modal-dialog" style="height:25% ">
-                                <form id="reset_pass_form" name="reset_pass_form" method="post" action="https://coinremitter.com/merchant/reset-password">
-                                    <div class="modal-content modal-xs">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title">Change Password <span class="coin_name">BTC</span>
-                                            </h4>
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                        </div>
-                                        <div class="modal-body no-padding">
-                                            <div class="row">
-                                                <div class="col-xl-12 " style="margin-top:10px;">
-                                                    <div class="form-group">
-                                                        <label for="account-pass" class="inp">
-                                                            <input type="password" id="old_pass" name="old_pass"
-                                                                placeholder="">
-                                                            <span class="label">Old Password</span>
-                                                            <span class="border"></span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12" style="margin-top:10px;">
-                                                    <div class="form-group">
-                                                        <label for="account-pass" class="inp">
-                                                            <input type="password" id="new_pass" name="new_pass"
-                                                                placeholder="">
-                                                            <span class="label">New Password</span>
-                                                            <span class="border"></span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-12" style="margin-top:10px;">
-                                                    <div class="form-group">
-                                                        <label for="account-pass" class="inp">
-                                                            <input type="password" id="conf_pass" name="conf_pass"
-                                                                placeholder="">
-                                                            <span class="label">Confirm Password:</span>
-                                                            <span class="border"></span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer no-border" style="border-top:none;">
-                                            <span class="alert-msg success" style="color:green;display: none;"></span>
-                                            <span class="alert-msg failed" style="color:red;display: none;"></span>
-                                            <button type="button" class="btn btn-main-success" onclick="reset_password()">Save Change</button>
-                                            <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div> -->
                     </div>
                 </div>
             </div>
     </section>
-    <!-- <div class="modal fade" id="lendingModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <b id="cnf-header">Confirmation</b>
-                </div>
-                <div class="modal-body">
-                    <p id="cnf-msg">Are You Sure?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-main-success" id="confirm_yes" onclick="" data-dismiss="modal">Confirm <span style="display: none;" id="footer_confirm_loader"><i
-                                class="fas fa-spinner fa-spin"></i></span></button>
-                    <button type="button" class="btn btn-cancel waves-effect" id="" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <script type="text/javascript" src="js/profile.min.js?cmt=fa217407"></script>
 </body>
 

@@ -3,10 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="keywords" content="cheapest cryptocurrency gateway, cryptocurrency gateway,cryptocurrency payment gateway, altcoin payment gateway,bitcoin payment gateway, bitcoincash payment gateway, bitcoin gold payment gateway, ethereum payment gateway, litecoin payment gateway, ripple payment gateway, altcoin payment api, bitcoin payment api, bitcoincash payment api, bitcoin gold payment api, ethereum payment api, litecoin payment api, ripple payment api">
 <meta name="description" content="Cheapest crypto currency payment gateway.Integrate bitcoin,litecoin,bitcoin gold, ethereum, bitcoin cash, ripple and more in your website using our API and start accepting coins.">
-
-<!-- <script src="js/azINwRxpfDOyU25fGx5ThywCOJc.js"></script> -->
 <link rel="stylesheet" href="css/mrchnt.min.css?cmt=fa217407">
-<!-- <link rel="stylesheet" href="css/all.min.css??cmt=fa217407"> -->
 <script src="https://use.fontawesome.com/55df25ec23.js"></script>
 <link rel='shortcut icon' type='image/x-icon' href="img/icon/fav.ico" />
 <link rel="apple-touch-icon" sizes="57x57" href="img/icon/apple-icon-57x57.png">
