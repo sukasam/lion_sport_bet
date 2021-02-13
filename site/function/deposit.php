@@ -15,6 +15,7 @@ if ($csrf->check_valid('post')) {
 
             $e_voucher = $db->CleanDBData($_POST['e_voucher']);
             $activation_code = $db->CleanDBData($_POST['activation_code']);
+            $tab = $db->CleanDBData($_POST['tab']);
 
             $dateLog = date("Y-m-d");
             $timeLog = date("H:i:s");
@@ -74,7 +75,7 @@ if ($csrf->check_valid('post')) {
                 $_SESSION['errors_code'] = "alert-success";
                 $_SESSION['errors_msg'] = "E-voucher # " . $ar['VOUCHER_NUM'] . ".<br>Your account has been successfully deposited.";
 
-                header("Location:../deposit.php?action=success");
+                header("Location:../deposit_pm.php?tab=pm&action=success");
             } else {
 
                 $sqlu = "update deposit_history set status=?, tran_id=? where id=?";
@@ -84,13 +85,13 @@ if ($csrf->check_valid('post')) {
                 $_SESSION['errors_code'] = "alert-danger";
                 $_SESSION['errors_msg'] = $ar['ERROR'];
 
-                header("Location:../deposit.php?action=failed");
+                header("Location:../deposit_pm.php?tab=pm&action=failed");
             }
         } else {
             $_SESSION['errors_code'] = "alert-danger";
             $_SESSION['errors_msg'] = "Invalid security code.";
 
-            header("Location:../deposit.php?action=failed");
+            header("Location:../deposit_pm.php?tab=pm&action=failed");
         }
     }
 }

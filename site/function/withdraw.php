@@ -13,7 +13,7 @@ if ($csrf->check_valid('post')) {
         $pkamount = $db->CleanDBData($_POST['amount']);
         $second_password = $db->CleanDBData($_POST['second_password']);
 
-        $callBackW = "withdraw.php";
+        $callBackW = "withdraw_pm.php?tab=pm";
 
         $sqlSCPSQL = "SELECT * FROM secpw WHERE player = ? AND swp = ? AND `action`=? ORDER BY id DESC";
         $valuesSCPSQL = array($_SESSION['Player'], encode($second_password, KEY_HASH), '0');
@@ -26,7 +26,14 @@ if ($csrf->check_valid('post')) {
 
             $timestamp = strtotime($date . " " . $time); //1373673600
 
-            if ($timestamp < time() + 86400) {
+            // getting current date 
+            $cDate = strtotime(date('Y-m-d H:i:s'));
+            
+            // Getting the value of old date + 24 hours
+            $oldDate = $timestamp + 86400; // 86400 seconds in 24 hrs
+        
+
+            if ($oldDate > $cDate) {
 
                 $sql = "SELECT * FROM user_profile WHERE Player = ?";
                 $values = array($_SESSION['Player']);
@@ -55,23 +62,23 @@ if ($csrf->check_valid('post')) {
 
                     $_SESSION['errors_code'] = "alert-success";
                     $_SESSION['errors_msg'] = "Your withdrawal is being processed.";
-                    header("Location:" . SiteRootDir . "" . $callBackW . "?action=success");
+                    header("Location:" . SiteRootDir . "" . $callBackW . "&action=success");
 
                 } else {
                     $_SESSION['errors_code'] = "alert-danger";
                     $_SESSION['errors_msg'] = TITLE_WITHDRAW_FUN1;
-                    header("Location:" . SiteRootDir . "" . $callBackW . "?action=failed");
+                    header("Location:" . SiteRootDir . "" . $callBackW . "&action=failed");
                 }
             } else {
                 $_SESSION['errors_code'] = "alert-danger";
                 $_SESSION['errors_msg'] = "The second password has expired. Please request the second password again.";
-                header("Location:" . SiteRootDir . "" . $callBackW . "?action=failed");
+                header("Location:" . SiteRootDir . "" . $callBackW . "&action=failed");
             }
         } else {
             $_SESSION['errors_code'] = "alert-danger";
             $_SESSION['errors_msg'] = "The second password is not valid.";
 
-            header("Location:" . SiteRootDir . "" . $callBackW . "?action=failed");
+            header("Location:" . SiteRootDir . "" . $callBackW . "&action=failed");
         }
 
         // if($_SESSION['security_code'] === $db->CleanDBData($_POST['withdraw_captcha_code'])) { // Check
@@ -116,46 +123,46 @@ if ($csrf->check_valid('post')) {
         //                         $_SESSION['errors_code'] = "alert-success";
         //                         $_SESSION['errors_msg'] = "Your withdrawal is being processed.";
 
-        //                         header("Location:".SiteRootDir."".$callBackW."?action=success");
+        //                         header("Location:".SiteRootDir."".$callBackW."&action=success");
         //                     }else{
         //                         $_SESSION['errors_code'] = "alert-danger";
         //                         $_SESSION['errors_msg'] = 'Please select the amount you wish to withdraw.';
-        //                         header("Location:".SiteRootDir."".$callBackW."?action=failed");
+        //                         header("Location:".SiteRootDir."".$callBackW."&action=failed");
         //                     }
 
         //                 }else{
         //                     $_SESSION['errors_code'] = "alert-danger";
         //                     $_SESSION['errors_msg'] = TITLE_WITHDRAW_FUN2.'<br><a href="account.php">'.TITLE_WITHDRAW_FUN3.'</a>';
-        //                     header("Location:".SiteRootDir."".$callBackW."?action=failed");
+        //                     header("Location:".SiteRootDir."".$callBackW."&action=failed");
         //                 }
         //             }else{
 
         //                 $_SESSION['errors_code'] = "alert-danger";
         //                 $_SESSION['errors_msg'] = TITLE_WITHDRAW_FUN1;
-        //                 header("Location:".SiteRootDir."".$callBackW."?action=failed");
+        //                 header("Location:".SiteRootDir."".$callBackW."&action=failed");
 
         //             }
         //         // }else{
         //         //     $_SESSION['errors_code'] = "alert-danger";
         //         //     $_SESSION['errors_msg'] = "Your PIN Code is invalid.";
-        //         //     header("Location:".SiteRootDir."".$callBackW."?action=failed");
+        //         //     header("Location:".SiteRootDir."".$callBackW."&action=failed");
         //         // }
 
         //     }else{
         //         $_SESSION['errors_code'] = "alert-danger";
         //         $_SESSION['errors_msg'] = 'Please select the amount you wish to withdraw.';
-        //         header("Location:".SiteRootDir."".$callBackW."?action=failed");
+        //         header("Location:".SiteRootDir."".$callBackW."&action=failed");
         //     }
 
         //     // $_SESSION['errors_code'] = "alert-danger";
         //     // $_SESSION['errors_msg'] = TITLE_WITHDRAW_CLOSE;
-        //     // header("Location:".SiteRootDir."".$withdrwaType."?action=failed");
+        //     // header("Location:".SiteRootDir."".$withdrwaType."&action=failed");
 
         // }else{
         //     $_SESSION['errors_code'] = "alert-danger";
         //     $_SESSION['errors_msg'] = "Invalid security code.";
 
-        //     header("Location:".SiteRootDir."".$callBackW."?action=failed");
+        //     header("Location:".SiteRootDir."".$callBackW."&action=failed");
         // }
     }
 }

@@ -43,14 +43,14 @@
 					$strHeader .= "MIME-Version: 1.0' . \r\n";
 					$strHeader .= "Content-type: text/html; charset=utf-8\r\n"; 
 					$strHeader .= "From: Lion Royal Online Sports <admin@omegadishwasher-family.com >\r\nReply-To: admin@omegadishwasher-family.com ";
-					$strMessage = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Sports Betting</span>
+					$strMessage = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Betting</span>
 							<hr>
 							<span>Hello Dear <b>'.$Player.'</b>,</span>
 							<p>This email sent by Lion Royal Online Sports Website based on your request to restart password, if you did not request just ignore this email.<br><br>
 							<center>Passwords is '.$pass.'</center>
 							<br><br>
 							<span>Regards,</span> <br>
-							<span>Lion Royal Online Sports Betting</span> <br>
+							<span>Lion Royal Online Betting</span> <br>
 							</div>';
 
 					$flgSend = @mail($strTo,$strSubject,$strMessage,$strHeader);  // @ = No Show Error //

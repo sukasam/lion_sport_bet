@@ -12,6 +12,7 @@ if ($csrf->check_valid('post')) {
     if ($_POST) {
 
         $iramount = $db->CleanDBData($_POST['amount']);
+        $tab = $db->CleanDBData($_POST['tab']);
         $dateLog = date("Y-m-d");
         $timeLog = date("H:i:s");
 
@@ -48,8 +49,8 @@ if ($csrf->check_valid('post')) {
                         'customer_id' => $id,
                         'customer_name' => $player,
                     ),
-                    'redirect_url' => SiteRootDir . 'deposit2.php?action=complete&token=' . $tokenid_complete,
-                    'cancel_url' => SiteRootDir . 'deposit2.php?action=cancel&token=' . $tokenid_cancel,
+                    'redirect_url' => SiteRootDir . 'deposit_cry.php?tab=cry&action=complete&token=' . $tokenid_complete,
+                    'cancel_url' => SiteRootDir . 'deposit_cry.php?tab=cry&action=cancel&token=' . $tokenid_cancel,
                 );
                 $reqBody = json_encode($data);
                 $curl = curl_init();
@@ -81,7 +82,7 @@ if ($csrf->check_valid('post')) {
                     $_SESSION['errors_code'] = "alert-danger";
                     $_SESSION['errors_msg'] = "مشکلی ایجاد ارتباط با COINBASE به وجود آمده است لطفاً دوباره لاش کنید.";
 
-                    header("Location:../deposit2.php?action=failed");
+                    header("Location:../deposit_cry.php?tab=cry&action=failed");
                 } else {
 
                     $response = json_decode($response, true);
@@ -108,14 +109,14 @@ if ($csrf->check_valid('post')) {
                 $_SESSION['errors_code'] = "alert-danger";
                 $_SESSION['errors_msg'] = "حداقل پرداخت برابر 5 دلار می باشد. معادل " . number_format($ratAmount) . " تومان .";
 
-                header("Location:../deposit2.php?action=failed");
+                header("Location:../deposit_cry.php?tab=cry&action=failed");
             }
 
         } else {
             $_SESSION['errors_code'] = "alert-danger";
             $_SESSION['errors_msg'] = "Wrong amount";
 
-            header("Location:../deposit2.php?action=failed");
+            header("Location:../deposit_cry.php?tab=cry&action=failed");
         }
 
     }

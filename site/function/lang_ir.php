@@ -34,7 +34,7 @@ define('TOP_MENU_LANG_IR', 'فارسی');
 
 define('TOP_LOGO_LION', 'Lion');
 define('TOP_LOGO_ROYAL', 'Royal');
-define('TOP_LOGO_CASINO', 'Sports Betting');
+define('TOP_LOGO_CASINO', 'Betting');
 
 // HOME PAGE
 

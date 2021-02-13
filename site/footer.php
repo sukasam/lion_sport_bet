@@ -7,7 +7,7 @@
                     <div class="">
                         <img src="img/lion-online-bet.png" class="hLogoFooter">
                     </div>
-                    <p class="footer-thanks text-center">Lion Royal Sport Betting</p>
+                    <p class="footer-thanks text-center">Lion Royal Betting</p>
                 </div>
                 <div class="col-12">
                     <span class="socialFooter">

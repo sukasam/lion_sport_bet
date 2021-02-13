@@ -29,7 +29,7 @@ if ($csrf->check_valid('post')) {
         $_SESSION['errors_code1'] = "alert-success";
         $_SESSION['errors_msg1'] = "Updated Perfect Money account information.";
 
-        header("Location:" . SiteRootDir . "account.php?action=success");
+        header("Location:" . SiteRootDir . "profile.php?action=success");
 
     }
 }

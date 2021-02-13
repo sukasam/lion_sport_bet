@@ -1,6 +1,6 @@
 <?php
  include_once("function/app_top.php");
- header("Location:main.php")
+ header("Location:profile.php")
 ?>
 <!DOCTYPE html>
 	<html lang="en" class="no-js">

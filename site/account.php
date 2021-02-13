@@ -98,7 +98,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><?php echo TITLE_PHONE_NUMBER;?>:</label>
-                                                <input type="text" value="<?php echo $RecDataUserProfile[0]['Telephone'];?>" name="account_phone" class="form-control parsley-validated" placeholder="<?php echo TITLE_PHONE_NUMBER;?>r" autofocus required <?php if(!empty($RecDataUserProfile[0]['Telephone'])){echo "readonly";}?>>
+                                                <input type="text" value="<?php echo $RecDataUserProfile[0]['Telephone'];?>" name="account_phone" class="form-control parsley-validated" placeholder="<?php echo TITLE_PHONE_NUMBER;?>" autofocus required <?php if(!empty($RecDataUserProfile[0]['Telephone'])){echo "readonly";}?>>
                                             </div>
                                         </div>
                                     </div>

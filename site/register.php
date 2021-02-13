@@ -56,7 +56,7 @@
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="d-flex justify-content-center text-center"><?php echo TITLE_REGISTER;?> <br>(Lion Royal Online Sports Betting)</h3>
+				<h3 class="d-flex justify-content-center text-center"><?php echo TITLE_REGISTER;?> <br>(Lion Royal Online Betting)</h3>
             </div>
 			<div class="card-body">
                 <?php if($_SESSION['errors_code'] != ""){?>

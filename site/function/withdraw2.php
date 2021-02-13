@@ -11,7 +11,7 @@ if ($csrf->check_valid('post')) {
 
         $pkamount = $db->CleanDBData($_POST['amount']);
 
-        $callBackW = "withdraw2.php";
+        $callBackW = "withdraw_pm2.php?tab=cry";
 
         $sql = "SELECT * FROM user_profile WHERE Player = ?";
         $values = array($_SESSION['Player']);
@@ -35,12 +35,12 @@ if ($csrf->check_valid('post')) {
 
             $_SESSION['errors_code'] = "alert-success";
             $_SESSION['errors_msg'] = "Your withdrawal is being processed.";
-            header("Location:" . SiteRootDir . "" . $callBackW . "?action=success");
+            header("Location:" . SiteRootDir . "" . $callBackW . "&action=success");
 
         } else {
             $_SESSION['errors_code'] = "alert-danger";
             $_SESSION['errors_msg'] = TITLE_WITHDRAW_FUN1;
-            header("Location:" . SiteRootDir . "" . $callBackW . "?action=failed");
+            header("Location:" . SiteRootDir . "" . $callBackW . "&action=failed");
         }
     }
 }

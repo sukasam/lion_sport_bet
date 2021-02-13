@@ -36,8 +36,15 @@ if (isset($_SESSION['Player']) && $_SESSION['Player'] != "") {
         $time = $RecDataSCP[0]['time'];
 
         $timestamp = strtotime($date . " " . $time); //1373673600
+        
+        // getting current date 
+        $cDate = strtotime(date('Y-m-d H:i:s'));
+        
+        // Getting the value of old date + 24 hours
+        $oldDate = $timestamp + 86400; // 86400 seconds in 24 hrs
+        
 
-        if ($timestamp > time() + 86400) {
+        if ($oldDate < $cDate) {
 
             $scpw = generateCode(5);
             $scpwHash = encode($scpw, KEY_HASH);
@@ -52,7 +59,7 @@ if (isset($_SESSION['Player']) && $_SESSION['Player'] != "") {
             $_SESSION['errors_code'] = "alert-danger";
             $_SESSION['errors_msg'] = "There should be a 24 hour interval between each request to change the new password.";
 
-            header("Location:" . SiteRootDir . "withdraw.php?action=failed");
+            header("Location:" . SiteRootDir . "withdraw_pm.php?tab=pm&action=failed");
         }
     }
 
@@ -60,7 +67,7 @@ if (isset($_SESSION['Player']) && $_SESSION['Player'] != "") {
         $to = $RecData[0]['Email'];
         $from = EMAIL_NONEREPLY;
         $subject = "Cahsouts - Perfect Money Voucher(Second Password)";
-        $msg = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Sports Betting</span>
+        $msg = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Betting</span>
         <hr>
         <span>Hello Dear <b>' . $RecData[0]['Player'] . '</b>,</span>
         <p>Use the information below to cahsouts your money.</p>
@@ -71,14 +78,14 @@ if (isset($_SESSION['Player']) && $_SESSION['Player'] != "") {
         <br>
         <br>
         <span>Regards,</span> <br>
-        <span>Lion Royal Online Sports Betting</span> <br>
+        <span>Lion Royal Online Betting</span> <br>
         </div>';
         send_mail($to, $from, $subject, $msg);
 
         $_SESSION['errors_code'] = "alert-success";
         $_SESSION['errors_msg'] = "The second password was sent to your e-mail successfully.";
 
-        header("Location:" . SiteRootDir . "withdraw.php?action=success");
+        header("Location:" . SiteRootDir . "withdraw_pm.php?tab=pm&action=success");
     }
 
 } else {
@@ -86,5 +93,5 @@ if (isset($_SESSION['Player']) && $_SESSION['Player'] != "") {
     $_SESSION['errors_code'] = "alert-danger";
     $_SESSION['errors_msg'] = "Unable to verify your identity";
 
-    header("Location:" . SiteRootDir . "withdraw.php?action=failed");
+    header("Location:" . SiteRootDir . "withdraw_pm.php?tab=pm&action=failed");
 }

@@ -35,7 +35,7 @@ define('TOP_MENU_LANG_IR', 'فارسی');
 
 define('TOP_LOGO_LION', 'Lion');
 define('TOP_LOGO_ROYAL', 'Royal');
-define('TOP_LOGO_CASINO', 'Sports Betting');
+define('TOP_LOGO_CASINO', 'Betting');
 
 define('TITLE_TYPE_HERE', 'Type Here');
 define('TITLE_SUPPORT_DETAIL', 'Let us know your problems, comments and suggestions. The support team is ready to respond to you 24 hours a day, seven days a week. Note that reviewing some items may take time, please be patient.

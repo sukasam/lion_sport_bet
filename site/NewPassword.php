@@ -43,7 +43,7 @@
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Lion Royal Online Sports Betting - Login</title>
+	<title>Lion Royal Online Betting - Login</title>
    <!--Made with love by Mutiullah Samim -->
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -66,7 +66,7 @@
 	<div class="d-flex h-100">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="d-flex justify-content-center text-center">Password Recovery <br>(Lion Royal Online Sports Betting)</h3>
+				<h3 class="d-flex justify-content-center text-center">Password Recovery <br>(Lion Royal Online Betting)</h3>
 				<!-- <div class="d-flex justify-content-end social_icon">
 					<span><i class="fab fa-facebook-square"></i></span>
 					<span><i class="fab fa-google-plus-square"></i></span>

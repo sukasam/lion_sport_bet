@@ -64,7 +64,7 @@ if ($csrf->check_valid('post')) {
                     $strHeader .= "MIME-Version: 1.0' . \r\n";
                     $strHeader .= "Content-type: text/html; charset=utf-8\r\n";
                     $strHeader .= "From: Lion Royal Online Sports <noreply@lionroyal.com>\r\nReply-To: noreply@lionroyal.com ";
-                    $strMessage = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Sports Betting</span>
+                    $strMessage = '<div style="border: 1px solid rgba(53,53,53,0.31);width: 500px;margin: 0 auto;font-family: Tahoma;padding: 15px;border-radius: 4px;background-color: rgba(53,53,53,0.11);"><span style="color: #000000;letter-spacing: -2px;font-size: 32px;margin-right: 3px;">Lion Royal Online Betting</span>
 								<hr>
 								<span>Hello Dear <b>' . $Player . '</b>,</span>
 								<p>Please use the link below to active your account, <br><br>
@@ -80,7 +80,7 @@ if ($csrf->check_valid('post')) {
 								<br>
 								<br>
 								<span>Regards,</span> <br>
-								<span>Lion Royal Online Sports Betting</span> <br>
+								<span>Lion Royal Online Betting</span> <br>
 								</div>';
 
                     $flgSend = @mail($strTo, $strSubject, $strMessage, $strHeader); // @ = No Show Error //

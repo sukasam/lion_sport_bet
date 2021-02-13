@@ -4,7 +4,7 @@
         <div class="container headNav">
                 <a class="navbar-brand" href="index.php">
                 <!--<img src="img/logo.png" alt="">-->
-                <span class="spanE"><?php echo "Lion";?></span> <span class="spanO"><?php echo "Royal";?></span> <span class="spanE"><?php echo "Sports Betting";?></span>
+                <span class="spanE"><?php echo "Lion";?></span> <span class="spanO"><?php echo "Royal";?></span> <span class="spanE"><?php echo "Betting";?></span>
                 <!-- <img src="img/lion-online-bet.png" class="hLogo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,6 @@
                     <li>
                         <a href="register.php" class="link signup">ثبت نام</a>
                     </li>
-                    ?>
                     
                 </ul>
                 </div>						

@@ -7,7 +7,7 @@ $v = date("YmdHis");
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Lion Royal Online Sports Betting - Login</title>
+	<title>Lion Royal Online Betting - Login</title>
    <!--Made with love by Mutiullah Samim -->
 	<!--Bootsrap 4 CDN-->
 	<link rel="stylesheet" href="css/bootstrap.css">
